@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserAuth } from '../context/AuthContext'
 
+//TODO use password confirmation field, compare to password field
+//TODO error handling and output for various cases in signup process
+
 const Signup = () => {
 
     const [email, setEmail] = useState('');

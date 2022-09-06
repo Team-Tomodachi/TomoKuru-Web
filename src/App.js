@@ -6,6 +6,8 @@ import { Route, Routes } from 'react-router-dom';
 import { AuthContextProvider } from './context/AuthContext';
 import ProtectedRoutes from './components/ProtectedRoutes';
 
+//TODO refactor to be capapble of connecting to backend
+
 function App() {
     return (
         <div>
