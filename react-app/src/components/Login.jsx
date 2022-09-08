@@ -1,16 +1,23 @@
 import React, {useEffect, useState} from "react";
+import {UserAuth} from '../context/AuthContext'
 
 require('./Login.css');
 
 export default function Login({setShowLoginModal}) {
-    const [inputName, setInputName] = useState()
+    const {signIn} = UserAuth();
+
+    const [inputEmail, setInputEmail] = useState()
     const [inputPassword, setInputPassword] = useState()
 
     const handleLoginButtonClick = async () => {
         setShowLoginModal(false);
-        console.log("Log in !!!");
-        console.log(inputName);
-        console.log(inputPassword);
+        try {
+            let result = await signIn(inputEmail, inputPassword)
+            console.log('Login', result);
+        } catch (e) {
+            // todo: popup window to show error message
+            console.error(e);
+        }
     }
 
     return (
@@ -41,13 +48,13 @@ export default function Login({setShowLoginModal}) {
                         {/*body*/}
                         <div className="relative p-6 flex-auto">
                             <div className="mb-6">
-                                <label htmlFor="input-name"
+                                <label htmlFor="input-email"
                                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                                    Name
+                                    Email
                                 </label>
-                                <input type="text" id="input-name"
+                                <input type="text" id="input-email"
                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                       onChange={(e) => setInputName(e.target.value)}
+                                       onChange={(e) => setInputEmail(e.target.value)}
                                 />
                             </div>
                             <div className="mb-6">
@@ -55,7 +62,7 @@ export default function Login({setShowLoginModal}) {
                                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                                     Password
                                 </label>
-                                <input type="text" id="input-password"
+                                <input type="password" id="input-password"
                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                        onChange={(e) => setInputPassword(e.target.value)}
                                 />
