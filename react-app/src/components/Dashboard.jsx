@@ -12,7 +12,7 @@ export default function Dashboard() {
         <>
             <div id={'container'}>
                 <section id={'menu'} onClick={() => {
-                    view === "Content" ? setView("Venue") : setView("Venue")
+                    view === "Profile" ? setView("Venue") : setView("Profile")
                 }}>
                     <Sidebar/>
                 </section>
