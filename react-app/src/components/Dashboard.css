@@ -1,0 +1,23 @@
+#container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 0;
+}
+
+#menu {
+    width: 200px;
+    border-right: 1px solid #CCCCCC;
+}
+
+#profile {
+    flex: 1;
+}
+
+#content {
+    flex: 1;
+}
+
+#venue {
+    flex: 1;
+}
