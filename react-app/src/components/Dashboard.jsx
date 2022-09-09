@@ -5,6 +5,7 @@ import Venue from './Dashboard/Venue';
 import Package from './Dashboard/Package';
 import Event from './Dashboard/Event';
 import Search from './Dashboard/Search';
+import VenueCreation from './Dashboard/Venue/VenueCreation';
 
 require('./Dashboard.css');
 
@@ -42,6 +43,13 @@ export default function Dashboard() {
                                 selectedVenue={selectedVenue}
                                 setNewVenue={setNewVenue}
                                 newVenue={newVenue}
+                            />
+                        </section>;
+                    } else if (view === "VenueCreation") {
+                        return <section id={'dashboard-content-venue-creation'}>
+                            <VenueCreation
+                                setView={setView}
+                                setVenues={setVenues}
                             />
                         </section>;
                     } else if (view === "Package") {

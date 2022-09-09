@@ -52,11 +52,16 @@ const deleteVenueById = async (id) => {
     }
 }
 
+const createVenue = async (venue) => {
+    return await axios.post(`${API_HOST_URL}/api/venues`, venue);
+};
+
 export {
     createUserWithFirebaseId,
     getUserByEmail,
     updateUserByEmail,
     getVenues,
     updateVenueById,
-    deleteVenueById
+    deleteVenueById,
+    createVenue
 }

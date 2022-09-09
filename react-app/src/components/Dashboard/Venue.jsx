@@ -13,6 +13,7 @@ export default function Venue({setView, setVenues, venues, selectedVenue, setSel
                     <VenueList
                         venues={venues}
                         setSelectedVenue={setSelectedVenue}
+                        setView={setView}
                     />
                 </div>
                 <div id="venue-detail">
