@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {updateVenueById} from "../../../api";
+import {deleteVenueById, getVenues, updateVenueById} from "../../../api";
 
 require('./VenueDetail.css');
 
-export default function VenueDetail({selectedVenue, newVenue, setNewVenue}) {
+export default function VenueDetail({setView, setVenues, venues, setSelectedVenue, selectedVenue, newVenue, setNewVenue}) {
 
     const [inputName, setInputName] = useState(newVenue.location_name);
     const [inputCityWard, setInputCityWard] = useState(newVenue.city_ward);
@@ -51,6 +51,27 @@ export default function VenueDetail({selectedVenue, newVenue, setNewVenue}) {
         }
 
         console.log(newVenue);
+    }
+
+    const handleVenueDetailDeleteButtonClick = async () => {
+        console.log("handleVenueDetailDeleteButtonClick: id: ", selectedVenue.id)
+        try {
+            let result = await deleteVenueById(selectedVenue.id);
+            console.log('updateVenueById: ', result);
+
+            // remove exising venue list
+            let removeIndex = venues.map(item => item.id).indexOf(selectedVenue.id);
+            venues.splice(removeIndex, 1);
+
+            getVenues().then(resp => {
+                setVenues(resp.data);
+                console.log("getVenues: ", resp.data);
+            });
+
+        } catch (e) {
+            // todo: popup window to show error message
+            console.error(e);
+        }
     }
 
     return newVenue ? (
@@ -185,7 +206,9 @@ export default function VenueDetail({selectedVenue, newVenue, setNewVenue}) {
             </div>
             <div className="mb-6">
                 <button
-                    className="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded">
+                    className="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded"
+                    onClick={() => handleVenueDetailDeleteButtonClick()}
+                >
                     Delete
                 </button>
             </div>

@@ -15,6 +15,7 @@ export default function Dashboard() {
     const [selectedVenue, setSelectedVenue] = useState({});
 
     const [newVenue, setNewVenue] = useState({});
+
     useEffect(() => {
         setNewVenue(selectedVenue);
     }, [selectedVenue]);
@@ -34,6 +35,8 @@ export default function Dashboard() {
                     } else if (view === "Venue") {
                         return <section id={'dashboard-content-venue'}>
                             <Venue
+                                setView={setView}
+                                setVenues={setVenues}
                                 venues={venues}
                                 setSelectedVenue={setSelectedVenue}
                                 selectedVenue={selectedVenue}

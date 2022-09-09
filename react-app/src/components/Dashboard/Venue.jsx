@@ -4,7 +4,7 @@ import VenueDetail from './Venue/VenueDetail';
 
 require('./Venue.css');
 
-export default function Venue({venues, selectedVenue, setSelectedVenue, newVenue, setNewVenue}) {
+export default function Venue({setView, setVenues, venues, selectedVenue, setSelectedVenue, newVenue, setNewVenue}) {
 
     return (
         <>
@@ -17,6 +17,10 @@ export default function Venue({venues, selectedVenue, setSelectedVenue, newVenue
                 </div>
                 <div id="venue-detail">
                     <VenueDetail
+                        setView={setView}
+                        setVenues={setVenues}
+                        venues={venues}
+                        setSelectedVenue={setSelectedVenue}
                         selectedVenue={selectedVenue}
                         newVenue={newVenue}
                         setNewVenue={setNewVenue}

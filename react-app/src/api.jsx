@@ -38,9 +38,15 @@ const getVenues = async () => {
 
 const updateVenueById = async (id, venue) => {
     try {
-        console.log(id);
-        console.log(venue);
         return await axios.patch(`${API_HOST_URL}/api/venues/${id}`, venue);
+    } catch (err) {
+        return err.response;
+    }
+}
+
+const deleteVenueById = async (id) => {
+    try {
+        return await axios.delete(`${API_HOST_URL}/api/venues/${id}`);
     } catch (err) {
         return err.response;
     }
@@ -52,4 +58,5 @@ export {
     updateUserByEmail,
     getVenues,
     updateVenueById,
+    deleteVenueById
 }
