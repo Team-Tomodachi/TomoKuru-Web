@@ -11,17 +11,36 @@ require('./Dashboard.css');
 export default function Dashboard() {
     const [view, setView] = useState('Venue');
 
+    const [venues, setVenues] = useState([]);
+    const [selectedVenue, setSelectedVenue] = useState({});
+
+    const [newVenue, setNewVenue] = useState({});
+    useEffect(() => {
+        setNewVenue(selectedVenue);
+    }, [selectedVenue]);
+
     return (
         <>
             <div id={'dashboard-container'}>
                 <section id={'dashboard-menu'}>
-                    <Sidebar setView={setView}/>
+                    <Sidebar
+                        setView={setView}
+                        setVenues={setVenues}
+                    />
                 </section>
                 {(() => {
                     if (view === "UserProfile") {
                         return <section id={'dashboard-content-user-profile'}><UserProfile/></section>;
                     } else if (view === "Venue") {
-                        return <section id={'dashboard-content-venue'}><Venue/></section>;
+                        return <section id={'dashboard-content-venue'}>
+                            <Venue
+                                venues={venues}
+                                setSelectedVenue={setSelectedVenue}
+                                selectedVenue={selectedVenue}
+                                setNewVenue={setNewVenue}
+                                newVenue={newVenue}
+                            />
+                        </section>;
                     } else if (view === "Package") {
                         return <section id={'dashboard-content-package'}><Package/></section>;
                     } else if (view === "Event") {

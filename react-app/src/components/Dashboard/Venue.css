@@ -1,0 +1,16 @@
+#venue-container {
+    display: flex;
+}
+
+#venue-list {
+    /*border: solid 1px blue;*/
+    width: 200px;
+    padding: 20px;
+}
+
+#venue-detail {
+    /*border: solid 1px red;*/
+    padding: 20px;
+    text-align: left;
+    width: 300px;
+}
