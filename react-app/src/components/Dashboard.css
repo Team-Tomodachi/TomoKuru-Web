@@ -1,0 +1,23 @@
+#dashboard-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    /*padding: 0;*/
+}
+
+#dashboard-menu {
+    width: 250px;
+    border-right: 1px solid #CCCCCC;
+}
+
+#dashboard-profile {
+    flex: 1;
+}
+
+#dashboard-content {
+    flex: 1;
+}
+
+#dashboard-venue {
+    flex: 1;
+}
