@@ -1,30 +1,35 @@
 import React, {useEffect, useState} from 'react';
 import Sidebar from './Dashboard/Sidebar';
-import Profile from "./Dashboard/Profile";
-import Content from "./Dashboard/Content";
-import Venue from "./Dashboard/Venue";
+import Profile from './Dashboard/Profile';
+import Venue from './Dashboard/Venue';
+import Package from './Dashboard/Package';
+import Event from './Dashboard/Event';
+import Search from './Dashboard/Search';
 
 require('./Dashboard.css');
 
 export default function Dashboard() {
-    const [view, setView] = useState("Profile");
+    const [view, setView] = useState('Profile');
+
     return (
         <>
-            <div id={'container'}>
-                <section id={'menu'} onClick={() => {
-                    view === "Profile" ? setView("Venue") : setView("Profile")
-                }}>
-                    <Sidebar/>
+            <div id={'dashboard-container'}>
+                <section id={'dashboard-menu'}>
+                    <Sidebar setView={setView}/>
                 </section>
-                {view === "Profile" ?
-                    <section id={'profile'}>
-                        <Profile/>
-                    </section>
-                    :
-                    <section id={'venue'}>
-                        <Venue/>
-                    </section>
-                }
+                {(() => {
+                    if (view === "Venue") {
+                        return <section id={'dashboard-content-venue'}><Venue/></section>;
+                    } else if (view === "Package") {
+                        return <section id={'dashboard-content-package'}><Package/></section>;
+                    } else if (view === "Event") {
+                        return <section id={'dashboard-content-event'}><Event/></section>;
+                    } else if (view === "Search") {
+                        return <section id={'dashboard-content-search'}><Search/></section>;
+                    } else {
+                        return null;
+                    }
+                })()}
             </div>
         </>
     )

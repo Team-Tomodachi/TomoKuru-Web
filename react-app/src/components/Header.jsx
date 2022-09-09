@@ -13,21 +13,21 @@ export default function Header() {
     const [showLoginModal, setShowLoginModal] = React.useState(false);
     return (
         <>
-            <section id={"container"}>
-                <div id={"logo"} onClick={() => console.log("user: ", user)}>TomoKuru</div>
+            <section id={"header-container"}>
+                <div id={"header-logo"} onClick={() => console.log("user: ", user)}>TomoKuru</div>
 
                 {user === null ? (
                     <>
-                        <div id={"login"} onClick={() => setShowLoginModal(true)}>
+                        <div id={"header-login"} onClick={() => setShowLoginModal(true)}>
                             Log in
                         </div>
-                        <div id={"signup"} onClick={() => setShowSignupModal(true)}>
+                        <div id={"header-signup"} onClick={() => setShowSignupModal(true)}>
                             Sign up
                         </div>
                     </>
                 ) : (
                     <>
-                        <div id={"logout"} onClick={() => logout()}>
+                        <div id={"header-logout"} onClick={() => logout()}>
                             Logout
                         </div>
                     </>

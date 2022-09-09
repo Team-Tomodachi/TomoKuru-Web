@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-#container {
+#header-container {
     display: flex;
     width: 100%;
     height: 60px;
@@ -12,19 +12,19 @@
     line-height: 60px;
 }
 
-#logo {
+#header-logo {
 }
 
-#login {
+#header-login {
     padding-right: 20px;
     margin-left: auto;
 }
 
-#signup {
+#header-signup {
     padding-right: 20px;
 }
 
-#logout {
+#header-logout {
     padding-right: 20px;
     margin-left: auto;
 }

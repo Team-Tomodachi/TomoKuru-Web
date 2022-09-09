@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 
-require('./Profile.css');
+require('./Search.css');
 
-export default function Content() {
+export default function Search() {
     return (
         <>
-            <h1>Content</h1>
+            <h1>Search</h1>
         </>
     )
 }
