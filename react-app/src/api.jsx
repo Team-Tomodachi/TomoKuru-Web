@@ -20,7 +20,16 @@ const getUserByEmail = async (email) => {
     }
 }
 
+const updateUserByEmail = async (email, user) => {
+    try {
+        return await axios.patch(`${API_HOST_URL}/api/users/${email}`, user);
+    } catch (err) {
+        return err.response;
+    }
+}
+
 export {
     createUserWithFirebaseId,
     getUserByEmail,
+    updateUserByEmail,
 }

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Sidebar from './Dashboard/Sidebar';
-import Profile from './Dashboard/Profile';
+import UserProfile from './Dashboard/UserProfile';
 import Venue from './Dashboard/Venue';
 import Package from './Dashboard/Package';
 import Event from './Dashboard/Event';
@@ -9,7 +9,7 @@ import Search from './Dashboard/Search';
 require('./Dashboard.css');
 
 export default function Dashboard() {
-    const [view, setView] = useState('Profile');
+    const [view, setView] = useState('Venue');
 
     return (
         <>
@@ -18,7 +18,9 @@ export default function Dashboard() {
                     <Sidebar setView={setView}/>
                 </section>
                 {(() => {
-                    if (view === "Venue") {
+                    if (view === "UserProfile") {
+                        return <section id={'dashboard-content-user-profile'}><UserProfile/></section>;
+                    } else if (view === "Venue") {
                         return <section id={'dashboard-content-venue'}><Venue/></section>;
                     } else if (view === "Package") {
                         return <section id={'dashboard-content-package'}><Package/></section>;

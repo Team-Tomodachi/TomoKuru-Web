@@ -7,7 +7,7 @@ export default function Sidebar({setView}) {
     return (<>
         <div id={'sidebar-container'}>
             <div id={'sidebar-vendor'}>
-                <Vendor />
+                <Vendor setView={setView}/>
             </div>
             <div id={'sidebar-features'}>
                 <button
