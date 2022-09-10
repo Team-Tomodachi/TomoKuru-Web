@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {createVenue, getVenues} from '../../../api';
+import {createVenue, getVenuesByUserId} from '../../../api';
 import {UserAuth} from '../../../context/AuthContext'
 
 require('./VenueCreation.css');
@@ -44,7 +44,7 @@ export default function VenueCreation({setVenues, setView}) {
             });
             console.log('createVenue: ', result);
 
-            getVenues().then(resp => {
+            getVenuesByUserId(user.id).then(resp => {
                 setVenues(resp.data);
                 console.log("getVenues: ", resp.data);
                 setView("Venue");

@@ -1,16 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import Vendor from "./Vendor";
-import {getVenues} from "../../api";
+import {getVenuesByUserId} from "../../api";
+import {UserAuth} from '../../context/AuthContext'
 
 require('./Sidebar.css');
 
 export default function Sidebar({setView, setVenues}) {
 
+    const {user} = UserAuth();
+
     const handleVenueButtonClick = () => {
         setView("Venue");
-        getVenues().then(resp => {
+        getVenuesByUserId(user.id).then(resp => {
             setVenues(resp.data);
-            console.log("getVenues: ", resp.data);
+            console.log("getVenuesByUserId: ", resp.data);
         });
     }
 

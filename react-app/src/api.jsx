@@ -28,9 +28,9 @@ const updateUserByEmail = async (email, user) => {
     }
 }
 
-const getVenues = async () => {
+const getVenuesByUserId = async (userId) => {
     try {
-        return await axios.get(`${API_HOST_URL}/api/venues`)
+        return await axios.get(`${API_HOST_URL}/api/venues/${userId}`)
     } catch (err) {
         return err.response;
     }
@@ -60,7 +60,7 @@ export {
     createUserWithFirebaseId,
     getUserByEmail,
     updateUserByEmail,
-    getVenues,
+    getVenuesByUserId,
     updateVenueById,
     deleteVenueById,
     createVenue

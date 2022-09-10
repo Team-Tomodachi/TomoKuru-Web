@@ -1,9 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {deleteVenueById, getVenues, updateVenueById} from "../../../api";
+import {deleteVenueById, getVenuesByUserId, updateVenueById} from "../../../api";
+import {UserAuth} from '../../../context/AuthContext'
 
 require('./VenueDetail.css');
 
 export default function VenueDetail({setView, setVenues, venues, setSelectedVenue, selectedVenue, newVenue, setNewVenue}) {
+
+    const {user} = UserAuth();
 
     const [inputName, setInputName] = useState(newVenue.location_name);
     const [inputCityWard, setInputCityWard] = useState(newVenue.city_ward);
@@ -63,9 +66,9 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
             let removeIndex = venues.map(item => item.id).indexOf(selectedVenue.id);
             venues.splice(removeIndex, 1);
 
-            getVenues().then(resp => {
+            getVenuesByUserId(user.id).then(resp => {
                 setVenues(resp.data);
-                console.log("getVenues: ", resp.data);
+                console.log("getVenuesByUserId: ", resp.data);
             });
 
         } catch (e) {
