@@ -15,10 +15,12 @@ export default function Dashboard() {
     const [venues, setVenues] = useState([]);
     const [selectedVenue, setSelectedVenue] = useState({});
 
-    const [newVenue, setNewVenue] = useState({});
+    useEffect(() => {
+        console.log("Dashboard userEffect() venues: ", venues);
+    }, [venues]);
 
     useEffect(() => {
-        setNewVenue(selectedVenue);
+        console.log("Dashboard userEffect() selectedVenue: ", selectedVenue);
     }, [selectedVenue]);
 
     return (
@@ -41,8 +43,6 @@ export default function Dashboard() {
                                 venues={venues}
                                 setSelectedVenue={setSelectedVenue}
                                 selectedVenue={selectedVenue}
-                                setNewVenue={setNewVenue}
-                                newVenue={newVenue}
                             />
                         </section>;
                     } else if (view === "VenueCreation") {

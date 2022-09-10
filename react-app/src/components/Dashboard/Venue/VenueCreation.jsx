@@ -44,9 +44,10 @@ export default function VenueCreation({setVenues, setView}) {
             });
             console.log('createVenue: ', result);
 
+            // todo
             getVenuesByUserId(user.id).then(resp => {
                 setVenues(resp.data);
-                console.log("getVenues: ", resp.data);
+                console.log("VenueCreation -> getVenuesByUserId: ", resp.data);
                 setView("Venue");
             });
 

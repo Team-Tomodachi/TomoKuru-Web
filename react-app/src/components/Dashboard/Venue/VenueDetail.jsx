@@ -4,56 +4,81 @@ import {UserAuth} from '../../../context/AuthContext'
 
 require('./VenueDetail.css');
 
-export default function VenueDetail({setView, setVenues, venues, setSelectedVenue, selectedVenue, newVenue, setNewVenue}) {
+export default function VenueDetail({setView, setVenues, venues, setSelectedVenue, selectedVenue}) {
 
     const {user} = UserAuth();
 
-    const [inputName, setInputName] = useState(newVenue.location_name || "");
-    const [inputCityWard, setInputCityWard] = useState(newVenue.city_ward || "");
-    const [inputPrefecture, setInputPrefecture] = useState(newVenue.prefecture || "");
-    const [inputPhoneNumber, setInputPhoneNumber] = useState(newVenue.phone_num || "");
-    const [inputAddress, setInputAddress] = useState(newVenue.address || "");
-    const [inputVenueEmail, setInputVenueEmail] = useState(newVenue.venue_email || "");
-    const [inputDescription, setInputDescription] = useState(newVenue.description || "");
-    const [inputSeatNumber, setInputSeatNumber] = useState(newVenue.num_seats || 0);
-    const [inputVenueType, setInputVenueType] = useState(newVenue.venue_type || "");
+    const [inputName, setInputName] = useState(selectedVenue.location_name);
+    const [inputCityWard, setInputCityWard] = useState(selectedVenue.city_ward);
+    const [inputPrefecture, setInputPrefecture] = useState(selectedVenue.prefecture);
+    const [inputPhoneNumber, setInputPhoneNumber] = useState(selectedVenue.phone_num);
+    const [inputAddress, setInputAddress] = useState(selectedVenue.address);
+    const [inputVenueEmail, setInputVenueEmail] = useState(selectedVenue.venue_email);
+    const [inputDescription, setInputDescription] = useState(selectedVenue.description);
+    const [inputSeatNumber, setInputSeatNumber] = useState(selectedVenue.num_seats);
+    const [inputVenueType, setInputVenueType] = useState(selectedVenue.venue_type);
 
     useEffect(() => {
-        setNewVenue({
-            location_name: inputName,
-            city_ward: inputCityWard,
-            prefecture: inputPrefecture,
-            phone_num: inputPhoneNumber,
-            address: inputAddress,
-            venue_email: inputVenueEmail,
-            description: inputDescription,
-            num_seats: inputSeatNumber,
-            venue_type: inputVenueType,
-        })
-    }, [inputName, inputCityWard, inputPrefecture, inputPhoneNumber, inputAddress, inputVenueEmail, inputDescription, inputSeatNumber, inputVenueType]);
+        setInputName(selectedVenue.location_name);
+        setInputCityWard(selectedVenue.city_ward);
+        setInputPrefecture(selectedVenue.prefecture);
+        setInputPhoneNumber(selectedVenue.phone_num);
+        setInputAddress(selectedVenue.address);
+        setInputVenueEmail(selectedVenue.venue_email);
+        setInputDescription(selectedVenue.description);
+        setInputSeatNumber(selectedVenue.num_seats);
+        setInputVenueType(selectedVenue.venue_type);
+    }, [selectedVenue]);
 
     const handleVenueDetailSaveButtonClick = async () => {
         console.log("handleVenueDetailSaveButtonClick: ")
         try {
-            console.log("##########");
-            console.log(inputName);
-            console.log(inputCityWard);
-            console.log(inputPrefecture);
-            console.log(inputPhoneNumber);
-            console.log(inputAddress);
-            console.log(inputVenueEmail);
-            console.log(inputDescription);
-            console.log(inputSeatNumber);
-            console.log(inputVenueType);
-            console.log("##########");
-            let result = await updateVenueById(selectedVenue.id, newVenue);
+            console.log(" ---------- VenueDetail Save ---------- ")
+            console.log("Venue ID: ", selectedVenue.id);
+            console.log("Name: ", selectedVenue.location_name);
+            console.log("City/Ward: ", selectedVenue.city_ward);
+            console.log("Prefecture: ", selectedVenue.prefecture);
+            console.log("Phone Number: ", selectedVenue.phone_num);
+            console.log("Address: ", selectedVenue.address);
+            console.log("Venue Email: ", selectedVenue.venue_email);
+            console.log("Description: ", selectedVenue.description);
+            console.log("Seat Number: ", selectedVenue.num_seats);
+            console.log("Venue Type: ", selectedVenue.venue_type);
+            console.log(" ---------- VenueDetail Save ---------- ")
+            console.log('updateVenueById: ID --> ', selectedVenue.id);
+            let result = await updateVenueById(selectedVenue.id, {
+                location_name: inputName,
+                city_ward: inputCityWard,
+                prefecture: inputPrefecture,
+                phone_num: inputPhoneNumber,
+                address: inputAddress,
+                venue_email: inputVenueEmail,
+                description: inputDescription,
+                num_seats: inputSeatNumber,
+                venue_type: inputVenueType,
+            });
             console.log('updateVenueById: ', result);
+
+            setView("Venue");
+            getVenuesByUserId(user.id).then(resp => {
+                setVenues(resp.data);
+                console.log("getVenuesByUserId: ", resp.data);
+            });
+
+            // setInputName("");
+            // setInputCityWard("");
+            // setInputPrefecture("");
+            // setInputPhoneNumber("");
+            // setInputAddress("");
+            // setInputVenueEmail("");
+            // setInputDescription("");
+            // setInputSeatNumber(0);
+            // setInputVenueType("");
+
         } catch (e) {
             // todo: popup window to show error message
             console.error(e);
         }
-
-        console.log(newVenue);
     }
 
     const handleVenueDetailDeleteButtonClick = async () => {
@@ -77,7 +102,7 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
         }
     }
 
-    return newVenue ? (
+    return venues ? (
         <>
             <h1 id={'venue-detail-name'}>Venue Detail</h1>
             {/* Name */}
@@ -89,7 +114,7 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                 <input type="text"
                        id="venue-detail-input-name"
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       value={newVenue.location_name}
+                       value={inputName}
                        onChange={(e) => setInputName(e.target.value)}
                 />
             </div>
@@ -102,7 +127,7 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                 <input type="text"
                        id="venue-detail-input-city-ward"
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       value={newVenue.city_ward}
+                       value={inputCityWard}
                        onChange={(e) => setInputCityWard(e.target.value)}
                 />
             </div>
@@ -115,7 +140,7 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                 <input type="text"
                        id="venue-detail-input-prefecture"
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       value={newVenue.prefecture}
+                       value={inputPrefecture}
                        onChange={(e) => setInputPrefecture(e.target.value)}
                 />
             </div>
@@ -128,8 +153,8 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                 <input type="text"
                        id="venue-detail-input-phone-number"
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       value={newVenue.phone_num}
-                       onChange={(e) => setInputPhoneNumber(e.target.value)}
+                    value={inputPhoneNumber}
+                    onChange={(e) => setInputPhoneNumber(e.target.value)}
                 />
             </div>
             {/* Address */}
@@ -141,8 +166,8 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                 <input type="text"
                        id="venue-detail-input-address"
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       value={newVenue.address}
-                       onChange={(e) => setInputAddress(e.target.value)}
+                    value={inputAddress}
+                    onChange={(e) => setInputAddress(e.target.value)}
                 />
             </div>
             {/* Venue Email */}
@@ -154,8 +179,8 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                 <input type="text"
                        id="venue-detail-input-venue-email"
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       value={newVenue.venue_email}
-                       onChange={(e) => setInputVenueEmail(e.target.value)}
+                    value={inputVenueEmail}
+                    onChange={(e) => setInputVenueEmail(e.target.value)}
                 />
             </div>
             {/* Description */}
@@ -167,8 +192,8 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                 <input type="text"
                        id="venue-detail-input-description"
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       value={newVenue.description}
-                       onChange={(e) => setInputDescription(e.target.value)}
+                    value={inputDescription}
+                    onChange={(e) => setInputDescription(e.target.value)}
                 />
             </div>
             {/* Seat Number */}
@@ -182,7 +207,7 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                     id="exampleNumber0"
                     className=" form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
                     placeholder="Number input"
-                    value={newVenue.num_seats}
+                    value={inputSeatNumber}
                     onChange={(e) => setInputSeatNumber(e.target.value)}
                 />
             </div>
@@ -195,8 +220,8 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                 <input type="text"
                        id="venue-detail-input-type"
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                       value={newVenue.venue_type}
-                       onChange={(e) => setInputVenueType(e.target.value)}
+                    value={inputVenueType}
+                    onChange={(e) => setInputVenueType(e.target.value)}
                 />
             </div>
             <div className="mb-6">

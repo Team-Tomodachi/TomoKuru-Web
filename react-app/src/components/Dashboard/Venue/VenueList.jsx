@@ -14,6 +14,7 @@ export default function VenueList({venues, setSelectedVenue, setView}) {
                     Create
                 </button>
             </div>
+             Venue List
             {
                 venues.map((item, index) => {
                     return (
