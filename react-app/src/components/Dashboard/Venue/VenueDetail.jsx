@@ -8,15 +8,15 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
 
     const {user} = UserAuth();
 
-    const [inputName, setInputName] = useState(newVenue.location_name);
-    const [inputCityWard, setInputCityWard] = useState(newVenue.city_ward);
-    const [inputPrefecture, setInputPrefecture] = useState(newVenue.prefecture);
-    const [inputPhoneNumber, setInputPhoneNumber] = useState(newVenue.phone_num);
-    const [inputAddress, setInputAddress] = useState(newVenue.address);
-    const [inputVenueEmail, setInputVenueEmail] = useState(newVenue.venue_email);
-    const [inputDescription, setInputDescription] = useState(newVenue.description);
-    const [inputSeatNumber, setInputSeatNumber] = useState(newVenue.num_seats);
-    const [inputVenueType, setInputVenueType] = useState(newVenue.venue_type);
+    const [inputName, setInputName] = useState(newVenue.location_name || "");
+    const [inputCityWard, setInputCityWard] = useState(newVenue.city_ward || "");
+    const [inputPrefecture, setInputPrefecture] = useState(newVenue.prefecture || "");
+    const [inputPhoneNumber, setInputPhoneNumber] = useState(newVenue.phone_num || "");
+    const [inputAddress, setInputAddress] = useState(newVenue.address || "");
+    const [inputVenueEmail, setInputVenueEmail] = useState(newVenue.venue_email || "");
+    const [inputDescription, setInputDescription] = useState(newVenue.description || "");
+    const [inputSeatNumber, setInputSeatNumber] = useState(newVenue.num_seats || 0);
+    const [inputVenueType, setInputVenueType] = useState(newVenue.venue_type || "");
 
     useEffect(() => {
         setNewVenue({
@@ -172,7 +172,7 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                 />
             </div>
             {/* Seat Number */}
-            <div class="mb-6">
+            <div className="mb-6">
                 <label htmlFor="venue-detail-input-seat-number"
                        className="form-label inline-block mb-2 text-gray-700">
                     Seat Number
