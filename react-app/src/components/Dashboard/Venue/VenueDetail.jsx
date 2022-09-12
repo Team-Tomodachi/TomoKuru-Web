@@ -65,16 +65,6 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                 console.log("getVenuesByUserId: ", resp.data);
             });
 
-            // setInputName("");
-            // setInputCityWard("");
-            // setInputPrefecture("");
-            // setInputPhoneNumber("");
-            // setInputAddress("");
-            // setInputVenueEmail("");
-            // setInputDescription("");
-            // setInputSeatNumber(0);
-            // setInputVenueType("");
-
         } catch (e) {
             // todo: popup window to show error message
             console.error(e);
