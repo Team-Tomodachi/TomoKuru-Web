@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from 'react';
-
 require('./VenueList.css');
 
 export default function VenueList({venues, setSelectedVenue, setView}) {
 
     return (
         <>
+            <h1>Venue List</h1>
             <div>
                 <button
                     className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
@@ -14,7 +13,6 @@ export default function VenueList({venues, setSelectedVenue, setView}) {
                     Create
                 </button>
             </div>
-             Venue List
             {
                 venues.map((item, index) => {
                     return (

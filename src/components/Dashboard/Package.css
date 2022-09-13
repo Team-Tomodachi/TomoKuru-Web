@@ -1,0 +1,16 @@
+#package-container {
+    display: flex;
+}
+
+#package-list {
+    /*border: solid 1px blue;*/
+    width: 200px;
+    padding: 20px;
+}
+
+#package-detail {
+    /*border: solid 1px red;*/
+    padding: 20px;
+    text-align: left;
+    width: 300px;
+}

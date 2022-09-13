@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const API_HOST_URL = 'http://tomokuru.i-re.io';
 // const API_HOST_URL = 'http://localhost:3001';
+const API_HOST_URL = 'http://tomokuru.i-re.io';
 
 const createUserWithFirebaseId = async (email, first_name, firebase_id) => {
     return await axios.post(`${API_HOST_URL}/api/users`, {
@@ -56,6 +56,41 @@ const createVenue = async (venue) => {
     return await axios.post(`${API_HOST_URL}/api/venues`, venue);
 };
 
+const getPackagesByUserId = async (userId) => {
+    try {
+        // return await axios.get(`${API_HOST_URL}/api/packages/${userId}`)
+        return {
+            "data": [
+                {
+                    "package_name": "Oyster Festival",
+                    "package_per_person_cost": 10000,
+                    "duration(minutes)": 120,
+                    "maximum_number_of_people": 30,
+                    "picture_url": "https://dummyimage.com/100x60/000/fff",
+                    "other_notes": "no smoking area",
+                    "drinks": "tea & beers only",
+                    "food": "oyster unlimited",
+                    "description": ""
+                },
+                {
+                    "package_name": "Oyster Festival",
+                    "package_per_person_cost": 10000,
+                    "duration(minutes)": 120,
+                    "maximum_number_of_people": 30,
+                    "picture_url": "https://dummyimage.com/100x60/000/fff",
+                    "other_notes": "no smoking area",
+                    "drinks": "tea & beers only",
+                    "food": "oyster unlimited",
+                    "description": ""
+                }
+            ]
+        };
+    } catch
+        (err) {
+        return err.response;
+    }
+}
+
 export {
     createUserWithFirebaseId,
     getUserByEmail,
@@ -63,5 +98,6 @@ export {
     getVenuesByUserId,
     updateVenueById,
     deleteVenueById,
-    createVenue
+    createVenue,
+    getPackagesByUserId
 }

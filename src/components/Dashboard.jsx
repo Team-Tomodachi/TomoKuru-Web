@@ -6,14 +6,20 @@ import Package from './Dashboard/Package';
 import Event from './Dashboard/Event';
 import Search from './Dashboard/Search';
 import VenueCreation from './Dashboard/Venue/VenueCreation';
+import PackageCreation from './Dashboard/Package/PackageCreation';
 
 require('./Dashboard.css');
 
 export default function Dashboard() {
     const [view, setView] = useState('Venue');
 
+    // Venue
     const [venues, setVenues] = useState([]);
     const [selectedVenue, setSelectedVenue] = useState({});
+
+    // Package
+    const [packages, setPackages] = useState([]);
+    const [selectedPackage, setSelectedPackage] = useState({});
 
     useEffect(() => {
         console.log("Dashboard userEffect() venues: ", venues);
@@ -23,6 +29,14 @@ export default function Dashboard() {
         console.log("Dashboard userEffect() selectedVenue: ", selectedVenue);
     }, [selectedVenue]);
 
+    useEffect(() => {
+        console.log("Dashboard userEffect() packages: ", packages);
+    }, [packages]);
+
+    useEffect(() => {
+        console.log("Dashboard userEffect() selectedPackage: ", selectedPackage);
+    }, [selectedPackage]);
+
     return (
         <>
             <div id={'dashboard-container'}>
@@ -30,6 +44,7 @@ export default function Dashboard() {
                     <Sidebar
                         setView={setView}
                         setVenues={setVenues}
+                        setPackages={setPackages}
                     />
                 </section>
                 {(() => {
@@ -53,7 +68,22 @@ export default function Dashboard() {
                             />
                         </section>;
                     } else if (view === "Package") {
-                        return <section id={'dashboard-content-package'}><Package/></section>;
+                        return <section id={'dashboard-content-package'}>
+                            <Package
+                                setView={setView}
+                                setPackages={setPackages}
+                                packages={packages}
+                                setSelectedPackage={setSelectedPackage}
+                                selectedPackage={selectedPackage}
+                            />
+                        </section>;
+                    } else if (view === "PackageCreation") {
+                        return <section id={'dashboard-content-package-creation'}>
+                            <PackageCreation
+                                setView={setView}
+                                setPackages={setPackages}
+                            />
+                        </section>;
                     } else if (view === "Event") {
                         return <section id={'dashboard-content-event'}><Event/></section>;
                     } else if (view === "Search") {

@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from 'react';
 import Vendor from "./Vendor";
-import {getVenuesByUserId} from "../../api";
+import {getVenuesByUserId, getPackagesByUserId} from "../../api";
 import {UserAuth} from '../../context/AuthContext'
 
 require('./Sidebar.css');
 
-export default function Sidebar({setView, setVenues}) {
+export default function Sidebar({setView, setVenues, setPackages}) {
 
     const {user} = UserAuth();
 
@@ -13,8 +12,17 @@ export default function Sidebar({setView, setVenues}) {
         console.log("Sidebar.handleVenueButtonClick()");
         setView("Venue");
         getVenuesByUserId(user.id).then(resp => {
-            setVenues(resp.data);
             console.log("getVenuesByUserId: ", resp.data);
+            setVenues(resp.data);
+        });
+    }
+
+    const handlePackageButtonClick = () => {
+        console.log("Sidebar.handlePackageButtonClick()");
+        setView("Package");
+        getPackagesByUserId(user.id).then(resp => {
+            console.log("getPackagesByUserId: ", resp.data);
+            setPackages(resp.data);
         });
     }
 
@@ -31,13 +39,13 @@ export default function Sidebar({setView, setVenues}) {
                 >
                     Venue
                 </button>
-                {/*<button*/}
-                {/*    id={'sidebar-features-package-button'}*/}
-                {/*    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"*/}
-                {/*    onClick={() => setView("Package")}*/}
-                {/*>*/}
-                {/*    Package*/}
-                {/*</button>*/}
+                <button
+                    id={'sidebar-features-package-button'}
+                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                    onClick={() => handlePackageButtonClick()}
+                >
+                    Package
+                </button>
                 {/*<button*/}
                 {/*    id={'sidebar-features-event-button'}*/}
                 {/*    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"*/}
