@@ -74,11 +74,11 @@ const deleteVenueById = async (id) => {
     return response;
 }
 
-const createVenue = async (userId, venue) => {
+const createVenue = async (venue) => {
     const requestBody = venue;
     const url = `${API_HOST_URL}/api/venues`;
     logRequest(createVenue.name, url, requestBody);
-    let response = await axios.post(userId, venue);
+    let response = await axios.post(url, requestBody);
     logResponse(createVenue.name, response);
     return response;
 };
