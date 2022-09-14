@@ -6,8 +6,8 @@ require('./Login.css');
 export default function Login({setShowLoginModal}) {
     const {signIn} = UserAuth();
 
-    const [inputEmail, setInputEmail] = useState()
-    const [inputPassword, setInputPassword] = useState()
+    const [inputEmail, setInputEmail] = useState("")
+    const [inputPassword, setInputPassword] = useState("")
 
     const handleLoginButtonClick = async () => {
         setShowLoginModal(false);

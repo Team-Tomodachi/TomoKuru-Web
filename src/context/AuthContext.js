@@ -31,10 +31,9 @@ export const AuthContextProvider = ({children}) => {
                     if (resp.status !== 200) {
                         throw new Error('Failed to get user from database!');
                     }
-                    let user = resp.data[0];
+                    let user = resp.data;
                     setUser(user);
 
-                    console.log(user);
                 })
             });
         })
@@ -49,7 +48,7 @@ export const AuthContextProvider = ({children}) => {
                 if (resp.status !== 200) {
                     throw new Error('Failed to get user from database!');
                 }
-                let user = resp.data[0];
+                let user = resp.data;
                 setUser(user);
 
                 console.log(user);
