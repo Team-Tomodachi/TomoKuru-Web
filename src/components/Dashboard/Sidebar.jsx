@@ -1,5 +1,5 @@
 import Vendor from "./Vendor";
-import {getVenuesByUserId, getPackagesByUserId} from "../../api";
+import {getVenuesByUserId} from "../../api";
 import {UserAuth} from '../../context/AuthContext'
 
 require('./Sidebar.css');
@@ -20,9 +20,9 @@ export default function Sidebar({setView, setVenues, setPackages}) {
     const handlePackageButtonClick = () => {
         console.log("Sidebar.handlePackageButtonClick()");
         setView("Package");
-        getPackagesByUserId(user.id).then(resp => {
-            console.log("getPackagesByUserId: ", resp.data);
-            setPackages(resp.data);
+        getVenuesByUserId(user.id).then(resp => {
+            console.log("getVenuesByUserId: ", resp.data);
+            setVenues(resp.data);
         });
     }
 

@@ -5,6 +5,7 @@ require('./Vendor.css');
 
 export default function Vendor({setView}) {
     const {user} = UserAuth();
+    console.log("Vendor.user -> ", user);
     return (
         <>
             <div id={'vendor-container'}>

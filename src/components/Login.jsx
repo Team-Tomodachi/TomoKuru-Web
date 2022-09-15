@@ -12,7 +12,9 @@ export default function Login({setShowLoginModal}) {
     const handleLoginButtonClick = async () => {
         setShowLoginModal(false);
         try {
-            let result = await signIn(inputEmail, inputPassword)
+            // todo remove testing code
+            let result = await signIn("qq1@gmail.com", "qwer1234")
+            // let result = await signIn(inputEmail, inputPassword)
             console.log('Login', result);
         } catch (e) {
             // todo: popup window to show error message

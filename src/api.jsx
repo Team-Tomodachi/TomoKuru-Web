@@ -83,34 +83,12 @@ const createVenue = async (venue) => {
     return response;
 };
 
-const getPackagesByUserId = async (userId) => {
-    // // return await axios.get(`${API_HOST_URL}/api/packages/${userId}`)
-    // return {
-    //     "data": [
-    //         {
-    //             "package_name": "Oyster Festival",
-    //             "package_per_person_cost": 10000,
-    //             "duration(minutes)": 120,
-    //             "maximum_number_of_people": 30,
-    //             "picture_url": "https://dummyimage.com/100x60/000/fff",
-    //             "other_notes": "no smoking area",
-    //             "drinks": "tea & beers only",
-    //             "food": "oyster unlimited",
-    //             "description": ""
-    //         },
-    //         {
-    //             "package_name": "Oyster Festival",
-    //             "package_per_person_cost": 10000,
-    //             "duration(minutes)": 120,
-    //             "maximum_number_of_people": 30,
-    //             "picture_url": "https://dummyimage.com/100x60/000/fff",
-    //             "other_notes": "no smoking area",
-    //             "drinks": "tea & beers only",
-    //             "food": "oyster unlimited",
-    //             "description": ""
-    //         }
-    //     ]
-    // };
+const getPackagesByVenueId = async (packageId) => {
+    const url = `${API_HOST_URL}/api/venues/packages/${packageId}`;
+    logRequest(getPackagesByVenueId.name, url, null);
+    let response = await axios.get(url);
+    logResponse(getPackagesByVenueId.name, response);
+    return response;
 }
 
 export {
@@ -121,5 +99,5 @@ export {
     updateVenueById,
     deleteVenueById,
     createVenue,
-    getPackagesByUserId
+    getPackagesByVenueId
 }

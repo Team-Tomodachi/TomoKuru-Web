@@ -1,26 +1,46 @@
+import PackageVenueList from "./Package/PackageVenueList";
 import PackageList from "./Package/PackageList";
 import PackageDetail from "./Package/PackageDetail";
+import React from "react";
 
 require('./Package.css');
 
-export default function Package({setView, setPackages, packages, setSelectedPackage, selectedPackage}) {
+export default function Package({
+                                    setView,
+                                    venues,
+                                    setSelectedVenue,
+                                    setPackages,
+                                    packages,
+                                    setSelectedPackage,
+                                    selectedPackage,
+                                    setSelectedPackageVenue,
+                                    selectedPackageVenue
+                                }) {
     return (
         <>
             <div id="package-container">
-                <div id="package-list">
-                    <PackageList
+                <div id="package-venue-list">
+                    <PackageVenueList
+                        venues={venues}
                         setView={setView}
-                        packages={packages}
-                        setSelectedPackage={setSelectedPackage}
+                        setSelectedPackageVenue={setSelectedPackageVenue}
+                        setPackages={setPackages}
                     />
                 </div>
-                {selectedPackage ? (
-                    <div id="package-detail">
-                        <PackageDetail
+                {selectedPackageVenue ? (
+                    <div id="package-list">
+                        <PackageList
                             setView={setView}
-                            setPackages={setPackages}
+                            setSelectedPackageVenue={setSelectedPackageVenue}
                             packages={packages}
                             setSelectedPackage={setSelectedPackage}
+                        />
+                    </div>
+                ) : null}
+                {selectedPackage.id ? (
+                    <div id="package-detail">
+                        PackageDetail: {selectedPackage.package_name}
+                        <PackageDetail
                             selectedPackage={selectedPackage}
                         />
                     </div>

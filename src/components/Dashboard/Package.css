@@ -2,6 +2,12 @@
     display: flex;
 }
 
+#package-venue-list {
+    /*border: solid 1px blue;*/
+    width: 200px;
+    padding: 20px;
+}
+
 #package-list {
     /*border: solid 1px blue;*/
     width: 200px;

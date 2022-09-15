@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import VenueList from './Venue/VenueList';
 import VenueDetail from './Venue/VenueDetail';
 
@@ -11,7 +11,6 @@ export default function Venue({
                                   selectedVenue,
                                   setSelectedVenue,
                               }) {
-
     return (
         <>
             <div id="venue-container">
@@ -23,15 +22,17 @@ export default function Venue({
                     />
                 </div>
                 {selectedVenue ? (
-                    <div id="venue-detail">
-                        <VenueDetail
-                            setView={setView}
-                            setVenues={setVenues}
-                            venues={venues}
-                            setSelectedVenue={setSelectedVenue}
-                            selectedVenue={selectedVenue}
-                        />
-                    </div>
+                    <>
+                        <div id="venue-detail">
+                            <VenueDetail
+                                setView={setView}
+                                setVenues={setVenues}
+                                venues={venues}
+                                setSelectedVenue={setSelectedVenue}
+                                selectedVenue={selectedVenue}
+                            />
+                        </div>
+                    </>
                 ) : null}
             </div>
         </>

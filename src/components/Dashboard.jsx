@@ -18,9 +18,11 @@ export default function Dashboard() {
     const [selectedVenue, setSelectedVenue] = useState({});
 
     // Package
+    const [selectedPackageVenue, setSelectedPackageVenue] = useState({});
     const [packages, setPackages] = useState([]);
     const [selectedPackage, setSelectedPackage] = useState({});
 
+    // Venue
     useEffect(() => {
         console.log("Dashboard userEffect() venues: ", venues);
     }, [venues]);
@@ -28,6 +30,12 @@ export default function Dashboard() {
     useEffect(() => {
         console.log("Dashboard userEffect() selectedVenue: ", selectedVenue);
     }, [selectedVenue]);
+
+    // Package
+    useEffect(() => {
+        console.log("Dashboard userEffect() selectedPackageVenue: ", selectedPackageVenue);
+        setSelectedPackage({});
+    }, [selectedPackageVenue]);
 
     useEffect(() => {
         console.log("Dashboard userEffect() packages: ", packages);
@@ -70,7 +78,10 @@ export default function Dashboard() {
                     } else if (view === "Package") {
                         return <section id={'dashboard-content-package'}>
                             <Package
+                                venues={venues}
                                 setView={setView}
+                                setSelectedPackageVenue={setSelectedPackageVenue}
+                                selectedPackageVenue={selectedPackageVenue}
                                 setPackages={setPackages}
                                 packages={packages}
                                 setSelectedPackage={setSelectedPackage}

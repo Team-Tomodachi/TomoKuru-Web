@@ -1,6 +1,7 @@
 require('./PackageList.css');
 
-export default function PackageList({packages, setSelectedPackages, setView}) {
+export default function PackageList({setView, packages, setSelectedPackage}) {
+
     return (
         <>
             <div>Package List</div>
@@ -19,7 +20,7 @@ export default function PackageList({packages, setSelectedPackages, setView}) {
                             <div
                                 className={'package-list-block'}
                                 onClick={() => {
-                                    setSelectedPackages(item);
+                                    setSelectedPackage(item);
                                     console.log(" PackageList -> onClick -> item: ", item);
                                 }}
                             >
@@ -31,7 +32,7 @@ export default function PackageList({packages, setSelectedPackages, setView}) {
                                 <div
                                     className={'package-list-block-content'}
                                 >
-                                    <div className={'package-list-block-content-name'}>{item.package_name}</div>
+                                    <div className={'package-list-block-content-name'}>{item['package_name']}</div>
                                 </div>
                             </div>
                             <hr/>
