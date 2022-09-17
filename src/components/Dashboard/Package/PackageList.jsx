@@ -1,6 +1,6 @@
 require('./PackageList.css');
 
-export default function PackageList({setView, packages, setSelectedPackage}) {
+export default function PackageList({setView, packages, setSelectedPackage, selectedPackageVenue}) {
 
     return (
         <>
@@ -14,6 +14,7 @@ export default function PackageList({setView, packages, setSelectedPackage}) {
                 </button>
             </div>
             {
+
                 packages.map((item, index) => {
                     return (
                         <div key={index}>

@@ -27,11 +27,12 @@ export default function Package({
                         setPackages={setPackages}
                     />
                 </div>
-                {selectedPackageVenue ? (
+                {selectedPackageVenue.id ? (
                     <div id="package-list">
                         <PackageList
                             setView={setView}
                             setSelectedPackageVenue={setSelectedPackageVenue}
+                            selectedPackageVenue={selectedPackageVenue}
                             packages={packages}
                             setSelectedPackage={setSelectedPackage}
                         />

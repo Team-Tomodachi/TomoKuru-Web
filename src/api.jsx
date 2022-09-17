@@ -109,6 +109,15 @@ const deletePackageByPackageId = async (packageId) => {
     return response;
 }
 
+const createPackageByVenueId = async (packageObject) => {
+    const requestBody = packageObject;
+    const url = `${API_HOST_URL}/api/venues/package`;
+    logRequest(createPackageByVenueId.name, url, requestBody);
+    let response = await axios.post(url, requestBody);
+    logResponse(createPackageByVenueId.name, response);
+    return response;
+}
+
 // Event
 const getEventsByVenueId = async (venueId) => {
     const url = `${API_HOST_URL}/api/events/venue/${venueId}`;
@@ -165,6 +174,7 @@ export {
     getPackagesByVenueId,
     updatePackageByPackageId,
     deletePackageByPackageId,
+    createPackageByVenueId,
     // Event
     getEventsByVenueId,
     updateEventByEventId,

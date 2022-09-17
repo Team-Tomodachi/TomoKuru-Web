@@ -126,6 +126,7 @@ export default function Dashboard() {
                             <PackageCreation
                                 setView={setView}
                                 setPackages={setPackages}
+                                selectedPackageVenue={selectedPackageVenue}
                             />
                         </section>;
                     } else if (view === "Event") {
