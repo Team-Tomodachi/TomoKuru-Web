@@ -146,7 +146,7 @@ const deleteEventByEventId = async (eventId) => {
 
 const createEventByVenueId = async (event) => {
     const requestBody = event;
-    const url = `${API_HOST_URL}/api/venues`;
+    const url = `${API_HOST_URL}/api/events`;
     logRequest(createEventByVenueId.name, url, requestBody);
     let response = await axios.post(url, requestBody);
     logResponse(createEventByVenueId.name, response);
