@@ -8,12 +8,16 @@ export default function EventsWithoutVenueDetail({selectedEventWithoutVenue}) {
     const [inputDescription, setInputDescription] = useState(selectedEventWithoutVenue.description);
     const [inputStartTime, setInputStartTime] = useState(selectedEventWithoutVenue.start_time);
     const [inputEndTime, setInputEndTime] = useState(selectedEventWithoutVenue.end_time);
+    const [inputCreator, setInputCreator] = useState(selectedEventWithoutVenue.first_name);
+    const [inputEmail, setInputEmail] = useState(selectedEventWithoutVenue.email);
 
     useEffect(() => {
         setInputName(selectedEventWithoutVenue.name);
         setInputDescription(selectedEventWithoutVenue.description);
         setInputStartTime(selectedEventWithoutVenue.start_time);
         setInputEndTime(selectedEventWithoutVenue.end_time);
+        setInputCreator(selectedEventWithoutVenue.first_name)
+        setInputEmail(selectedEventWithoutVenue.email);
     }, [selectedEventWithoutVenue]);
 
     return (
@@ -69,6 +73,34 @@ export default function EventsWithoutVenueDetail({selectedEventWithoutVenue}) {
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                        value={inputEndTime}
                        onChange={(e) => setInputEndTime(e.target.value)}
+                />
+            </div>
+
+            {/* Creator */}
+            <div className="mb-6">
+                <label htmlFor="venue-detail-input-creator"
+                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    Creator
+                </label>
+                <input type="text"
+                       id="venue-detail-input-creator"
+                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       value={inputCreator}
+                       onChange={(e) => setInputCreator(e.target.value)}
+                />
+            </div>
+
+            {/* Email */}
+            <div className="mb-6">
+                <label htmlFor="venue-detail-input-email"
+                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    Email
+                </label>
+                <input type="text"
+                       id="venue-detail-input-email"
+                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       value={inputEmail}
+                       onChange={(e) => setInputEmail(e.target.value)}
                 />
             </div>
         </>
