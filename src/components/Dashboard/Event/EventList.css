@@ -1,0 +1,25 @@
+.event-list-block {
+    padding: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+.event-list-block-image img {
+    display: inline-block;
+}
+
+.event-list-block-image img {
+    border-radius: 10px;
+    width: 100px;
+    height: 60px;
+}
+
+.event-list-block-content {
+    /*border: solid 1px gold;*/
+    display: inline-block;
+}
+
+.event-list-block-content-name {
+    font-size: 0.8rem;
+    color: #333333;
+}

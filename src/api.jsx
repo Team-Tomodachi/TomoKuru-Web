@@ -91,6 +91,50 @@ const getPackagesByVenueId = async (packageId) => {
     return response;
 }
 
+// Event
+const getEventsByVenueId = async (venueId) => {
+    const url = `${API_HOST_URL}/api/events/venue/${venueId}`;
+    logRequest(getEventsByVenueId.name, url, null);
+    let response = await axios.get(url);
+    logResponse(getEventsByVenueId.name, response);
+    return response;
+}
+
+const updateEventByEventId = async (eventId, event) => {
+    const requestBody = event;
+    const url = `${API_HOST_URL}/api/events/${eventId}`;
+    logRequest(updateEventByEventId.name, url, requestBody);
+    let response = await axios.patch(url, requestBody);
+    logResponse(updateEventByEventId.name, response);
+    return response;
+}
+
+const deleteEventByEventId = async (eventId) => {
+    const url = `${API_HOST_URL}/api/events/${eventId}`;
+    logRequest(deleteEventByEventId.name, url, null);
+    let response = await axios.delete(url);
+    logResponse(deleteEventByEventId.name, response);
+    return response;
+}
+
+const createEventByVenueId = async (event) => {
+    const requestBody = event;
+    const url = `${API_HOST_URL}/api/venues`;
+    logRequest(createEventByVenueId.name, url, requestBody);
+    let response = await axios.post(url, requestBody);
+    logResponse(createEventByVenueId.name, response);
+    return response;
+}
+
+// Events without venue
+const getEventsWithoutVenue = async () => {
+    const url = `${API_HOST_URL}/api/events/noVenues/`;
+    logRequest(getEventsWithoutVenue.name, url, null);
+    let response = await axios.get(url);
+    logResponse(getEventsWithoutVenue.name, response);
+    return response;
+}
+
 export {
     createUserWithFirebaseId,
     getUserByEmail,
@@ -99,5 +143,12 @@ export {
     updateVenueById,
     deleteVenueById,
     createVenue,
-    getPackagesByVenueId
+    getPackagesByVenueId,
+    // Event
+    getEventsByVenueId,
+    updateEventByEventId,
+    deleteEventByEventId,
+    createEventByVenueId,
+    // Events without venue
+    getEventsWithoutVenue
 }

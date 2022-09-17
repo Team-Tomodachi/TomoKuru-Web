@@ -1,22 +1,15 @@
-#event-container {
+#events-without-venue-container {
     display: flex;
 }
 
-#event-venue-list {
+#events-without-venue-list {
     /*border: solid 1px blue;*/
     width: 200px;
     padding: 20px;
 }
 
-#event-list {
+#events-without-venue-detail {
     /*border: solid 1px blue;*/
     width: 200px;
     padding: 20px;
-}
-
-#event-detail {
-    /*border: solid 1px red;*/
-    padding: 20px;
-    text-align: left;
-    width: 300px;
 }
