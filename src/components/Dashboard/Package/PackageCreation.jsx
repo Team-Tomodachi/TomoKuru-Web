@@ -75,11 +75,11 @@ export default function PackageCreation({
                        onChange={(e) => setInputPackagePerPersonCost(e.target.value)}
                 />
             </div>
-            {/* Duration(seconds) */}
+            {/* Duration(minutes) */}
             <div className="mb-6">
                 <label htmlFor="venue-detail-input-name"
                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                    Duration(seconds)
+                    Duration(minutes)
                 </label>
                 <input type="number"
                        id="venue-detail-input-name"
