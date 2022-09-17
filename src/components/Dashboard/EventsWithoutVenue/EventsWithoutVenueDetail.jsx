@@ -62,7 +62,7 @@ export default function EventsWithoutVenueDetail({selectedEventWithoutVenue}) {
             <div className="mb-6">
                 <label htmlFor="venue-detail-input-name"
                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                    Start Time
+                    End Time
                 </label>
                 <input type="text"
                        id="venue-detail-input-name"
