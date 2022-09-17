@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {UserAuth} from "../../../context/AuthContext";
-import {updatePackageByPackageId, getPackagesByVenueId} from "../../../api";
+import {updatePackageByPackageId, getPackagesByVenueId, deletePackageByPackageId} from "../../../api";
 
 require('./PackageDetail.css');
 
@@ -59,18 +59,13 @@ export default function PackageDetail({selectedPackage, selectedPackageVenue, se
     const handlePackageDetailDeleteButtonClick = async () => {
         console.log("PackageDetail.handlePackageDetailDeleteButtonClick(): ");
         try {
-            //     let result = await deleteEventByEventId(selectedEvent.id);
-            //     console.log('deleteEventByEventId: ', result);
-            //
-            //     // remove exising venue list
-            //     // let removeIndex = events.map(item => item.id).indexOf(selectedEvent.id);
-            //     // events.splice(removeIndex, 1);
-            //
-            //     getEventsByVenueId(selectedEvent.id).then(resp => {
-            //         setEvents(resp.data);
-            //         console.log("getEventsByVenueId: ", resp.data);
-            //     });
-            //
+            console.log("selectedPackage.id: ", selectedPackage.id)
+            await deletePackageByPackageId(selectedPackage.id);
+
+            getPackagesByVenueId(selectedPackageVenue.id).then(resp => {
+                setPackages(resp.data);
+            });
+
         } catch (e) {
             // todo: popup window to show error message
             console.error(e);
