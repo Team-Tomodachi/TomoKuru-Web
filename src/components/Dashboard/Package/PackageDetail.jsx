@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {UserAuth} from "../../../context/AuthContext";
+import {updatePackageByPackageId, getPackagesByVenueId} from "../../../api";
 
 require('./PackageDetail.css');
 
-export default function PackageDetail({selectedPackage}) {
+export default function PackageDetail({selectedPackage, selectedPackageVenue, setPackages}) {
 
     const {user} = UserAuth();
 
@@ -28,6 +29,53 @@ export default function PackageDetail({selectedPackage}) {
         setInputFood(selectedPackage.food);
         setInputDescription(selectedPackage.description);
     }, [selectedPackage]);
+
+    const handlePackageDetailSaveButtonClick = async () => {
+        console.log("PackageDetail.handleEventDetailSaveButtonClick(): ");
+        try {
+            console.log("selectedPackage.id: ", selectedPackage.id)
+            await updatePackageByPackageId(selectedPackage.id, {
+                package_name: inputName,
+                package_per_person_cost: inputPackagePerPersonCost,
+                duration: inputDuration,
+                maximum_number_of_people: inputMaximumNumberOfPeople,
+                picture_url: inputPictureUrl,
+                other_notes: inputOtherNotes,
+                drinks: inputDrinks,
+                food: inputFood,
+                description: inputDescription
+            });
+
+            getPackagesByVenueId(selectedPackageVenue.id).then((resp) => {
+                setPackages(resp.data);
+            });
+
+        } catch (e) {
+            // todo: popup window to show error message
+            console.error(e);
+        }
+    }
+
+    const handlePackageDetailDeleteButtonClick = async () => {
+        console.log("PackageDetail.handlePackageDetailDeleteButtonClick(): ");
+        try {
+            //     let result = await deleteEventByEventId(selectedEvent.id);
+            //     console.log('deleteEventByEventId: ', result);
+            //
+            //     // remove exising venue list
+            //     // let removeIndex = events.map(item => item.id).indexOf(selectedEvent.id);
+            //     // events.splice(removeIndex, 1);
+            //
+            //     getEventsByVenueId(selectedEvent.id).then(resp => {
+            //         setEvents(resp.data);
+            //         console.log("getEventsByVenueId: ", resp.data);
+            //     });
+            //
+        } catch (e) {
+            // todo: popup window to show error message
+            console.error(e);
+        }
+    }
 
     return (
         <>
@@ -145,6 +193,26 @@ export default function PackageDetail({selectedPackage}) {
                       value={inputDescription}
                       onChange={(e) => setInputDescription(e.target.value)}
             ></textarea>
+
+            {/* Save Button */}
+            <div className="mb-6">
+                <button
+                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                    onClick={() => handlePackageDetailSaveButtonClick()}
+                >
+                    Save
+                </button>
+            </div>
+
+            {/* Delete Button */}
+            <div className="mb-6">
+                <button
+                    className="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded"
+                    onClick={() => handlePackageDetailDeleteButtonClick()}
+                >
+                    Delete
+                </button>
+            </div>
         </>
     )
 }

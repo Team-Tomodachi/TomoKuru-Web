@@ -42,6 +42,8 @@ export default function Package({
                         PackageDetail: {selectedPackage.package_name}
                         <PackageDetail
                             selectedPackage={selectedPackage}
+                            selectedPackageVenue={selectedPackageVenue}
+                            setPackages={setPackages}
                         />
                     </div>
                 ) : null}

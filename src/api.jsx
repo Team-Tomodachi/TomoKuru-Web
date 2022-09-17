@@ -83,11 +83,21 @@ const createVenue = async (venue) => {
     return response;
 };
 
+// Venue Package
 const getPackagesByVenueId = async (packageId) => {
     const url = `${API_HOST_URL}/api/venues/packages/${packageId}`;
     logRequest(getPackagesByVenueId.name, url, null);
     let response = await axios.get(url);
     logResponse(getPackagesByVenueId.name, response);
+    return response;
+}
+
+const updatePackageByPackageId = async (packageId, packageObject) => {
+    const requestBody = packageObject;
+    const url = `${API_HOST_URL}/api/venues/packages/${packageId}`;
+    logRequest(updateEventByEventId.name, url, requestBody);
+    let response = await axios.patch(url, requestBody);
+    logResponse(updateEventByEventId.name, response);
     return response;
 }
 
@@ -143,7 +153,9 @@ export {
     updateVenueById,
     deleteVenueById,
     createVenue,
+    // Venue Package
     getPackagesByVenueId,
+    updatePackageByPackageId,
     // Event
     getEventsByVenueId,
     updateEventByEventId,
