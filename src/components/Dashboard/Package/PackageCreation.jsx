@@ -63,10 +63,10 @@ export default function PackageCreation({
       storage,
       `gs://tomokuru-auth.appspot.com/packages/${inputImage.name + uuidv4()}`
     );
-    uploadBytes(imageRef, inputImage).then((snapshot) => {
-      const url = getDownloadURL(snapshot.ref);
+    uploadBytes(imageRef, inputImage).then(async (snapshot) => {
+      const url = await getDownloadURL(snapshot.ref);
       setInputPictureUrl(url);
-      console.log(`IMAGEURL IS : ${inputPictureUrl}`);
+      console.log(`IMAGEURL IS : ${url}`);
       alert(`Image successfully uploaded`);
     });
   };
