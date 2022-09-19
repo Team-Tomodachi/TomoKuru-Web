@@ -14,6 +14,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const storage = getStorage(app);
+export const storage = getStorage(app, "gs://tomokuru-auth.appspot.com");
 export const auth = getAuth(app);
 export default app;

@@ -38,7 +38,7 @@ export default function PackageCreation({
         package_per_person_cost: inputPackagePerPersonCost,
         duration: inputDuration,
         maximum_number_of_people: inputMaximumNumberOfPeople,
-        picture_url: inputPictureUrl,
+        photo_url: inputPictureUrl,
         other_notes: inputOtherNotes,
         drinks: inputDrinks,
         food: inputFood,
@@ -59,7 +59,10 @@ export default function PackageCreation({
 
   const uploadImage = () => {
     if (!inputImage) return;
-    const imageRef = ref(storage, `packages/${inputImage.name + uuidv4()}`);
+    const imageRef = ref(
+      storage,
+      `gs://tomokuru-auth.appspot.com/packages/${inputImage.name + uuidv4()}`
+    );
     uploadBytes(imageRef, inputImage).then((snapshot) => {
       const url = getDownloadURL(snapshot.ref);
       setInputPictureUrl(url);
