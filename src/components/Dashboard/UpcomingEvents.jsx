@@ -18,7 +18,7 @@ export default function UpcomingEvents({
                         setSelectedUpcomingEvent={setSelectedUpcomingEvent}
                     />
                 </div>
-                {selectedUpcomingEvent.id ? (
+                {upcomingEvents.length > 0 && selectedUpcomingEvent.id ?(
                     <div id="upcoming-events-detail">
                         <UpcomingEventsDetail
                             selectedUpcomingEvent={selectedUpcomingEvent}

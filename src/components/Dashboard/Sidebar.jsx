@@ -50,7 +50,9 @@ export default function Sidebar({setView, setVenues, setEventsWithoutVenue, setU
         setView("UpcomingEvents");
         // todo using new endpoints that has event, venue and user information.
         getEventsByUserId(user.id).then(resp => {
-            setUpcomingEvents(resp.data);
+            // upcoming events only
+            const result = resp.data.filter(el => Date.parse(el.start_time) > Date.now())
+            setUpcomingEvents(result);
         });
     }
 
