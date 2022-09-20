@@ -9,6 +9,7 @@ import PackageCreation from './Dashboard/Package/PackageCreation';
 import EventCreation from "./Dashboard/Event/EventCreation";
 import EventsWithoutVenue from "./Dashboard/EventsWithoutVenue";
 import UpcomingEvents from "./Dashboard/UpcomingEvents";
+import HostedEvents from "./Dashboard/HostedEvents";
 
 require('./Dashboard.css');
 
@@ -36,6 +37,10 @@ export default function Dashboard() {
     // Upcoming Events
     const [upcomingEvents, setUpcomingEvents] = useState([]);
     const [selectedUpcomingEvent, setSelectedUpcomingEvent] = useState({});
+
+    // Hosted Events
+    const [hostedEvents, setHostedEvents] = useState([]);
+    const [selectedHostedEvent, setSelectedHostedEvent] = useState({});
 
     // Venue
     useEffect(() => {
@@ -92,6 +97,15 @@ export default function Dashboard() {
         console.log("Dashboard.userEffect(selectedUpcomingEvent, [selectedUpcomingEvent]): ", selectedUpcomingEvent);
     }, [selectedUpcomingEvent]);
 
+    // Hosted Events
+    useEffect(() => {
+        console.log("Dashboard.userEffect(hostedEvents, [hostedEvents]): ", hostedEvents);
+    }, [hostedEvents]);
+
+    useEffect(() => {
+        console.log("Dashboard.userEffect(selectedHostedEvent, [selectedHostedEvent]): ", selectedHostedEvent);
+    }, [selectedHostedEvent]);
+
     return (
         <>
             <div id={'dashboard-container'}>
@@ -101,6 +115,7 @@ export default function Dashboard() {
                         setVenues={setVenues}
                         setEventsWithoutVenue={setEventsWithoutVenue}
                         setUpcomingEvents={setUpcomingEvents}
+                        setHostedEvents={setHostedEvents}
                     />
                 </section>
                 {(() => {
@@ -180,6 +195,14 @@ export default function Dashboard() {
                                 upcomingEvents={upcomingEvents}
                                 selectedUpcomingEvent={selectedUpcomingEvent}
                                 setSelectedUpcomingEvent={setSelectedUpcomingEvent}
+                            />
+                        </section>;
+                    } else if (view === "HostedEvents") {
+                        return <section>
+                            <HostedEvents
+                                hostedEvents={hostedEvents}
+                                selectedHostedEvent={selectedHostedEvent}
+                                setSelectedHostedEvent={setSelectedHostedEvent}
                             />
                         </section>;
                     // } else if (view === "Search") {

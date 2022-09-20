@@ -1,10 +1,10 @@
 import Vendor from "./Vendor";
-import {getVenuesByUserId, getEventsWithoutVenue, getEventsByUserId} from "../../api";
+import {getVenuesByUserId, getEventsWithoutVenue, getEvents} from "../../api";
 import {UserAuth} from '../../context/AuthContext'
 
 require('./Sidebar.css');
 
-export default function Sidebar({setView, setVenues, setEventsWithoutVenue, setUpcomingEvents}) {
+export default function Sidebar({setView, setVenues, setEventsWithoutVenue, setUpcomingEvents, setHostedEvents}) {
 
     const {user} = UserAuth();
 
@@ -48,11 +48,21 @@ export default function Sidebar({setView, setVenues, setEventsWithoutVenue, setU
     const handleUpcomingEventsButtonClick = () => {
         console.log("Sidebar.handleUpcomingEventsButtonClick()");
         setView("UpcomingEvents");
-        // todo using new endpoints that has event, venue and user information.
-        getEventsByUserId(user.id).then(resp => {
+        getEvents(user.id).then(resp => {
             // upcoming events only
-            const result = resp.data.filter(el => Date.parse(el.start_time) > Date.now())
+            const result = resp.data.filter(el => Date.parse(el.end_time) > Date.now())
             setUpcomingEvents(result);
+        });
+    }
+
+    // Hosted Events
+    const handleHostedEventsButtonClick = () => {
+        console.log("Sidebar.handleHostedEventsButtonClick()");
+        setView("HostedEvents");
+        getEvents(user.id).then(resp => {
+            // hosted events only
+            const result = resp.data.filter(el => Date.parse(el.end_time) <= Date.now())
+            setHostedEvents(result);
         });
     }
 
@@ -91,6 +101,12 @@ export default function Sidebar({setView, setVenues, setEventsWithoutVenue, setU
                     onClick={() => handleUpcomingEventsButtonClick()}
                 >
                     Upcoming Events
+                </button>
+                <button
+                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                    onClick={() => handleHostedEventsButtonClick()}
+                >
+                    Hosted Events
                 </button>
                 {/*<button*/}
                 {/*    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"*/}

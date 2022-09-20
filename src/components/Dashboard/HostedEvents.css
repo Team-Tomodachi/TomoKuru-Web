@@ -1,0 +1,15 @@
+#hosted-events-container {
+    display: flex;
+}
+
+#hosted-events-list {
+    /*border: solid 1px blue;*/
+    width: 200px;
+    padding: 20px;
+}
+
+#hosted-events-detail {
+    /*border: solid 1px blue;*/
+    width: 200px;
+    padding: 20px;
+}
