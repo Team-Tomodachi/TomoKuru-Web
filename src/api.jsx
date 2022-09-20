@@ -155,10 +155,19 @@ const createEventByVenueId = async (event) => {
 
 // Events without venue
 const getEventsWithoutVenue = async () => {
-    const url = `${API_HOST_URL}/api/events/noVenues/`;
+    const url = `${API_HOST_URL}/api/events/noVenues`;
     logRequest(getEventsWithoutVenue.name, url, null);
     let response = await axios.get(url);
     logResponse(getEventsWithoutVenue.name, response);
+    return response;
+}
+
+// Upcoming Events & Hosted Events
+const getEvents = async () => {
+    const url = `${API_HOST_URL}/api/events`;
+    logRequest(getEvents.name, url, null);
+    let response = await axios.get(url);
+    logResponse(getEvents.name, response);
     return response;
 }
 
@@ -181,5 +190,7 @@ export {
     deleteEventByEventId,
     createEventByVenueId,
     // Events without venue
-    getEventsWithoutVenue
+    getEventsWithoutVenue,
+    // Upcoming Events & Hosted Events
+    getEvents
 }

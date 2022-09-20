@@ -8,6 +8,8 @@ import VenueCreation from './Dashboard/Venue/VenueCreation';
 import PackageCreation from './Dashboard/Package/PackageCreation';
 import EventCreation from "./Dashboard/Event/EventCreation";
 import EventsWithoutVenue from "./Dashboard/EventsWithoutVenue";
+import UpcomingEvents from "./Dashboard/UpcomingEvents";
+import HostedEvents from "./Dashboard/HostedEvents";
 
 require('./Dashboard.css');
 
@@ -31,6 +33,14 @@ export default function Dashboard() {
     // Events without venue
     const [eventsWithoutVenue, setEventsWithoutVenue] = useState([]);
     const [selectedEventWithoutVenue, setSelectedEventWithoutVenue] = useState({});
+
+    // Upcoming Events
+    const [upcomingEvents, setUpcomingEvents] = useState([]);
+    const [selectedUpcomingEvent, setSelectedUpcomingEvent] = useState({});
+
+    // Hosted Events
+    const [hostedEvents, setHostedEvents] = useState([]);
+    const [selectedHostedEvent, setSelectedHostedEvent] = useState({});
 
     // Venue
     useEffect(() => {
@@ -78,6 +88,24 @@ export default function Dashboard() {
         console.log("Dashboard.userEffect(selectedEventWithoutVenue, [selectedEventWithoutVenue]): ", selectedEventWithoutVenue);
     }, [selectedEventWithoutVenue]);
 
+    // Upcoming Events
+    useEffect(() => {
+        console.log("Dashboard.userEffect(upcomingEvents, [upcomingEvents]): ", upcomingEvents);
+    }, [upcomingEvents]);
+
+    useEffect(() => {
+        console.log("Dashboard.userEffect(selectedUpcomingEvent, [selectedUpcomingEvent]): ", selectedUpcomingEvent);
+    }, [selectedUpcomingEvent]);
+
+    // Hosted Events
+    useEffect(() => {
+        console.log("Dashboard.userEffect(hostedEvents, [hostedEvents]): ", hostedEvents);
+    }, [hostedEvents]);
+
+    useEffect(() => {
+        console.log("Dashboard.userEffect(selectedHostedEvent, [selectedHostedEvent]): ", selectedHostedEvent);
+    }, [selectedHostedEvent]);
+
     return (
         <>
             <div id={'dashboard-container'}>
@@ -86,6 +114,8 @@ export default function Dashboard() {
                         setView={setView}
                         setVenues={setVenues}
                         setEventsWithoutVenue={setEventsWithoutVenue}
+                        setUpcomingEvents={setUpcomingEvents}
+                        setHostedEvents={setHostedEvents}
                     />
                 </section>
                 {(() => {
@@ -157,6 +187,22 @@ export default function Dashboard() {
                                 eventsWithoutVenue={eventsWithoutVenue}
                                 setSelectedEventWithoutVenue={setSelectedEventWithoutVenue}
                                 selectedEventWithoutVenue={selectedEventWithoutVenue}
+                            />
+                        </section>;
+                    } else if (view === "UpcomingEvents") {
+                        return <section>
+                            <UpcomingEvents
+                                upcomingEvents={upcomingEvents}
+                                selectedUpcomingEvent={selectedUpcomingEvent}
+                                setSelectedUpcomingEvent={setSelectedUpcomingEvent}
+                            />
+                        </section>;
+                    } else if (view === "HostedEvents") {
+                        return <section>
+                            <HostedEvents
+                                hostedEvents={hostedEvents}
+                                selectedHostedEvent={selectedHostedEvent}
+                                setSelectedHostedEvent={setSelectedHostedEvent}
                             />
                         </section>;
                     // } else if (view === "Search") {
