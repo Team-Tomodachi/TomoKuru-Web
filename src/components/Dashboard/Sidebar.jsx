@@ -1,10 +1,10 @@
 import Vendor from "./Vendor";
-import {getVenuesByUserId, getEventsWithoutVenue} from "../../api";
+import {getVenuesByUserId, getEventsWithoutVenue, getEventsByUserId} from "../../api";
 import {UserAuth} from '../../context/AuthContext'
 
 require('./Sidebar.css');
 
-export default function Sidebar({setView, setVenues, setEventsWithoutVenue}) {
+export default function Sidebar({setView, setVenues, setEventsWithoutVenue, setUpcomingEvents}) {
 
     const {user} = UserAuth();
 
@@ -44,6 +44,16 @@ export default function Sidebar({setView, setVenues, setEventsWithoutVenue}) {
         });
     }
 
+    // Upcoming Events
+    const handleUpcomingEventsButtonClick = () => {
+        console.log("Sidebar.handleUpcomingEventsButtonClick()");
+        setView("UpcomingEvents");
+        // todo using new endpoints that has event, venue and user information.
+        getEventsByUserId(user.id).then(resp => {
+            setUpcomingEvents(resp.data);
+        });
+    }
+
     return (<>
         <div id={'sidebar-container'}>
             <div id={'sidebar-vendor'}>
@@ -73,6 +83,12 @@ export default function Sidebar({setView, setVenues, setEventsWithoutVenue}) {
                     onClick={() => handleEventsWithoutVenueButtonClick()}
                 >
                     Events without venue
+                </button>
+                <button
+                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                    onClick={() => handleUpcomingEventsButtonClick()}
+                >
+                    Upcoming Events
                 </button>
                 {/*<button*/}
                 {/*    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"*/}

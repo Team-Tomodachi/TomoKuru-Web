@@ -162,6 +162,15 @@ const getEventsWithoutVenue = async () => {
     return response;
 }
 
+// Upcoming Events
+const getEventsByUserId = async (userId) => {
+    const url = `${API_HOST_URL}/api/events/user/${userId}`;
+    logRequest(getEventsByUserId.name, url, null);
+    let response = await axios.get(url);
+    logResponse(getEventsByUserId.name, response);
+    return response;
+}
+
 export {
     createUserWithFirebaseId,
     getUserByEmail,
@@ -181,5 +190,7 @@ export {
     deleteEventByEventId,
     createEventByVenueId,
     // Events without venue
-    getEventsWithoutVenue
+    getEventsWithoutVenue,
+    // Upcoming Events
+    getEventsByUserId
 }
