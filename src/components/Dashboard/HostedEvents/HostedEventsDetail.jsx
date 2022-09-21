@@ -85,7 +85,7 @@ export default function HostedEventsDetail({selectedHostedEvent}) {
             <div className="mb-6">
                 <label htmlFor="hosted-events-input-capacity"
                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                    End Time
+                   Capacity
                 </label>
                 <input type="number"
                        id="hosted-events-input-capacity"
@@ -113,7 +113,7 @@ export default function HostedEventsDetail({selectedHostedEvent}) {
             <div className="mb-6">
                 <label htmlFor="hosted-events-input-event-name"
                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                    Venue Name
+                    Event Name
                 </label>
                 <input type="text"
                        id="hosted-events-input-event-name"
