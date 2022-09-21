@@ -23,8 +23,8 @@ export default function PackageDetail({
   const [inputMaximumNumberOfPeople, setInputMaximumNumberOfPeople] = useState(
     selectedPackage.maximum_number_of_people
   );
-  const [inputPictureUrl, setInputPictureUrl] = useState(
-    selectedPackage.picture_url
+  const [inputPhotoUrl, setInputPhotoUrl] = useState(
+    selectedPackage.photo_url
   );
   const [inputOtherNotes, setInputOtherNotes] = useState(
     selectedPackage.other_notes
@@ -40,7 +40,7 @@ export default function PackageDetail({
     setInputPackagePerPersonCost(selectedPackage.package_per_person_cost);
     setInputDuration(selectedPackage.duration);
     setInputMaximumNumberOfPeople(selectedPackage.maximum_number_of_people);
-    setInputPictureUrl(selectedPackage.picture_url);
+    setInputPhotoUrl(selectedPackage.photo_url);
     setInputOtherNotes(selectedPackage.other_notes);
     setInputDrinks(selectedPackage.drinks);
     setInputFood(selectedPackage.food);
@@ -56,7 +56,7 @@ export default function PackageDetail({
         package_per_person_cost: inputPackagePerPersonCost,
         duration: inputDuration,
         maximum_number_of_people: inputMaximumNumberOfPeople,
-        photo_url: inputPictureUrl,
+        photo_url: inputPhotoUrl,
         other_notes: inputOtherNotes,
         drinks: inputDrinks,
         food: inputFood,
@@ -154,20 +154,20 @@ export default function PackageDetail({
           onChange={(e) => setInputMaximumNumberOfPeople(e.target.value)}
         />
       </div>
-      {/* Picture URL */}
+      {/* Photo URL */}
       <div className="mb-6">
         <label
-          htmlFor="venue-detail-input-name"
+          htmlFor="venue-detail-input-photo-url"
           className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
         >
-          Picture URL
+          Photo URL
         </label>
         <input
           type="text"
-          id="venue-detail-input-name"
+          id="venue-detail-input-photo-url"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          value={inputPictureUrl}
-          onChange={(e) => setInputPictureUrl(e.target.value)}
+          value={inputPhotoUrl}
+          onChange={(e) => setInputPhotoUrl(e.target.value)}
         />
       </div>
       {/* Other Notes */}
