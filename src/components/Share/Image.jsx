@@ -3,8 +3,8 @@ import {getFileUrl} from "../../utilities/firebase-storage";
 
 require("./Image.css")
 
-export function Image({reference}) {
-    const [imageUrl, setImageUrl] = useState('')
+export function Image({reference, alt}) {
+    const [imageUrl, setImageUrl] = useState("")
 
     useEffect(() => {
         setTimeout(function () {
@@ -15,11 +15,11 @@ export function Image({reference}) {
         }, 2000);
     }, [reference])
 
-    // return imageUrl ? <h2>IMAGE: {imageUrl}</h2> : '...Loading'
     return imageUrl ?
         (
             <img
                 src={imageUrl}
+                alt={alt}
             />
         )
         :
