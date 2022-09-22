@@ -29,8 +29,7 @@ export default function PackageList({setView, packages, setSelectedPackage, sele
                                 <div
                                     className={'package-list-block-image'}
                                 >
-                                    {/*<img src={getFileUrl(item.photo_url)} alt={item.package_name}/>*/}
-                                    <Image reference={item.photo_url} />
+                                    <Image reference={item.photo_url} alt={item.package_name}/>
                                 </div>
                                 <div
                                     className={'package-list-block-content'}
