@@ -2,7 +2,7 @@ import {Image} from "../../Share/Image";
 
 require('./VenueList.css');
 
-export default function VenueList({venues, setSelectedVenue, setView}) {
+export default function VenueList({setVenues, venues, setSelectedVenue, setView}) {
 
     return (
         <>

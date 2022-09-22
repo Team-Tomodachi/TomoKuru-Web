@@ -16,6 +16,7 @@ export default function Venue({
             <div id="venue-container">
                 <div id="venue-list">
                     <VenueList
+                        setVenues={setVenues}
                         venues={venues}
                         setSelectedVenue={setSelectedVenue}
                         setView={setView}
