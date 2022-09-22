@@ -5,7 +5,7 @@ import {
     getPackagesByVenueId,
     deletePackageByPackageId,
 } from "../../../api";
-import {getFileUrl} from "../../../utilities/firebase-storage";
+import {getFileUrl, uploadFile} from "../../../utilities/firebase-storage";
 
 require("./PackageDetail.css");
 
@@ -20,11 +20,22 @@ export default function PackageDetail({
     const [inputPackagePerPersonCost, setInputPackagePerPersonCost] = useState(selectedPackage.package_per_person_cost);
     const [inputDuration, setInputDuration] = useState(selectedPackage.duration);
     const [inputMaximumNumberOfPeople, setInputMaximumNumberOfPeople] = useState(selectedPackage.maximum_number_of_people);
-    const [inputPhotoUrl, setInputPhotoUrl] = useState(selectedPackage.photo_url);
     const [inputOtherNotes, setInputOtherNotes] = useState(selectedPackage.other_notes);
     const [inputDrinks, setInputDrinks] = useState(selectedPackage.drinks);
     const [inputFood, setInputFood] = useState(selectedPackage.food);
     const [inputDescription, setInputDescription] = useState(selectedPackage.description);
+
+    // Photo
+    const [inputPhotoFile, setInputPhotoFile] = useState("");
+    const [photoReference, setPhotoReference] = useState("");
+
+    const uploadImage = () => {
+        if (!inputPhotoFile) return;
+        uploadFile(inputPhotoFile, "packages").then(result => {
+            const reference = result.ref.fullPath;
+            setPhotoReference(reference);
+        });
+    };
 
     useEffect(() => {
         setInputName(selectedPackage.package_name);
@@ -35,12 +46,7 @@ export default function PackageDetail({
         setInputDrinks(selectedPackage.drinks);
         setInputFood(selectedPackage.food);
         setInputDescription(selectedPackage.description);
-
-        // Photo
-        getFileUrl(selectedPackage.photo_url).then(result => {
-            setInputPhotoUrl(result);
-        });
-
+        setPhotoReference(selectedPackage.photo_url);
     }, [selectedPackage]);
 
     const handlePackageDetailSaveButtonClick = async () => {
@@ -52,11 +58,11 @@ export default function PackageDetail({
                 package_per_person_cost: inputPackagePerPersonCost,
                 duration: inputDuration,
                 maximum_number_of_people: inputMaximumNumberOfPeople,
-                photo_url: inputPhotoUrl,
                 other_notes: inputOtherNotes,
                 drinks: inputDrinks,
                 food: inputFood,
                 description: inputDescription,
+                photo_url: photoReference
             });
 
             getPackagesByVenueId(selectedPackageVenue.id).then((resp) => {
@@ -150,22 +156,32 @@ export default function PackageDetail({
                     onChange={(e) => setInputMaximumNumberOfPeople(e.target.value)}
                 />
             </div>
-            {/* Photo URL */}
+
+            {/* Photo */}
             <div className="mb-6">
                 <label
                     htmlFor="venue-detail-input-photo-url"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
-                    Photo URL
+                   Photo
                 </label>
                 <input
-                    type="text"
+                    type="file"
+                    name="package-image"
                     id="venue-detail-input-photo-url"
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value={inputPhotoUrl}
-                    onChange={(e) => setInputPhotoUrl(e.target.value)}
+                    accept="image/png, image/jpeg"
+                    onChange={(e) => {
+                        setInputPhotoFile(e.target.files[0]);
+                    }}
                 />
+                <button
+                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                    onClick={uploadImage}
+                >
+                    Upload Image
+                </button>
             </div>
+
             {/* Other Notes */}
             <div className="mb-6">
                 <label
