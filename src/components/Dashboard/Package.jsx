@@ -35,6 +35,7 @@ export default function Package({
                             selectedPackageVenue={selectedPackageVenue}
                             packages={packages}
                             setSelectedPackage={setSelectedPackage}
+                            selectedPackage={selectedPackage}
                         />
                     </div>
                 ) : null}

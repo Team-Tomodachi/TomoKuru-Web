@@ -1,14 +1,11 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {
     createPackageByVenueId,
-    getEventsByVenueId,
+    // getEventsByVenueId,
     getPackagesByVenueId,
-    updatePackageByPackageId,
+    // updatePackageByPackageId,
 } from "../../../api";
-import {storage} from "../../../firebase";
-import {getDownloadURL, ref, uploadBytes} from "firebase/storage";
-import {v4 as uuidv4} from "uuid";
-//const { v4: uuidv4 } = require('uuid');
+import {uploadFile, getFileUrl} from "../../../utilities/firebase-storage";
 
 require("./PackageCreation.css");
 
@@ -22,11 +19,39 @@ export default function PackageCreation({
     const [inputDuration, setInputDuration] = useState(0);
     const [inputMaximumNumberOfPeople, setInputMaximumNumberOfPeople] =
         useState(0);
-    const [inputPhotoUrl, setInputPhotoUrl] = useState("");
     const [inputOtherNotes, setInputOtherNotes] = useState("");
     const [inputDrinks, setInputDrinks] = useState("");
     const [inputFood, setInputFood] = useState("");
     const [inputDescription, setInputDescription] = useState("");
+
+    // Photo
+    const [inputPhotoFile, setInputPhotoFile] = useState("");
+    const [photoReference, setPhotoReference] = useState("");
+    const [photoDownloadUrl, setPhotoDownloadUrl] = useState("");
+
+    useEffect(() => {
+        console.log("useEffect([inputPhotoFile]).inputPhotoFile =>", inputPhotoFile);
+    }, [inputPhotoFile])
+
+    useEffect(() => {
+        console.log("useEffect([photoReference]).photoReference =>", photoReference);
+    }, [photoReference])
+
+    useEffect(() => {
+        console.log("useEffect([photoDownloadUrl]).photoDownloadUrl =>", photoDownloadUrl);
+    }, [photoDownloadUrl])
+
+    const uploadImage = () => {
+        if (!inputPhotoFile) return;
+        uploadFile(inputPhotoFile, "packages").then(result => {
+            const reference = result.ref.fullPath;
+            setPhotoReference(reference);
+
+            getFileUrl(reference).then(result => {
+                setPhotoDownloadUrl(result);
+            });
+        });
+    };
 
     const handlePackageDetailSaveButtonClick = async () => {
         console.log("PackageDetail.handlePackageDetailSaveButtonClick(): ");
@@ -38,7 +63,7 @@ export default function PackageCreation({
                 package_per_person_cost: inputPackagePerPersonCost,
                 duration: inputDuration,
                 maximum_number_of_people: inputMaximumNumberOfPeople,
-                photo_url: inputPhotoUrl,
+                photo_url: photoReference,
                 other_notes: inputOtherNotes,
                 drinks: inputDrinks,
                 food: inputFood,
@@ -54,36 +79,6 @@ export default function PackageCreation({
             console.error(e);
         }
     };
-
-    const [inputImage, setInputImage] = useState("");
-
-    const uploadImage = () => {
-        if (!inputImage) return;
-        const imageRef = ref(
-            storage,
-            `gs://tomokuru-auth.appspot.com/packages/${inputImage.name + uuidv4()}`
-        );
-        uploadBytes(imageRef, inputImage).then(async (snapshot) => {
-            const url = await getDownloadURL(snapshot.ref);
-            setInputPhotoUrl(url);
-            console.log(`IMAGEURL IS : ${url}`);
-            console.log(`Image successfully uploaded`);
-        });
-    };
-
-    //   uploadImage = () => {
-    //     const storage = getStorage()
-    //     const reference = ref(storage, 'file_name.jpg')
-    //     const file = e.target.files[0]
-
-    //     uploadBytes(reference, file)
-    //       .then(snapshot => {
-    //         return getDownloadURL(snapshot.ref)
-    //       })
-    //       .then(downloadURL => {
-    //         console.log('Download URL', downloadURL)
-    //       })
-    //   }
 
     return (
         <>
@@ -155,10 +150,10 @@ export default function PackageCreation({
                     onChange={(e) => setInputMaximumNumberOfPeople(e.target.value)}
                 />
             </div>
-            {/* Picture URL */}
+            {/* Photo URL */}
             <div className="mb-6">
                 <label
-                    htmlFor="venue-detail-input-name"
+                    htmlFor="venue-detail-input-photo-url"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
                 >
                     Event Image
@@ -166,10 +161,10 @@ export default function PackageCreation({
                 <input
                     type="file"
                     name="package-image"
-                    id="venue-detail-input-name"
+                    id="venue-detail-input-photo-url"
                     accept="image/png, image/jpeg"
                     onChange={(e) => {
-                        setInputImage(e.target.files[0]);
+                        setInputPhotoFile(e.target.files[0]);
                     }}
                 />
                 <button
