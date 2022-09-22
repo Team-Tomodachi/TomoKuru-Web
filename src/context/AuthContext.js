@@ -40,6 +40,11 @@ export const AuthContextProvider = ({children}) => {
         return result;
     };
 
+    // todo
+    const updateUser = (newUser) => {
+        setUser(newUser);
+    };
+
     const signIn = (email, password) => {
         let result = signInWithEmailAndPassword(auth, email, password);
         result.then(resp => {
@@ -73,7 +78,7 @@ export const AuthContextProvider = ({children}) => {
     }, []);
 
     return (
-        <UserContext.Provider value={{user, createUser, logout, signIn}}>
+        <UserContext.Provider value={{user, createUser, logout, signIn, updateUser}}>
             {children}
         </UserContext.Provider>
     );

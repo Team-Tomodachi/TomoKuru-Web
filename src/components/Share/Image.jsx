@@ -7,12 +7,13 @@ export function Image({reference, alt}) {
     const [imageUrl, setImageUrl] = useState("")
 
     useEffect(() => {
+        // todo: remove setTimeout
         setTimeout(function () {
             getFileUrl(reference).then(result => {
                 console.log("###### result -> ", result);
                 setImageUrl(result);
             })
-        }, 2000);
+        }, 500);
     }, [reference])
 
     return imageUrl ?

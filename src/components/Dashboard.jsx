@@ -10,7 +10,6 @@ import EventCreation from "./Dashboard/Event/EventCreation";
 import EventsWithoutVenue from "./Dashboard/EventsWithoutVenue";
 import UpcomingEvents from "./Dashboard/UpcomingEvents";
 import HostedEvents from "./Dashboard/HostedEvents";
-import {getFileUrl} from "../utilities/firebase-storage";
 
 require('./Dashboard.css');
 
