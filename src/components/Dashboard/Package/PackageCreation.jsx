@@ -1,11 +1,6 @@
-import React, {useEffect, useState} from "react";
-import {
-    createPackageByVenueId,
-    // getEventsByVenueId,
-    getPackagesByVenueId,
-    // updatePackageByPackageId,
-} from "../../../api";
-import {uploadFile, getFileUrl} from "../../../utilities/firebase-storage";
+import React, {useState} from "react";
+import {createPackageByVenueId, getPackagesByVenueId} from "../../../api";
+import {uploadFile} from "../../../utilities/firebase-storage";
 
 require("./PackageCreation.css");
 
@@ -17,8 +12,7 @@ export default function PackageCreation({
     const [inputName, setInputName] = useState("");
     const [inputPackagePerPersonCost, setInputPackagePerPersonCost] = useState(0);
     const [inputDuration, setInputDuration] = useState(0);
-    const [inputMaximumNumberOfPeople, setInputMaximumNumberOfPeople] =
-        useState(0);
+    const [inputMaximumNumberOfPeople, setInputMaximumNumberOfPeople] = useState(0);
     const [inputOtherNotes, setInputOtherNotes] = useState("");
     const [inputDrinks, setInputDrinks] = useState("");
     const [inputFood, setInputFood] = useState("");
@@ -27,29 +21,12 @@ export default function PackageCreation({
     // Photo
     const [inputPhotoFile, setInputPhotoFile] = useState("");
     const [photoReference, setPhotoReference] = useState("");
-    const [photoDownloadUrl, setPhotoDownloadUrl] = useState("");
-
-    useEffect(() => {
-        console.log("useEffect([inputPhotoFile]).inputPhotoFile =>", inputPhotoFile);
-    }, [inputPhotoFile])
-
-    useEffect(() => {
-        console.log("useEffect([photoReference]).photoReference =>", photoReference);
-    }, [photoReference])
-
-    useEffect(() => {
-        console.log("useEffect([photoDownloadUrl]).photoDownloadUrl =>", photoDownloadUrl);
-    }, [photoDownloadUrl])
 
     const uploadImage = () => {
         if (!inputPhotoFile) return;
         uploadFile(inputPhotoFile, "packages").then(result => {
             const reference = result.ref.fullPath;
             setPhotoReference(reference);
-
-            getFileUrl(reference).then(result => {
-                setPhotoDownloadUrl(result);
-            });
         });
     };
 
