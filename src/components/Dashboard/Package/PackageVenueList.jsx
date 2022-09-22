@@ -20,6 +20,7 @@ export default function PackageVenueList({
                             <div
                                 className={'package-venue-list-block'}
                                 onClick={async () => {
+                                    setPackages([]);
                                     getPackagesByVenueId(item.id).then((resp) => {
                                         setPackages(resp.data);
                                     });
