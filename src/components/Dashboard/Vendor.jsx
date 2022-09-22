@@ -33,7 +33,7 @@ export default function Vendor({setView}) {
                     photoDownloadUrl ? (
                         <img id={"vendor-avatar"}
                              src={photoDownloadUrl}
-                             alt={inputFirstName.toString()}
+                             alt={inputFirstName}
                              onClick={() => setView("UserProfile")}
                         />
                     ) : null
