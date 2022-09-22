@@ -1,3 +1,5 @@
+import {Image} from "../../Share/Image";
+
 require('./EventList.css');
 
 export default function EventList({setView, events, setSelectedEvent}) {
@@ -27,7 +29,7 @@ export default function EventList({setView, events, setSelectedEvent}) {
                                 <div
                                     className={'event-list-block-image'}
                                 >
-                                    <img src="https://picsum.photos/200/100" alt="Package Photo"/>
+                                    <Image reference={item.photo_url} alt={item.name} />
                                 </div>
                                 <div
                                     className={'event-list-block-content'}

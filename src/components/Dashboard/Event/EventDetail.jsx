@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {UserAuth} from "../../../context/AuthContext";
 import {deleteEventByEventId, getEventsByVenueId, updateEventByEventId} from "../../../api";
+import {uploadFile} from "../../../utilities/firebase-storage";
 
 require('./EventDetail.css');
 
@@ -20,18 +21,28 @@ export default function EventDetail({selectedEvent, selectedEventVenue, setEvent
         setInputEndTime(selectedEvent.end_time);
     }, [selectedEvent]);
 
+    // Photo
+    const [inputPhotoFile, setInputPhotoFile] = useState("");
+    const [photoReference, setPhotoReference] = useState("");
+
+    const uploadImage = () => {
+        if (!inputPhotoFile) return;
+        uploadFile(inputPhotoFile, "packages").then(result => {
+            const reference = result.ref.fullPath;
+            setPhotoReference(reference);
+        });
+    };
+
     const handleEventDetailSaveButtonClick = async () => {
-        console.log("handleEventDetailSaveButtonClick: ")
-        console.log("selectedEvent.id: ", selectedEvent.id)
         try {
             await updateEventByEventId(selectedEvent.id, {
                 name: inputName,
                 description: inputDescription,
                 start_time: inputStartTime,
-                end_time: inputEndTime
+                end_time: inputEndTime,
+                photo_url: photoReference
             });
 
-            console.log("selectedEventVenue.id: ", selectedEventVenue.id)
             getEventsByVenueId(selectedEventVenue.id).then((resp) => {
                 setEvents(resp.data);
             });
@@ -43,12 +54,9 @@ export default function EventDetail({selectedEvent, selectedEventVenue, setEvent
     }
 
     const handleEventDetailDeleteButtonClick = async () => {
-        console.log("handleEventDetailDeleteButtonClick: ");
-        console.log("selectedEvent.id: ", selectedEvent.id)
         try {
             await deleteEventByEventId(selectedEvent.id);
 
-            console.log("selectedEventVenue.id: ", selectedEventVenue.id)
             getEventsByVenueId(selectedEventVenue.id).then(resp => {
                 setEvents(resp.data);
             });
@@ -101,20 +109,6 @@ export default function EventDetail({selectedEvent, selectedEventVenue, setEvent
                 />
             </div>
 
-            {/*<div className="relative">*/}
-            {/*    <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">*/}
-            {/*        <svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"*/}
-            {/*             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">*/}
-            {/*            <path fill-rule="evenodd"*/}
-            {/*                  d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"*/}
-            {/*                  clip-rule="evenodd"></path>*/}
-            {/*        </svg>*/}
-            {/*    </div>*/}
-            {/*    <input datepicker type="text"*/}
-            {/*           className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"*/}
-            {/*           placeholder="Select date" />*/}
-            {/*</div>*/}
-
             {/* End Time */}
             <div className="mb-6">
                 <label htmlFor="venue-detail-input-name"
@@ -127,6 +121,31 @@ export default function EventDetail({selectedEvent, selectedEventVenue, setEvent
                        value={inputEndTime}
                        onChange={(e) => setInputEndTime(e.target.value)}
                 />
+            </div>
+
+            {/* Photo */}
+            <div className="mb-6">
+                <label
+                    htmlFor="venue-detail-input-photo-url"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                >
+                    Photo
+                </label>
+                <input
+                    type="file"
+                    name="package-image"
+                    id="venue-detail-input-photo-url"
+                    accept="image/png, image/jpeg"
+                    onChange={(e) => {
+                        setInputPhotoFile(e.target.files[0]);
+                    }}
+                />
+                <button
+                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                    onClick={uploadImage}
+                >
+                    Upload Image
+                </button>
             </div>
 
             {/* Save Button */}

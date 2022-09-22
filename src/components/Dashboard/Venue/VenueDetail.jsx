@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {deleteVenueById, getVenuesByUserId, updateVenueById} from "../../../api";
 import {UserAuth} from '../../../context/AuthContext'
+import {uploadFile} from "../../../utilities/firebase-storage";
 
 require('./VenueDetail.css');
 
@@ -18,6 +19,20 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
     const [inputSeatNumber, setInputSeatNumber] = useState(selectedVenue.num_seats);
     const [inputVenueType, setInputVenueType] = useState(selectedVenue.venue_type);
 
+    // Photo
+    const [inputPhotoFile, setInputPhotoFile] = useState("");
+    const [photoReference, setPhotoReference] = useState("");
+
+    const uploadImage = () => {
+        if (!inputPhotoFile) return;
+        uploadFile(inputPhotoFile, "packages").then(result => {
+            const reference = result.ref.fullPath;
+            setPhotoReference(reference);
+        });
+
+        setInputPhotoFile("");
+    };
+
     useEffect(() => {
         setInputName(selectedVenue.location_name);
         setInputCityWard(selectedVenue.city_ward);
@@ -28,24 +43,11 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
         setInputDescription(selectedVenue.description);
         setInputSeatNumber(selectedVenue.num_seats);
         setInputVenueType(selectedVenue.venue_type);
+        setInputPhotoFile("");
     }, [selectedVenue]);
 
     const handleVenueDetailSaveButtonClick = async () => {
-        console.log("handleVenueDetailSaveButtonClick: ")
         try {
-            console.log(" ---------- VenueDetail Save ---------- ")
-            console.log("Venue ID: ", selectedVenue.id);
-            console.log("Name: ", selectedVenue.location_name);
-            console.log("City/Ward: ", selectedVenue.city_ward);
-            console.log("Prefecture: ", selectedVenue.prefecture);
-            console.log("Phone Number: ", selectedVenue.phone_num);
-            console.log("Address: ", selectedVenue.address);
-            console.log("Venue Email: ", selectedVenue.venue_email);
-            console.log("Description: ", selectedVenue.description);
-            console.log("Seat Number: ", selectedVenue.num_seats);
-            console.log("Venue Type: ", selectedVenue.venue_type);
-            console.log(" ---------- VenueDetail Save ---------- ")
-            console.log('updateVenueById: ID --> ', selectedVenue.id);
             let result = await updateVenueById(selectedVenue.id, {
                 location_name: inputName,
                 city_ward: inputCityWard,
@@ -56,13 +58,12 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                 description: inputDescription,
                 num_seats: inputSeatNumber,
                 venue_type: inputVenueType,
+                photo_url: photoReference
             });
-            console.log('updateVenueById: ', result);
 
             setView("Venue");
             getVenuesByUserId(user.id).then(resp => {
                 setVenues(resp.data);
-                console.log("getVenuesByUserId: ", resp.data);
             });
 
         } catch (e) {
@@ -201,6 +202,32 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                     onChange={(e) => setInputSeatNumber(e.target.value)}
                 />
             </div>
+
+            {/* Photo */}
+            <div className="mb-6">
+                <label
+                    htmlFor="venue-detail-input-photo-url"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                >
+                    Image
+                </label>
+                <input
+                    type="file"
+                    name="package-image"
+                    id="venue-detail-input-photo-url"
+                    accept="image/png, image/jpeg"
+                    onChange={(e) => {
+                        setInputPhotoFile(e.target.files[0]);
+                    }}
+                />
+                <button
+                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                    onClick={uploadImage}
+                >
+                    Upload Image
+                </button>
+            </div>
+
             {/* Type */}
             <div className="mb-6">
                 <label htmlFor="venue-detail-input-type"
@@ -214,6 +241,8 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                     onChange={(e) => setInputVenueType(e.target.value)}
                 />
             </div>
+
+
             <div className="mb-6">
                 <button
                     className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"

@@ -1,4 +1,7 @@
 import {getPackagesByVenueId} from "../../../api";
+import {getFileUrl} from "../../../utilities/firebase-storage";
+import {useEffect, useState} from "react";
+import {Image} from "../../Share/Image";
 
 require('./PackageVenueList.css');
 
@@ -17,20 +20,18 @@ export default function PackageVenueList({
                         <div key={index}>
                             <div
                                 className={'package-venue-list-block'}
-                                onClick={() => {
-                                    setSelectedPackageVenue(item);
-                                    console.log(" PackageVenueList -> onClick -> item: ", item);
-                                    console.log(" ##### item.id -> ", item.id);
+                                onClick={async () => {
+                                    setPackages([]);
                                     getPackagesByVenueId(item.id).then((resp) => {
-                                        console.log(resp.data);
                                         setPackages(resp.data);
                                     });
+                                    setSelectedPackageVenue(item);
                                 }}
                             >
                                 <div
                                     className={'package-venue-list-block-image'}
                                 >
-                                    <img src="https://picsum.photos/200/100" alt="Venue Photo"/>
+                                    <Image reference={item.photo_url} alt={item.location_name} />
                                 </div>
                                 <div
                                     className={'package-venue-list-block-content'}

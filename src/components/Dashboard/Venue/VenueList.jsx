@@ -1,6 +1,8 @@
+import {Image} from "../../Share/Image";
+
 require('./VenueList.css');
 
-export default function VenueList({venues, setSelectedVenue, setView}) {
+export default function VenueList({setVenues, venues, setSelectedVenue, setView}) {
 
     return (
         <>
@@ -27,7 +29,7 @@ export default function VenueList({venues, setSelectedVenue, setView}) {
                                 <div
                                     className={'venue-list-block-image'}
                                 >
-                                    <img src="https://picsum.photos/200/100" alt="Venue Photo"/>
+                                    <Image reference={item.photo_url} alt={item.location_name} />
                                 </div>
                                 <div
                                     className={'venue-list-block-content'}

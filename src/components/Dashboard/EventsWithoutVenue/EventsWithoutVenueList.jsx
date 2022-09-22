@@ -1,3 +1,5 @@
+import {Image} from "../../Share/Image";
+
 require('./EventsWithoutVenueList.css');
 
 export default function EventsWithoutVenueList({
@@ -22,7 +24,7 @@ export default function EventsWithoutVenueList({
                                 <div
                                     className={'event-list-block-image'}
                                 >
-                                    <img src="https://picsum.photos/200/100" alt="Package Photo"/>
+                                    <Image reference={item.photo_url} alt={item.name}/>
                                 </div>
                                 <div
                                     className={'event-list-block-content'}

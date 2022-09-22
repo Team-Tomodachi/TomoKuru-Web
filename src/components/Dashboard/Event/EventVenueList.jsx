@@ -1,4 +1,5 @@
 import {getEventsByVenueId} from "../../../api";
+import {Image} from "../../Share/Image";
 
 require('./EventVenueList.css');
 
@@ -31,7 +32,7 @@ export default function EventVenueList({
                                 <div
                                     className={'event-venue-list-block-image'}
                                 >
-                                    <img src="https://picsum.photos/200/100" alt="Venue Photo"/>
+                                    <Image reference={item.photo_url} alt={item.location_name} />
                                 </div>
                                 <div
                                     className={'event-venue-list-block-content'}

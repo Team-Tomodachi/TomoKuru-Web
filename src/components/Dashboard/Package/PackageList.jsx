@@ -1,6 +1,8 @@
+import {Image} from "../../Share/Image"
+
 require('./PackageList.css');
 
-export default function PackageList({setView, packages, setSelectedPackage, selectedPackageVenue}) {
+export default function PackageList({setView, packages, setSelectedPackage, selectedPackage}) {
 
     return (
         <>
@@ -14,7 +16,6 @@ export default function PackageList({setView, packages, setSelectedPackage, sele
                 </button>
             </div>
             {
-
                 packages.map((item, index) => {
                     return (
                         <div key={index}>
@@ -28,7 +29,7 @@ export default function PackageList({setView, packages, setSelectedPackage, sele
                                 <div
                                     className={'package-list-block-image'}
                                 >
-                                    <img src="https://picsum.photos/200/100" alt="Package Photo"/>
+                                    <Image reference={item.photo_url} alt={item.package_name}/>
                                 </div>
                                 <div
                                     className={'package-list-block-content'}
