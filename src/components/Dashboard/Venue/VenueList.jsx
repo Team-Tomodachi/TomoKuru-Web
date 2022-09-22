@@ -29,7 +29,6 @@ export default function VenueList({venues, setSelectedVenue, setView}) {
                                 <div
                                     className={'venue-list-block-image'}
                                 >
-                                    {/*<img src="https://picsum.photos/200/100" alt="Venue Photo"/>*/}
                                     <Image reference={item.photo_url} alt={item.location_name} />
                                 </div>
                                 <div
