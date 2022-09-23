@@ -5,15 +5,24 @@ require("./Home.css");
 export default function Home() {
   return (
     <>
-      <h1 className="welcomeTitle">TomoKuru</h1>
-      <span className="portal" id="portal">
-        Vendor Portal
-      </span>
-      <br />
-      <br />
-      <p>Welcome to the vendor portal for the Tomokuru App.</p>
-      <br />
-      <br />
+      <div id="bg-image">
+        <div className="flex flex-col justify-start content-center h-4/5">
+          <h1 className="text-9xl my-6 drop-shadow-lg" id="product_name">
+            TomoKuru
+          </h1>
+          <span
+            className="text-white text-6xl my-6 font-bold drop-shadow-lg"
+            id="portal"
+          >
+            Vendor Portal
+          </span>
+        </div>
+        <br />
+        <br />
+        <p className="p-8">Welcome to the vendor portal for Tomokuru.</p>
+        <br />
+        <br />
+      </div>
     </>
   );
 }

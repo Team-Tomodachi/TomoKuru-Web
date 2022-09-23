@@ -2,29 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Salsa&display=swap");
+
 #header-container {
-    display: flex;
-    width: 100%;
-    height: 60px;
-    border-bottom: 1px solid #CCCCCC;
-    font-size: 1rem;
-    padding: 10px;
-    line-height: 60px;
+  display: flex;
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid #cccccc;
+  font-size: 1rem;
+  padding: 10px;
+  line-height: 60px;
 }
 
 #header-logo {
+  font-family: "Salsa", sans-serif;
 }
 
 #header-login {
-    padding-right: 20px;
-    margin-left: auto;
+  padding-right: 20px;
+  margin-left: auto;
 }
 
 #header-signup {
-    padding-right: 20px;
+  padding-right: 20px;
 }
 
 #header-logout {
-    padding-right: 20px;
-    margin-left: auto;
+  padding-right: 20px;
+  margin-left: auto;
 }

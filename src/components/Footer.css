@@ -1,3 +1,8 @@
 #footer-container {
-    border: solid 1px #CCCCCC;
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
 }

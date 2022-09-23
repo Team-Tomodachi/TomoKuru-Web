@@ -1,18 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Salsa&display=swap");
 /* font-family: "Open Sans", sans-serif;
 font-family: "Salsa", cursive; */
 
-.welcomeTitle {
-  font-size: 86px;
+#product_name {
   font-family: "Salsa", sans-serif;
 }
 
-.portal {
-  font-family: "Open Sans", sans-serif;
-  font-size: 48px;
-  transform: rotate(60deg);
-}
-
-.welcomelist {
-  justify-content: left;
+#bg-image {
+  background-image: url("../../public/img/event-party-g5bc2853b7_1280.jpg");
+  height: 100vh;
+  overflow: hidden;
+  scroll-behavior: smooth;
 }
