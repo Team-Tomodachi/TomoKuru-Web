@@ -17,8 +17,8 @@ const uploadFile = async (filePath, remoteFolder) => {
 };
 
 const getFileUrl = async (reference) => {
-    if(!reference) {
-        return "https://dummyimage.com/100x60/ffffff/222222.png&text=No+Picture";
+    if (!reference) {
+        return "https://dummyimage.com/180x120/ffffff/cccccc.png&text=No+Picture";
     }
     const storageRef = ref(getStorage(), reference);
     return getDownloadURL(storageRef)

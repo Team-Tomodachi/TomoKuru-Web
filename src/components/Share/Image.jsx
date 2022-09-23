@@ -10,15 +10,15 @@ export function Image({reference, alt}) {
         // todo: remove setTimeout
         setTimeout(function () {
             getFileUrl(reference).then(result => {
-                console.log("###### result -> ", result);
                 setImageUrl(result);
             })
-        }, 500);
+        }, 100);
     }, [reference])
 
     return imageUrl ?
         (
             <img
+                className={"image"}
                 src={imageUrl}
                 alt={alt}
             />

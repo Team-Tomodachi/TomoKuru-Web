@@ -1,13 +1,10 @@
 #dashboard-container {
     display: flex;
-    flex-direction: row;
 }
 
 #dashboard-menu {
-    width: 250px;
-    border-right: 1px solid #CCCCCC;
+    width: 240px;
 }
 
 #dashboard-content {
-    border-right: 1px solid #CCCCCC;
 }

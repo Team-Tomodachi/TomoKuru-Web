@@ -108,109 +108,121 @@ export default function Dashboard() {
 
     return (
         <>
-            <div id={'dashboard-container'}>
-                <section id={'dashboard-menu'}>
-                    <Sidebar
-                        setView={setView}
-                        setVenues={setVenues}
-                        setEventsWithoutVenue={setEventsWithoutVenue}
-                        setUpcomingEvents={setUpcomingEvents}
-                        setHostedEvents={setHostedEvents}
-                    />
-                </section>
-                {(() => {
-                    if (view === "UserProfile") {
-                        return <section id={'dashboard-content-user-profile'}><UserProfile/></section>;
-                    } else if (view === "Venue") {
-                        return <section id={'dashboard-content-venue'}>
-                            <Venue
+            {/* container */}
+            <div className="container mx-auto">
+                <div id="dashboard-container">
+
+                    {/* menu */}
+                    <div className="container mx-auto">
+                        <section id="dashboard-menu">
+                            <Sidebar
                                 setView={setView}
                                 setVenues={setVenues}
-                                venues={venues}
-                                setSelectedVenue={setSelectedVenue}
-                                selectedVenue={selectedVenue}
+                                setEventsWithoutVenue={setEventsWithoutVenue}
+                                setUpcomingEvents={setUpcomingEvents}
+                                setHostedEvents={setHostedEvents}
                             />
-                        </section>;
-                    } else if (view === "VenueCreation") {
-                        return <section>
-                            <VenueCreation
-                                setView={setView}
-                                setVenues={setVenues}
-                            />
-                        </section>;
-                    } else if (view === "Package") {
-                        return <section>
-                            <Package
-                                setView={setView}
-                                venues={venues}
-                                setSelectedPackageVenue={setSelectedPackageVenue}
-                                selectedPackageVenue={selectedPackageVenue}
-                                setPackages={setPackages}
-                                packages={packages}
-                                setSelectedPackage={setSelectedPackage}
-                                selectedPackage={selectedPackage}
-                            />
-                        </section>;
-                    } else if (view === "PackageCreation") {
-                        return <section>
-                            <PackageCreation
-                                setView={setView}
-                                setPackages={setPackages}
-                                selectedPackageVenue={selectedPackageVenue}
-                            />
-                        </section>;
-                    } else if (view === "Event") {
-                        return <section>
-                            <Event
-                                setView={setView}
-                                venues={venues}
-                                setSelectedEventVenue={setSelectedEventVenue}
-                                selectedEventVenue={selectedEventVenue}
-                                setEvents={setEvents}
-                                events={events}
-                                setSelectedEvent={setSelectedEvent}
-                                selectedEvent={selectedEvent}
-                            />
-                        </section>;
-                    } else if (view === "EventCreation") {
-                        return <section>
-                            <EventCreation
-                                setView={setView}
-                                setEvents={setEvents}
-                                selectedEventVenue={selectedEventVenue}
-                            />
-                        </section>;
-                    } else if (view === "EventsWithoutVenue") {
-                        return <section>
-                            <EventsWithoutVenue
-                                setView={setView}
-                                eventsWithoutVenue={eventsWithoutVenue}
-                                setSelectedEventWithoutVenue={setSelectedEventWithoutVenue}
-                                selectedEventWithoutVenue={selectedEventWithoutVenue}
-                            />
-                        </section>;
-                    } else if (view === "UpcomingEvents") {
-                        return <section>
-                            <UpcomingEvents
-                                upcomingEvents={upcomingEvents}
-                                selectedUpcomingEvent={selectedUpcomingEvent}
-                                setSelectedUpcomingEvent={setSelectedUpcomingEvent}
-                            />
-                        </section>;
-                    } else if (view === "HostedEvents") {
-                        return <section>
-                            <HostedEvents
-                                hostedEvents={hostedEvents}
-                                selectedHostedEvent={selectedHostedEvent}
-                                setSelectedHostedEvent={setSelectedHostedEvent}
-                            />
-                        </section>;
-                    // } else if (view === "Search") {
-                    //     return <section id={'dashboard-content-search'}><Search/></section>;
-                    } else {
-                        return null;
-                    }
-                })()}
+                        </section>
+                    </div>
+
+                    {/* content */}
+                    <div className="container mx-auto">
+                        <section id="dashboard-content">
+                            {(() => {
+                                if (view === "UserProfile") {
+                                    return <section id={'dashboard-content-user-profile'}><UserProfile/></section>;
+                                } else if (view === "Venue") {
+                                    return <section id={'dashboard-content-venue'}>
+                                        <Venue
+                                            setView={setView}
+                                            setVenues={setVenues}
+                                            venues={venues}
+                                            setSelectedVenue={setSelectedVenue}
+                                            selectedVenue={selectedVenue}
+                                        />
+                                    </section>;
+                                } else if (view === "VenueCreation") {
+                                    return <section>
+                                        <VenueCreation
+                                            setView={setView}
+                                            setVenues={setVenues}
+                                        />
+                                    </section>;
+                                } else if (view === "Package") {
+                                    return <section>
+                                        <Package
+                                            setView={setView}
+                                            venues={venues}
+                                            setSelectedPackageVenue={setSelectedPackageVenue}
+                                            selectedPackageVenue={selectedPackageVenue}
+                                            setPackages={setPackages}
+                                            packages={packages}
+                                            setSelectedPackage={setSelectedPackage}
+                                            selectedPackage={selectedPackage}
+                                        />
+                                    </section>;
+                                } else if (view === "PackageCreation") {
+                                    return <section>
+                                        <PackageCreation
+                                            setView={setView}
+                                            setPackages={setPackages}
+                                            selectedPackageVenue={selectedPackageVenue}
+                                        />
+                                    </section>;
+                                } else if (view === "Event") {
+                                    return <section>
+                                        <Event
+                                            setView={setView}
+                                            venues={venues}
+                                            setSelectedEventVenue={setSelectedEventVenue}
+                                            selectedEventVenue={selectedEventVenue}
+                                            setEvents={setEvents}
+                                            events={events}
+                                            setSelectedEvent={setSelectedEvent}
+                                            selectedEvent={selectedEvent}
+                                        />
+                                    </section>;
+                                } else if (view === "EventCreation") {
+                                    return <section>
+                                        <EventCreation
+                                            setView={setView}
+                                            setEvents={setEvents}
+                                            selectedEventVenue={selectedEventVenue}
+                                        />
+                                    </section>;
+                                } else if (view === "EventsWithoutVenue") {
+                                    return <section>
+                                        <EventsWithoutVenue
+                                            setView={setView}
+                                            eventsWithoutVenue={eventsWithoutVenue}
+                                            setSelectedEventWithoutVenue={setSelectedEventWithoutVenue}
+                                            selectedEventWithoutVenue={selectedEventWithoutVenue}
+                                        />
+                                    </section>;
+                                } else if (view === "UpcomingEvents") {
+                                    return <section>
+                                        <UpcomingEvents
+                                            upcomingEvents={upcomingEvents}
+                                            selectedUpcomingEvent={selectedUpcomingEvent}
+                                            setSelectedUpcomingEvent={setSelectedUpcomingEvent}
+                                        />
+                                    </section>;
+                                } else if (view === "HostedEvents") {
+                                    return <section>
+                                        <HostedEvents
+                                            hostedEvents={hostedEvents}
+                                            selectedHostedEvent={selectedHostedEvent}
+                                            setSelectedHostedEvent={setSelectedHostedEvent}
+                                        />
+                                    </section>;
+                                } else {
+                                    return null;
+                                }
+                            })()}
+                        </section>
+                    </div>
+
+                </div>
             </div>
         </>
     )
