@@ -95,7 +95,6 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
 
     return venues ? (
         <>
-            <h1 id={'venue-detail-name'}>Venue Detail</h1>
             {/* Name */}
             <div className="mb-6">
                 <label htmlFor="venue-detail-input-name"

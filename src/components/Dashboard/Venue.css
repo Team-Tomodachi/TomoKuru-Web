@@ -1,6 +1,7 @@
 #venue-container {
     /*border: solid 2px purple;*/
     padding: 10px;
+
 }
 
 #venue-list {
@@ -9,7 +10,7 @@
 }
 
 #venue-detail {
-    border: solid 1px red;
+    /*border: solid 1px red;*/
     padding: 10px;
-    width: 600px;
+    width: 500px;
 }
