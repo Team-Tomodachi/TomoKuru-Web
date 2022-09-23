@@ -29,16 +29,19 @@ export default function EventMessages({ group_id, event_id }) {
 
   //useEffects
   useEffect(() => {
+    console.log(event_id);
     const name = group_id ? `group_${group_id}` : `event_${event_id}`;
-    setCollectionName(name);
-    loadMessages();
+    setCollectionName(`event_${event_id}`);
+    console.log(`COLLECTIONNAME: ${collectionName}`);
+
+    loadMessages(name);
   }, []);
 
   //HANDLERS
-  const loadMessages = async () => {
-    console.log(`COLLECTIONNAME: ${collectionName}`);
+  const loadMessages = async (name) => {
+    console.log(`COLLECTIONNAME: ${name}`);
     const recentMessagesQuery = await query(
-      collection(firestore, collectionName),
+      collection(firestore, name),
       orderBy("timestamp", "desc"),
       limit(25)
     );
