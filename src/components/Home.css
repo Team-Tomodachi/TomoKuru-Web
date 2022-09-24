@@ -11,8 +11,10 @@ font-family: "Salsa", cursive; */
 }
 
 #bg-image {
-  background-image: url("../../public/img/event-party-g5bc2853b7_1280.jpg");
+  background: url("../../public/img/cafe-g245882508_1920.jpg") no-repeat center
+    center fixed;
   height: 100vh;
+  background-size: cover;
   overflow: hidden;
   scroll-behavior: smooth;
 }
