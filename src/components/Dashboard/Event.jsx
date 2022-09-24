@@ -2,6 +2,7 @@ import React from 'react';
 import EventVenueList from "./Event/EventVenueList";
 import EventList from "./Event/EventList";
 import EventDetail from "./Event/EventDetail";
+import Messages from "../Messages/Messages";
 
 require('./Event.css');
 
@@ -43,12 +44,14 @@ export default function Event({
                 {/* event detail */}
                 {selectedEvent.id ? (
                     <div id="event-detail">
-                        <EventDetail
-                            selectedEvent={selectedEvent}
-                            selectedEventVenue={selectedEventVenue}
-                            setEvents={setEvents}
-                            events={events}
-                        />
+                        <div>
+                            <EventDetail
+                                selectedEvent={selectedEvent}
+                                selectedEventVenue={selectedEventVenue}
+                                setEvents={setEvents}
+                                events={events}
+                            />
+                        </div>
                     </div>
                 ) : null}
             </div>

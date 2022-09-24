@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {UserAuth} from "../../../context/AuthContext";
 import {deleteEventByEventId, getEventsByVenueId, updateEventByEventId} from "../../../api";
+import Messages from "../../Messages/Messages";
 
 require('./EventDetail.css');
 
@@ -148,6 +149,8 @@ export default function EventDetail({selectedEvent, selectedEventVenue, setEvent
                     Delete
                 </button>
             </div>
+
+            <Messages event_id={selectedEvent.id} />
         </>
     )
 }
