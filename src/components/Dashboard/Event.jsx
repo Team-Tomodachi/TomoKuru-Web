@@ -35,6 +35,7 @@ export default function Event({
                         <EventList
                             events={events}
                             setSelectedEvent={setSelectedEvent}
+                            setView={setView}
                         />
                     </div>
                 ) : null}

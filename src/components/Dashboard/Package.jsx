@@ -34,6 +34,7 @@ export default function Package({
                         <PackageList
                             packages={packages}
                             setSelectedPackage={setSelectedPackage}
+                            setView={setView}
                         />
                     </div>
                 ) : null}

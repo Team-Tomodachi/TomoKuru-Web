@@ -8,11 +8,15 @@ export function Image({reference, alt}) {
 
     useEffect(() => {
         // todo: remove setTimeout
+        // setTimeout(function () {
+        //     getFileUrl(reference).then(result => {
+        //         setImageUrl(result);
+        //     })
+        // }, 50);
         setTimeout(function () {
-            getFileUrl(reference).then(result => {
-                setImageUrl(result);
-            })
-        }, 50);
+            setImageUrl("https://picsum.photos/seed/picsum/180/120");
+        }, 300);
+
     }, [reference])
 
     return imageUrl ?
