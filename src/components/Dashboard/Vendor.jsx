@@ -29,15 +29,19 @@ export default function Vendor({setView}) {
     return (
         <>
             <div id={"vendor-container"}>
-                {
-                    photoDownloadUrl ? (
-                        <img id={"vendor-avatar"}
-                             src={photoDownloadUrl}
-                             alt={inputFirstName}
-                             onClick={() => setView("UserProfile")}
-                        />
-                    ) : null
-                }
+                {photoDownloadUrl ? (
+                    <img id={"vendor-avatar"}
+                         src={photoDownloadUrl}
+                         alt={inputFirstName}
+                         onClick={() => setView("UserProfile")}
+                    />
+                ) : (
+                    <img id={"vendor-avatar"}
+                         src={"https://picsum.photos/seed/picsum/180/120"}
+                         alt={inputFirstName}
+                         onClick={() => setView("UserProfile")}
+                    />
+                )}
                 <h1>{inputFirstName}</h1>
                 <h1>{inputTitle}</h1>
                 <h1>City: {inputCityWard}</h1>
