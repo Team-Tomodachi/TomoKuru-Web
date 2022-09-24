@@ -25,7 +25,7 @@ export default function VenueCreation({setVenues, setView}) {
 
     const uploadImage = () => {
         if (!inputPhotoFile) return;
-        uploadFile(inputPhotoFile, "packages").then(result => {
+        uploadFile(inputPhotoFile, "venues").then(result => {
             const reference = result.ref.fullPath;
             setPhotoReference(reference);
         });
