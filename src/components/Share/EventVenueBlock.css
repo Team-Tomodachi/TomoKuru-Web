@@ -9,17 +9,17 @@
 .event-venue-block-content {
 }
 
-.venue-venue-block-content-name {
+.event-venue-block-content-name {
     font-size: 0.8rem;
     color: #333333;
 }
 
-.venue-venue-block-content-type {
+.event-venue-block-content-type {
     font-size: 0.6rem;
     color: #888888;
 }
 
-.venue-venue-block-content-seats {
+.event-venue-block-content-seats {
     font-size: 0.5rem;
     color: #888888;
 }

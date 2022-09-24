@@ -23,12 +23,12 @@ export function EventVenueBlock({venue, setSelectedEventVenue, setEvents}) {
                 </div>
                 <div className="event-venue-block-content">
                     {/* name */}
-                    <div className="venue-block-content-name">{venue.location_name}</div>
+                    <div className="event-venue-block-content-name">{venue.location_name}</div>
                     {/*/!* type *!/*/}
-                    <div className="venue-block-content-type">{venue.venue_type}</div>
+                    <div className="event-venue-block-content-type">{venue.venue_type}</div>
                     {/*/!* seats *!/*/}
                     {venue.num_seats > 0
-                        ? <div className="venue-block-content-seats">seats: {venue.num_seats}</div>
+                        ? <div className="event-venue-block-content-seats">seats: {venue.num_seats}</div>
                         : null
                     }
                 </div>

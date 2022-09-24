@@ -1,0 +1,25 @@
+.package-venue-block-container {
+}
+
+.package-venue-block-image {
+    width: 120px;
+    height: 80px;
+}
+
+.package-venue-block-content {
+}
+
+.package-venue-block-content-name {
+    font-size: 0.8rem;
+    color: #333333;
+}
+
+.package-venue-block-content-type {
+    font-size: 0.6rem;
+    color: #888888;
+}
+
+.package-venue-block-content-seats {
+    font-size: 0.5rem;
+    color: #888888;
+}

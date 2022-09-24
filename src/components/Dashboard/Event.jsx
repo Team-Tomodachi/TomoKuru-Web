@@ -18,7 +18,7 @@ export default function Event({
     return (
         <>
             {/* event container */}
-            <div id="event-venue-container">
+            <div id="event-container">
 
                 {/* event venue list */}
                 <div id="event-venue-list" className="flex overflow-x-auto space-x-5">
@@ -41,7 +41,7 @@ export default function Event({
 
                 {/* event detail */}
                 {selectedEvent.id ? (
-                    <div id="event-venue-detail">
+                    <div id="event-detail">
                         <EventDetail
                             selectedEvent={selectedEvent}
                             selectedEventVenue={selectedEventVenue}

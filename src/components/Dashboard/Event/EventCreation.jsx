@@ -20,7 +20,7 @@ export default function EventCreation({setView, setEvents, selectedEventVenue}) 
 
     const uploadImage = () => {
         if (!inputPhotoFile) return;
-        uploadFile(inputPhotoFile, "packages").then(result => {
+        uploadFile(inputPhotoFile, "events").then(result => {
             const reference = result.ref.fullPath;
             setPhotoReference(reference);
             console.log("uploadImage(): ", reference);
