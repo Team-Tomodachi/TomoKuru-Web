@@ -15,6 +15,7 @@ export default function Venue({
         <>
             {/* venue container */}
             <div id="venue-container">
+
                 {/* venue list */}
                 <div id="venue-list" className="flex overflow-x-auto space-x-5">
                     <VenueList

@@ -17,26 +17,31 @@ export default function Event({
                               }) {
     return (
         <>
-            <div id="event-container">
-                <div id="event-venue-list">
+            {/* event container */}
+            <div id="event-venue-container">
+
+                {/* event venue list */}
+                <div id="event-venue-list" className="flex overflow-x-auto space-x-5">
                     <EventVenueList
                         venues={venues}
-                        setView={setView}
                         setSelectedEventVenue={setSelectedEventVenue}
                         setEvents={setEvents}
                     />
                 </div>
-                {selectedEventVenue ? (
-                    <div id="event-list">
+
+                {/* event list */}
+                {selectedEventVenue.id ? (
+                    <div id="event-list" className="flex overflow-x-auto space-x-5">
                         <EventList
-                            setView={setView}
                             events={events}
                             setSelectedEvent={setSelectedEvent}
                         />
                     </div>
                 ) : null}
+
+                {/* event detail */}
                 {selectedEvent.id ? (
-                    <div id="event-detail">
+                    <div id="event-venue-detail">
                         <EventDetail
                             selectedEvent={selectedEvent}
                             selectedEventVenue={selectedEventVenue}

@@ -12,7 +12,7 @@ export function Image({reference, alt}) {
             getFileUrl(reference).then(result => {
                 setImageUrl(result);
             })
-        }, 100);
+        }, 50);
     }, [reference])
 
     return imageUrl ?
