@@ -15,6 +15,7 @@ import {
 } from "firebase/firestore";
 //import { getEventMessages, postEventMessage } from "..TomoKuru-Mobile/../../../api";
 import { getDownloadURL, ref } from "firebase/storage";
+require("./Messages.css");
 
 export default function EventMessages({ group_id, event_id }) {
   const { user } = UserAuth();
@@ -116,22 +117,14 @@ export default function EventMessages({ group_id, event_id }) {
         <div className="message_window" id="message_window">
           {console.log(`.MESSAGES${JSON.stringify(recentMessages)}`)}
           {recentMessages.map((message) => {
-            if (message.profileImage) {
-              return (
-                <div className="message_card">
-                  <p className="message_text">{message.message}</p>
-                  <p className="messare_user">{message.user_name}</p>
-                  {/* <img
-                    src={getUserImage(message.profileImage)}
-                    alt="user profile"
-                  /> */}
-                </div>
-              );
-            }
             return (
               <div className="message_card">
                 <p className="message_text">{message.message}</p>
-                <p className="messare_user">{message.user_name}</p>
+                <p className="message_user">{message.user_name}</p>
+                {/* <img
+                    src={getUserImage(message.profileImage)}
+                    alt="user profile"
+                  /> */}
               </div>
             );
           })}
@@ -140,11 +133,14 @@ export default function EventMessages({ group_id, event_id }) {
           <form onSubmit={(e) => handleSubmit(e)}>
             <input
               type="text"
+              className="newmessage"
               name="newmessage"
               placeholder="enter your message here"
               onChange={onChange}
             />
-            <button type="submit">Send</button>
+            <button className="sendbutton" type="submit">
+              Send
+            </button>
           </form>
         </div>
       </div>
