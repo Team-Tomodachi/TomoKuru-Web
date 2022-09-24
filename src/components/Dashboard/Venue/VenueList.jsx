@@ -8,10 +8,12 @@ export default function VenueList({venues, setSelectedVenue, setView}) {
     return (
         <>
             {/* Venue Creation Button */}
-            <CreationBlock
-                setView={setView}
-                view={"VenueCreation"}
-            />
+            {venues ? (
+                <CreationBlock
+                    setView={setView}
+                    view={"VenueCreation"}
+                />
+            ) : null}
 
             {/* Venue List */}
             {venues.map((item) => {
