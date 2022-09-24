@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&family=Salsa&display=swap");
+/* font-family: "Open Sans", sans-serif;
+font-family: "Salsa", cursive; */
+
+#product_name {
+  font-family: "Salsa", sans-serif;
+}
+
+#bg-image {
+  background: url("../../public/img/cafe-g245882508_1920.jpg") no-repeat center
+    center fixed;
+  height: 100vh;
+  background-size: cover;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
