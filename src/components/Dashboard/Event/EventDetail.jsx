@@ -173,7 +173,6 @@ export default function EventDetail({
           Delete
         </button>
       </div>
-      <Messages event_id={selectedEvent.id} />
     </>
   );
 }
