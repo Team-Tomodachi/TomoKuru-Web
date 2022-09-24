@@ -121,10 +121,10 @@ export default function EventMessages({ group_id, event_id }) {
                 <div className="message_card">
                   <p className="message_text">{message.message}</p>
                   <p className="messare_user">{message.user_name}</p>
-                  <img
+                  {/* <img
                     src={getUserImage(message.profileImage)}
                     alt="user profile"
-                  />
+                  /> */}
                 </div>
               );
             }
