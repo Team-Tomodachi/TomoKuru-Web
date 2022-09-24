@@ -29,13 +29,15 @@ export default function EventMessages({ group_id, event_id }) {
 
   //useEffects
   useEffect(() => {
-    console.log(event_id);
     const name = group_id ? `group_${group_id}` : `event_${event_id}`;
-    setCollectionName(`event_${event_id}`);
-    console.log(`COLLECTIONNAME: ${collectionName}`);
+    setCollectionName(name);
+  }, [collectionName, event_id, group_id]);
 
-    loadMessages(name);
-  }, []);
+  useEffect(() => {
+    if (collectionName) {
+      loadMessages(collectionName);
+    }
+  }, [collectionName]);
 
   //HANDLERS
   const loadMessages = async (name) => {
@@ -45,12 +47,16 @@ export default function EventMessages({ group_id, event_id }) {
       orderBy("timestamp", "desc"),
       limit(25)
     );
-    setRecentMessages(recentMessagesQuery);
-    console.log(recentMessages);
+    //setRecentMessages(recentMessagesQuery);
+    console.log(
+      `RECENT MESSAGES BEFORE SNAPSHOT: ${JSON.stringify(recentMessages)}`
+    );
     onSnapshot(recentMessagesQuery, function (snapshot) {
       snapshot.docChanges().forEach(function (change) {
         console.log(`CHANGE: ${JSON.stringify(change)}`);
-        // setRecentMessages(recentMessagesQuery);
+        let dbMessage = change.doc.data();
+        console.log(`DBMESSAGE: ${JSON.stringify(dbMessage)}`);
+        setRecentMessages([...recentMessages, dbMessage]);
       });
     });
   };
@@ -80,20 +86,25 @@ export default function EventMessages({ group_id, event_id }) {
     }
   };
 
+  const displayMessage = (message) => {
+    const window = document.getElementById("message_window");
+  };
+
   return (
     <>
       <div>
-        <div className="message_window">
-          {recentMessages.map((message) => (
+        <div className="message_window" id="message_window">
+          {console.log(`.MESSAGES${JSON.stringify(recentMessages)}`)}
+          {
             <div className="message_card">
-              <p className="message_text">{message.message}</p>
-              <p className="messare_user">{message.user_name}</p>
+              <p className="message_text">{recentMessages.message}</p>
+              <p className="messare_user">{recentMessages.user_name}</p>
               <img
-                src={getUserImage(message.profileImage)}
+                src={getUserImage(recentMessages.profileImage)}
                 alt="user profile"
               />
             </div>
-          ))}
+          }
         </div>
         <div className="message_input">
           <form action="">
