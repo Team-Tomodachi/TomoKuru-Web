@@ -5,7 +5,7 @@ import {
   getEventsByVenueId,
   updateEventByEventId,
 } from "../../../api";
-import Messages from "../../Messages/Messages";
+import ChatRoom from "../../Messages/Messages";
 
 require("./EventDetail.css");
 
@@ -174,7 +174,7 @@ export default function EventDetail({
         </button>
       </div>
 
-      <Messages event_id={selectedEvent.id} />
+      <ChatRoom event_id={selectedEvent.id} />
     </>
   );
 }
