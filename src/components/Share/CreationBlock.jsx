@@ -14,7 +14,8 @@ export function CreationBlock({setView, view}) {
 
                 {/* image */}
                 <div className={'creation-block-image'}>
-                    <img src={"https://dummyimage.com/180x120/aaaaaa/ffffff.png&text=Create"} />
+                    <img
+                        src={"https://dummyimage.com/180x120/aaaaaa/ffffff.png&text=Create"}/>
                 </div>
 
             </div>
