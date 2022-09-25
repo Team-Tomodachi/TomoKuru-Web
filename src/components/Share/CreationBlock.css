@@ -1,0 +1,14 @@
+.creation-block-container {
+}
+
+.creation-block-image {
+    width: 120px;
+    height: 80px;
+}
+
+.creation-block-content {
+}
+
+img {
+    border-radius: 10%;
+}

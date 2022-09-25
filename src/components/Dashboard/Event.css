@@ -1,22 +1,22 @@
 #event-container {
-    display: flex;
+    /*border: solid 2px purple;*/
+    padding: 10px;
 }
 
 #event-venue-list {
     /*border: solid 1px blue;*/
-    width: 200px;
-    padding: 20px;
+    padding: 10px;
+    border-bottom: 1px solid #cccccc;
 }
 
 #event-list {
-    /*border: solid 1px blue;*/
-    width: 200px;
-    padding: 20px;
+    /*border: solid 1px green ;*/
+    padding: 10px;
 }
 
 #event-detail {
+    display: flex;
     /*border: solid 1px red;*/
-    padding: 20px;
-    text-align: left;
-    width: 300px;
+    padding: 10px;
+    width: 500px;
 }

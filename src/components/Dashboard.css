@@ -1,13 +1,13 @@
 #dashboard-container {
     display: flex;
-    flex-direction: row;
+    /*border: 2px solid yellow;*/
 }
 
 #dashboard-menu {
-    width: 250px;
-    border-right: 1px solid #CCCCCC;
+    width: 240px;
+    /*border: 2px solid red;*/
 }
 
 #dashboard-content {
-    border-right: 1px solid #CCCCCC;
+    /*border: 2px solid blue;*/
 }

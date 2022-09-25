@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {createVenue, getVenuesByUserId} from '../../../api';
 import {UserAuth} from '../../../context/AuthContext'
+import {uploadFile} from "../../../utilities/firebase-storage";
 
 require('./VenueCreation.css');
 
@@ -18,36 +19,37 @@ export default function VenueCreation({setVenues, setView}) {
     const [inputSeatNumber, setInputSeatNumber] = useState(0);
     const [inputVenueType, setInputVenueType] = useState("");
 
+    // Photo
+    const [inputPhotoFile, setInputPhotoFile] = useState("");
+    const [photoReference, setPhotoReference] = useState("");
+
+    const uploadImage = () => {
+        if (!inputPhotoFile) return;
+        uploadFile(inputPhotoFile, "venues").then(result => {
+            const reference = result.ref.fullPath;
+            setPhotoReference(reference);
+        });
+    };
+
     const handleVenueCreationSaveButtonClick = async () => {
         console.log("handleVenueCreationSaveButtonClick: ")
         try {
-            console.log(inputName);
-            console.log(inputCityWard);
-            console.log(inputPrefecture);
-            console.log(inputPhoneNumber);
-            console.log(inputAddress);
-            console.log(inputVenueEmail);
-            console.log(inputDescription);
-            console.log(inputSeatNumber);
-            // todo: backend has no venue type
-            console.log(inputVenueType);
-            let result = await createVenue({
-                "user_id": user.id,
-                "location_name": inputName,
-                "city_ward": inputCityWard,
-                "prefecture": inputPrefecture,
-                "phone_num": inputPhoneNumber,
-                "address": inputAddress,
-                "venue_email": inputVenueEmail,
-                "description": inputDescription,
-                "num_seats": inputSeatNumber,
+            await createVenue({
+                user_id: user.id,
+                location_name: inputName,
+                city_ward: inputCityWard,
+                prefecture: inputPrefecture,
+                phone_num: inputPhoneNumber,
+                address: inputAddress,
+                venue_email: inputVenueEmail,
+                description: inputDescription,
+                num_seats: inputSeatNumber,
+                venue_type: inputVenueType,
+                photo_url: photoReference,
             });
-            console.log('createVenue: ', result);
 
-            // todo
             getVenuesByUserId(user.id).then(resp => {
                 setVenues(resp.data);
-                console.log("VenueCreation -> getVenuesByUserId: ", resp.data);
                 setView("Venue");
             });
 
@@ -176,6 +178,30 @@ export default function VenueCreation({setVenues, setView}) {
                     onClick={() => handleVenueCreationSaveButtonClick()}
                 >
                     Create
+                </button>
+            </div>
+            {/* Photo */}
+            <div className="mb-6">
+                <label
+                    htmlFor="venue-detail-input-photo-url"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                >
+                    Image
+                </label>
+                <input
+                    type="file"
+                    name="package-image"
+                    id="venue-detail-input-photo-url"
+                    accept="image/png, image/jpeg"
+                    onChange={(e) => {
+                        setInputPhotoFile(e.target.files[0]);
+                    }}
+                />
+                <button
+                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                    onClick={uploadImage}
+                >
+                    Upload Image
                 </button>
             </div>
         </>

@@ -2,6 +2,10 @@
     text-align: center;
 }
 
+#vendor-container h1 {
+    color: #666666;
+}
+
 #vendor-avatar {
     margin: 0 auto;
     width: 100px;

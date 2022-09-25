@@ -2,6 +2,7 @@ import React from 'react';
 import EventVenueList from "./Event/EventVenueList";
 import EventList from "./Event/EventList";
 import EventDetail from "./Event/EventDetail";
+import Messages from "../Messages/Messages";
 
 require('./Event.css');
 
@@ -17,32 +18,40 @@ export default function Event({
                               }) {
     return (
         <>
+            {/* event container */}
             <div id="event-container">
-                <div id="event-venue-list">
+
+                {/* event venue list */}
+                <div id="event-venue-list" className="flex overflow-x-auto space-x-5">
                     <EventVenueList
                         venues={venues}
-                        setView={setView}
                         setSelectedEventVenue={setSelectedEventVenue}
                         setEvents={setEvents}
                     />
                 </div>
-                {selectedEventVenue ? (
-                    <div id="event-list">
+
+                {/* event list */}
+                {selectedEventVenue.id ? (
+                    <div id="event-list" className="flex overflow-x-auto space-x-5">
                         <EventList
-                            setView={setView}
                             events={events}
                             setSelectedEvent={setSelectedEvent}
+                            setView={setView}
                         />
                     </div>
                 ) : null}
+
+                {/* event detail */}
                 {selectedEvent.id ? (
                     <div id="event-detail">
-                        <EventDetail
-                            selectedEvent={selectedEvent}
-                            selectedEventVenue={selectedEventVenue}
-                            setEvents={setEvents}
-                            events={events}
-                        />
+                        <div>
+                            <EventDetail
+                                selectedEvent={selectedEvent}
+                                selectedEventVenue={selectedEventVenue}
+                                setEvents={setEvents}
+                                events={events}
+                            />
+                        </div>
                     </div>
                 ) : null}
             </div>

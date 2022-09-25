@@ -1,4 +1,5 @@
 import React from 'react';
+import {Image} from "../../Share/Image";
 
 require('./UpcomingEventsList.css');
 
@@ -20,7 +21,7 @@ export default function UpcomingEventsList({upcomingEvents, setSelectedUpcomingE
                                 <div
                                     className={'event-list-block-image'}
                                 >
-                                    <img src="https://picsum.photos/200/100" alt="Package Photo"/>
+                                    <Image reference={item.photo_url} alt={item.name}/>
                                 </div>
                                 <div
                                     className={'event-list-block-content'}

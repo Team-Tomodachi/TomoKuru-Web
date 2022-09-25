@@ -1,0 +1,25 @@
+.event-venue-block-container {
+}
+
+.event-venue-block-image {
+    width: 120px;
+    height: 80px;
+}
+
+.event-venue-block-content {
+}
+
+.event-venue-block-content-name {
+    font-size: 0.8rem;
+    color: #333333;
+}
+
+.event-venue-block-content-type {
+    font-size: 0.6rem;
+    color: #888888;
+}
+
+.event-venue-block-content-seats {
+    font-size: 0.5rem;
+    color: #888888;
+}

@@ -1,0 +1,15 @@
+.package-block-container {
+}
+
+.package-block-image {
+    width: 120px;
+    height: 80px;
+}
+
+.package-block-content {
+}
+
+.package-block-content-name {
+    font-size: 0.8rem;
+    color: #333333;
+}
