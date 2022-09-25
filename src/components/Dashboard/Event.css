@@ -1,22 +1,23 @@
 #event-container {
-    /*border: solid 2px purple;*/
-    padding: 10px;
+  /*border: solid 2px purple;*/
+  padding: 10px;
 }
 
 #event-venue-list {
-    /*border: solid 1px blue;*/
-    padding: 10px;
-    border-bottom: 1px solid #cccccc;
+  /*border: solid 1px blue;*/
+  padding: 10px;
+  border-bottom: 1px solid #cccccc;
 }
 
 #event-list {
-    /*border: solid 1px green ;*/
-    padding: 10px;
+  /*border: solid 1px green ;*/
+  padding: 10px;
 }
 
 #event-detail {
-    display: flex;
-    /*border: solid 1px red;*/
-    padding: 10px;
-    width: 500px;
+  display: flex;
+  /*border: solid 1px red;*/
+  padding: 10px;
+  flex-grow: 1;
+  /* width: 80%; */
 }
