@@ -42,7 +42,7 @@ export default function ChatRoom({ group_id, event_id }) {
 
     const { id, photo_url, first_name } = user;
 
-    await messagesRef.add({
+    await addDoc(messagesRef, {
       message: formValue,
       timestamp: serverTimestamp(),
       user_id: id,
