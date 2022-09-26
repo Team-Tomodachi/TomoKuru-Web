@@ -1,14 +1,20 @@
 .creation-block-container {
 }
 
-.creation-block-image {
+.creation-block-button-create {
     width: 120px;
     height: 80px;
-}
-
-.creation-block-content {
-}
-
-.creation-block-image img {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #666666;
+    border: 1px solid #FCB90F;
+    background-color: #FFFFFF;
     border-radius: 10%;
+}
+
+.creation-block-button-create:hover {
+    font-weight: bold;
+    color: #000000;
+    background-color: #FCB90F;
+    border: 1px solid #FCB90F;
 }
