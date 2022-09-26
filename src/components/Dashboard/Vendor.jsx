@@ -21,9 +21,13 @@ export default function Vendor({setView}) {
         setInputTitle(user.title);
         setInputCityWard(user.city_ward);
         setInputPrefecture(user.prefecture);
-        getFileUrl(user.photo_url).then((result) => {
-            setPhotoDownloadUrl(result);
-        });
+        if (user.photo_url) {
+            getFileUrl(user.photo_url).then((result) => {
+                setPhotoDownloadUrl(result);
+            });
+        } else {
+            setPhotoDownloadUrl(null);
+        }
     }, [user]);
 
     return (
@@ -36,7 +40,14 @@ export default function Vendor({setView}) {
                              alt={inputName}
                              onClick={() => setView("UserProfile")}
                         />
-                    ) : null
+                    ) : (
+                        <img
+                            id="vendor-avatar"
+                            src="https://dummyimage.com/150x150/ffffff/cccccc.png&text=No+picture"
+                            alt="No picture"
+                            onClick={() => setView("UserProfile")}
+                        />
+                    )
                 }
                 <div id="vendor-name">{inputName}</div>
                 <div id="vendor-title">{inputTitle}</div>
