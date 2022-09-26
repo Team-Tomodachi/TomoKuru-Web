@@ -1,0 +1,47 @@
+#user-profile-container {
+    padding: 10px;
+    /*border: 2px solid greenyellow;*/
+}
+
+#user-profile-container span {
+    background-color: #DFDFDF;
+}
+
+#user-profile-title {
+    text-align: center;
+}
+
+#user-profile-image-container {
+    padding: 10px;
+}
+
+#user-profile-image {
+    margin: auto;
+    max-width: 200px;
+    max-height: 200px;
+}
+
+#user-profile-input-image-upload {
+    color: #888888;
+}
+
+#user-profile-input-name {
+}
+
+#user-profile-input-title {
+}
+
+#user-profile-input-city-ward {
+}
+
+#user-profile-input-prefecture {
+}
+
+#user-profile-button-container {
+    text-align: right;
+}
+
+#user-profile-button-save {
+    margin: 10px;
+    background-color: #FCB90F;
+}

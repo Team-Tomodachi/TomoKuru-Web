@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {UserAuth} from '../../context/AuthContext'
 import {getUserByEmail, updateUserByEmail} from '../../api';
 import {uploadFile} from "../../utilities/firebase-storage";
+import {User, Bookmark, Map, MapPin} from 'react-feather';
 
 require('./UserProfile.css');
 
@@ -9,7 +10,7 @@ export default function UserProfile() {
     const {user, updateUser} = UserAuth();
 
     // User
-    const [inputFirstName, setInputFirstName] = useState(user.first_name);
+    const [inputName, setInputName] = useState(user.first_name);
     const [inputTitle, setInputTitle] = useState(user.title);
     const [inputCityWard, setInputCityWard] = useState(user.city_ward);
     const [inputPrefecture, setInputPrefecture] = useState(user.prefecture);
@@ -27,16 +28,19 @@ export default function UserProfile() {
     };
 
     useEffect(() => {
-        setInputFirstName(inputFirstName);
+        setInputName(inputName);
         setInputTitle(inputTitle);
         setInputCityWard(inputCityWard);
         setInputPrefecture(inputPrefecture);
-    }, [inputFirstName, inputTitle, inputCityWard, inputPrefecture]);
+    }, [inputName, inputTitle, inputCityWard, inputPrefecture]);
 
     const handleSaveButtonClick = async () => {
         try {
+            // todo error handling
+            uploadImage();
+
             const newUser = {
-                first_name: inputFirstName,
+                first_name: inputName,
                 title: inputTitle,
                 city_ward: inputCityWard,
                 prefecture: inputPrefecture,
@@ -58,90 +62,129 @@ export default function UserProfile() {
 
     return (
         <>
-            <h1>User Profile</h1>
-            <div id={"user-profile"}>
-                {/* Name */}
-                <div>
-                    <label htmlFor="user-profile-name-input"
+            <section id="user-profile-container">
+                {/* Title */}
+                <h1 id="user-profile-title">User Profile</h1>
+
+                <hr/>
+
+                {/* Image */}
+                <section id="user-profile-image-container">
+                    <img
+                        id="user-profile-image"
+                        src="https://dummyimage.com/600x800/aaaaaa/ffffff"
+                        alt="Dummy Photo"
+                    />
+                </section>
+
+                <hr/>
+
+                {/* Image Upload */}
+                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                       htmlFor="user-profile-input-image-upload">
+                    Upload Image
+                </label>
+                <input
+                    className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                    id="user-profile-input-image-upload"
+                    type="file"
+                    accept="image/png, image/jpeg"
+                    onChange={(e) => {
+                        setInputPhotoFile(e.target.files[0]);
+                    }}
+                />
+
+
+                <div id={"user-profile"}>
+                    {/* Name */}
+                    <label htmlFor="user-profile-input-name"
                            className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                         Name
                     </label>
-                    <input type="text" id="user-profile-name-input"
-                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                           value={inputFirstName.toString()}
-                           onChange={(e) => setInputFirstName(e.target.value)}
-                    />
-                </div>
-                {/* Title */}
-                <div>
+                    <div className="flex">
+                    <span
+                        className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                        <User/>
+                    </span>
+                        <input type="text"
+                               id="user-profile-input-name"
+                               className="rounded-none rounded-r-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                               placeholder=""
+                               value={inputName.toString()}
+                               onChange={(e) => setInputName(e.target.value)}
+                        />
+                    </div>
+
+                    {/* Title */}
                     <label htmlFor="user-profile-title-input"
                            className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                         Title
                     </label>
-                    <input type="text" id="user-profile-title-input"
-                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                           value={inputTitle.toString()}
-                           onChange={(e) => setInputTitle(e.target.value)}
-                    />
-                </div>
-                {/* City/Ward */}
-                <div>
-                    <label htmlFor="user-profile-city-ward-input"
+                    <div className="flex">
+                        <span
+                            className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                            <Bookmark/>
+                        </span>
+                        <input type="text"
+                               id="user-profile-title-input"
+                               className="rounded-none rounded-r-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                               placeholder=""
+                               value={inputTitle.toString()}
+                               onChange={(e) => setInputTitle(e.target.value)}
+                        />
+                    </div>
+
+                    {/* City/Ward */}
+                    <label htmlFor="user-profile-input-city-ward"
                            className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                         City/Ward
                     </label>
-                    <input type="text" id="user-profile-city-ward-input"
-                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                           value={inputCityWard.toString()}
-                           onChange={(e) => setInputCityWard(e.target.value)}
-                    />
-                </div>
-                {/* Prefecture */}
-                <div>
-                    <label htmlFor="user-profile-prefecture-input"
+                    <div className="flex">
+                        <span
+                            className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                            <MapPin/>
+                        </span>
+                        <input type="text"
+                               id="user-profile-input-city-ward"
+                               className="rounded-none rounded-r-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                               placeholder=""
+                               value={inputCityWard.toString()}
+                               onChange={(e) => setInputCityWard(e.target.value)}
+                        />
+                    </div>
+
+                    {/* Prefecture */}
+                    <label htmlFor="user-profile-input-prefecture"
                            className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                         Prefecture
                     </label>
-                    <input type="text" id="user-profile-prefecture-input"
-                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                           value={inputPrefecture.toString()}
-                           onChange={(e) => setInputPrefecture(e.target.value)}
-                    />
-                </div>
+                    <div className="flex">
+                        <span
+                            className="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300 dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600">
+                            <Map/>
+                        </span>
+                        <input type="text"
+                               id="user-profile-input-prefecture"
+                               className="rounded-none rounded-r-lg bg-gray-50 border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                               placeholder=""
+                               value={inputPrefecture.toString()}
+                               onChange={(e) => setInputPrefecture(e.target.value)}
+                        />
+                    </div>
 
-                {/* Photo URL */}
-                <div className="mb-6">
-                    <label
-                        htmlFor="venue-detail-input-photo-url"
-                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                    >
-                        Event Image
-                    </label>
-                    <input
-                        type="file"
-                        name="package-image"
-                        id="venue-detail-input-photo-url"
-                        accept="image/png, image/jpeg"
-                        onChange={(e) => {
-                            setInputPhotoFile(e.target.files[0]);
-                        }}
-                    />
-                    <button
-                        className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                        onClick={uploadImage}
-                    >
-                        Upload Image
-                    </button>
-                </div>
+                    {/* Button */}
+                    <section id="user-profile-button-container">
+                        <button
+                            id="user-profile-button-save"
+                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-10 rounded"
+                            onClick={() => handleSaveButtonClick()}
+                        >
+                            Save
+                        </button>
 
-                {/* Button */}
-                <button
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                    onClick={() => handleSaveButtonClick()}
-                >
-                    Save
-                </button>
-            </div>
+                    </section>
+                </div>
+            </section>
         </>
     )
 }
