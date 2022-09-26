@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {UserAuth} from "../../context/AuthContext"
 import {getFileUrl} from "../../utilities/firebase-storage";
-import {User, Bookmark, Map, MapPin} from 'react-feather';
+import {MapPin} from 'react-feather';
 
 require("./Vendor.css");
 
