@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from "react";
 import {UserAuth} from "../../context/AuthContext"
 import {getFileUrl} from "../../utilities/firebase-storage";
+import {User, Bookmark, Map, MapPin} from 'react-feather';
 
 require("./Vendor.css");
 
 export default function Vendor({setView}) {
     const {user} = UserAuth();
 
-    const [inputFirstName, setInputFirstName] = useState(user.first_name);
+    const [inputName, setInputName] = useState(user.first_name);
     const [inputTitle, setInputTitle] = useState(user.title);
     const [inputCityWard, setInputCityWard] = useState(user.city_ward);
     const [inputPrefecture, setInputPrefecture] = useState(user.prefecture);
@@ -16,7 +17,7 @@ export default function Vendor({setView}) {
     const [photoDownloadUrl, setPhotoDownloadUrl] = useState("");
 
     useEffect(() => {
-        setInputFirstName(user.first_name);
+        setInputName(user.first_name);
         setInputTitle(user.title);
         setInputCityWard(user.city_ward);
         setInputPrefecture(user.prefecture);
@@ -25,24 +26,27 @@ export default function Vendor({setView}) {
         });
     }, [user]);
 
-
     return (
         <>
-            <div id={"vendor-container"}>
+            <section id={"vendor-container"}>
                 {
                     photoDownloadUrl ? (
                         <img id={"vendor-avatar"}
                              src={photoDownloadUrl}
-                             alt={inputFirstName}
+                             alt={inputName}
                              onClick={() => setView("UserProfile")}
                         />
                     ) : null
                 }
-                <h1>{inputFirstName}</h1>
-                <h1>{inputTitle}</h1>
-                <h1>City: {inputCityWard}</h1>
-                <h1>Prefecture: {inputPrefecture}</h1>
-            </div>
+                <div id="vendor-name">{inputName}</div>
+                <div id="vendor-title">{inputTitle}</div>
+                <section id="vendor-location-container">
+                    {inputCityWard || inputPrefecture ? (<MapPin/>) : null}
+                    <span>{inputCityWard}</span>
+                    {inputCityWard && inputPrefecture ? (<span>, </span>) : null}
+                    <span>{inputPrefecture}</span>
+                </section>
+            </section>
         </>
     )
 }
