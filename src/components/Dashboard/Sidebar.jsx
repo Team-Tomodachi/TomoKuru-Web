@@ -73,43 +73,43 @@ export default function Sidebar({setView, setVenues, setEventsWithoutVenue, setU
             </div>
             <div id={'sidebar-features'}>
                 <button
-                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded"
                     onClick={() => handleVenueButtonClick()}
                 >
                     Venue
                 </button>
                 <button
-                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded"
                     onClick={() => handlePackageButtonClick()}
                 >
                     Package
                 </button>
                 <button
-                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded"
                     onClick={() => handleEventButtonClick()}
                 >
                     Event
                 </button>
                 <button
-                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded"
                     onClick={() => handleEventsWithoutVenueButtonClick()}
                 >
                     Events without venue
                 </button>
                 <button
-                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded"
                     onClick={() => handleUpcomingEventsButtonClick()}
                 >
                     Upcoming Events
                 </button>
                 <button
-                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded"
                     onClick={() => handleHostedEventsButtonClick()}
                 >
                     Hosted Events
                 </button>
                 {/*<button*/}
-                {/*    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"*/}
+                {/*    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 hover:border-transparent rounded"*/}
                 {/*    onClick={() => setView("Search")}*/}
                 {/*>*/}
                 {/*    Search*/}

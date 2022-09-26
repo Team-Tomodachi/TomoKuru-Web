@@ -11,4 +11,15 @@
 #sidebar-features button {
     margin-top: 10px;
     margin-bottom: 10px;
+    font-weight: bold;
+    color: #666666;
+    border: 1px solid #FCB90F;
+    background-color: #FFFFFF;
+}
+
+#sidebar-features button:hover {
+    font-weight: bold;
+    color: #000000;
+    background-color: #FCB90F;
+    border: 0;
 }
