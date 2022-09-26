@@ -43,5 +43,16 @@
 
 #user-profile-button-save {
     margin: 10px;
+    font-weight: bold;
+    color: #888888;
+    border: 1px solid #FFD15C;
+    background-color: #FFD15C;
+}
+
+#user-profile-button-save:hover {
+    margin: 10px;
+    font-weight: bold;
+    color: #000000;
     background-color: #FCB90F;
+    border: 1px solid #FCB90F;
 }
