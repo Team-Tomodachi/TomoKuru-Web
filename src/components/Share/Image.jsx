@@ -14,7 +14,7 @@ export function Image({reference, alt}) {
         //     })
         // }, 50);
         setTimeout(function () {
-            setImageUrl("https://picsum.photos/seed/picsum/180/120");
+            setImageUrl("https://picsum.photos/seed/picsum/120/80");
         }, 300);
 
     }, [reference])
