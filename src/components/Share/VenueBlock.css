@@ -4,9 +4,12 @@
 .venue-block-image {
     width: 120px;
     height: 80px;
+    margin: auto;
+    object-fit: cover;
 }
 
 .venue-block-content {
+    text-align: center;
 }
 
 .venue-block-content-name {
