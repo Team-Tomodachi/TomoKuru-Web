@@ -1,5 +1,5 @@
 #user-profile-container {
-    padding: 10px;
+    padding: 20px;
     /*border: 2px solid greenyellow;*/
 }
 
@@ -32,9 +32,6 @@
 }
 
 #user-profile-input-city-ward {
-}
-
-#user-profile-input-prefecture {
 }
 
 #user-profile-button-container {
