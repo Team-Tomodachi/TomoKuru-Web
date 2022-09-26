@@ -87,6 +87,8 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                 console.log("getVenuesByUserId: ", resp.data);
             });
 
+            setSelectedVenue({});
+
         } catch (e) {
             // todo: popup window to show error message
             console.error(e);
@@ -143,8 +145,8 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                 <input type="text"
                        id="venue-detail-input-phone-number"
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value={inputPhoneNumber}
-                    onChange={(e) => setInputPhoneNumber(e.target.value)}
+                       value={inputPhoneNumber}
+                       onChange={(e) => setInputPhoneNumber(e.target.value)}
                 />
             </div>
             {/* Address */}
@@ -156,8 +158,8 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                 <input type="text"
                        id="venue-detail-input-address"
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value={inputAddress}
-                    onChange={(e) => setInputAddress(e.target.value)}
+                       value={inputAddress}
+                       onChange={(e) => setInputAddress(e.target.value)}
                 />
             </div>
             {/* Venue Email */}
@@ -169,8 +171,8 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                 <input type="text"
                        id="venue-detail-input-venue-email"
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value={inputVenueEmail}
-                    onChange={(e) => setInputVenueEmail(e.target.value)}
+                       value={inputVenueEmail}
+                       onChange={(e) => setInputVenueEmail(e.target.value)}
                 />
             </div>
             {/* Description */}
@@ -182,8 +184,8 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                 <input type="text"
                        id="venue-detail-input-description"
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value={inputDescription}
-                    onChange={(e) => setInputDescription(e.target.value)}
+                       value={inputDescription}
+                       onChange={(e) => setInputDescription(e.target.value)}
                 />
             </div>
             {/* Seat Number */}
@@ -202,31 +204,6 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                 />
             </div>
 
-            {/* Photo */}
-            <div className="mb-6">
-                <label
-                    htmlFor="venue-detail-input-photo-url"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >
-                    Image
-                </label>
-                <input
-                    type="file"
-                    name="package-image"
-                    id="venue-detail-input-photo-url"
-                    accept="image/png, image/jpeg"
-                    onChange={(e) => {
-                        setInputPhotoFile(e.target.files[0]);
-                    }}
-                />
-                <button
-                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                    onClick={uploadImage}
-                >
-                    Upload Image
-                </button>
-            </div>
-
             {/* Type */}
             <div className="mb-6">
                 <label htmlFor="venue-detail-input-type"
@@ -236,28 +213,43 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                 <input type="text"
                        id="venue-detail-input-type"
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value={inputVenueType}
-                    onChange={(e) => setInputVenueType(e.target.value)}
+                       value={inputVenueType}
+                       onChange={(e) => setInputVenueType(e.target.value)}
                 />
             </div>
 
+            {/* Image Upload */}
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                   htmlFor="venue-detail-input-image-upload">
+                Upload Image
+            </label>
+            <input
+                className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                id="venue-detail-input-image-upload"
+                type="file"
+                accept="image/png, image/jpeg"
+                onChange={(e) => {
+                    setInputPhotoFile(e.target.files[0]);
+                }}
+            />
 
-            <div className="mb-6">
+            <section id="venue-detail-button-container">
                 <button
+                    id="venue-detail-button-save"
                     className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                     onClick={() => handleVenueDetailSaveButtonClick()}
                 >
                     Save
                 </button>
-            </div>
-            <div className="mb-6">
                 <button
+                    id="venue-detail-button-delete"
                     className="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded"
                     onClick={() => handleVenueDetailDeleteButtonClick()}
                 >
                     Delete
                 </button>
-            </div>
+            </section>
+
         </>
     ) : null
 }

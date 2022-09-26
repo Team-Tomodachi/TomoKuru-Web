@@ -34,6 +34,9 @@ export default function VenueCreation({setVenues, setView}) {
     const handleVenueCreationSaveButtonClick = async () => {
         console.log("handleVenueCreationSaveButtonClick: ")
         try {
+            // todo error handling
+            uploadImage();
+
             await createVenue({
                 user_id: user.id,
                 location_name: inputName,
@@ -61,94 +64,100 @@ export default function VenueCreation({setVenues, setView}) {
 
     return (
         <>
-            <h1 id={'venue-detail-name'}>Venue Detail</h1>
             {/* Name */}
             <div className="mb-6">
-                <label htmlFor="venue-detail-input-name"
+                <label htmlFor="venue-creation-input-name"
                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                    Name *
+                    Name
                 </label>
                 <input type="text"
-                       id="venue-detail-input-name"
+                       id="venue-creation-input-name"
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       value={inputName}
                        onChange={(e) => setInputName(e.target.value)}
                 />
             </div>
             {/* City / Ward */}
             <div className="mb-6">
-                <label htmlFor="venue-detail-input-city-ward"
+                <label htmlFor="venue-creation-input-city-ward"
                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                    City / Ward *
+                    City / Ward
                 </label>
                 <input type="text"
-                       id="venue-detail-input-city-ward"
+                       id="venue-creation-input-city-ward"
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       value={inputCityWard}
                        onChange={(e) => setInputCityWard(e.target.value)}
                 />
             </div>
             {/* Prefecture */}
             <div className="mb-6">
-                <label htmlFor="venue-detail-input-prefecture"
+                <label htmlFor="venue-creation-input-prefecture"
                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                    Prefecture *
+                    Prefecture
                 </label>
                 <input type="text"
-                       id="venue-detail-input-prefecture"
+                       id="venue-creation-input-prefecture"
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       value={inputPrefecture}
                        onChange={(e) => setInputPrefecture(e.target.value)}
                 />
             </div>
             {/* Phone Number */}
             <div className="mb-6">
-                <label htmlFor="venue-detail-input-phone-number"
+                <label htmlFor="venue-creation-input-phone-number"
                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Phone Number
                 </label>
                 <input type="text"
-                       id="venue-detail-input-phone-number"
+                       id="venue-creation-input-phone-number"
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       value={inputPhoneNumber}
                        onChange={(e) => setInputPhoneNumber(e.target.value)}
                 />
             </div>
             {/* Address */}
             <div className="mb-6">
-                <label htmlFor="venue-detail-input-address"
+                <label htmlFor="venue-creation-input-address"
                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Address
                 </label>
                 <input type="text"
-                       id="venue-detail-input-address"
+                       id="venue-creation-input-address"
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       value={inputAddress}
                        onChange={(e) => setInputAddress(e.target.value)}
                 />
             </div>
             {/* Venue Email */}
             <div className="mb-6">
-                <label htmlFor="venue-detail-input-venue-email"
+                <label htmlFor="venue-creation-input-venue-email"
                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Venue Email
                 </label>
                 <input type="text"
-                       id="venue-detail-input-venue-email"
+                       id="venue-creation-input-venue-email"
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       value={inputVenueEmail}
                        onChange={(e) => setInputVenueEmail(e.target.value)}
                 />
             </div>
             {/* Description */}
             <div className="mb-6">
-                <label htmlFor="venue-detail-input-description"
+                <label htmlFor="venue-creation-input-description"
                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Description
                 </label>
                 <input type="text"
-                       id="venue-detail-input-description"
+                       id="venue-creation-input-description"
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       value={inputDescription}
                        onChange={(e) => setInputDescription(e.target.value)}
                 />
             </div>
             {/* Seat Number */}
-            <div class="mb-6">
-                <label htmlFor="venue-detail-input-seat-number"
+            <div className="mb-6">
+                <label htmlFor="venue-creation-input-seat-number"
                        className="form-label inline-block mb-2 text-gray-700">
                     Seat Number
                 </label>
@@ -157,53 +166,49 @@ export default function VenueCreation({setVenues, setView}) {
                     id="exampleNumber0"
                     className=" form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
                     placeholder="Number input"
+                    value={inputSeatNumber}
                     onChange={(e) => setInputSeatNumber(e.target.value)}
                 />
             </div>
+
             {/* Type */}
             <div className="mb-6">
-                <label htmlFor="venue-detail-input-type"
+                <label htmlFor="venue-creation-input-type"
                        className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     Type
                 </label>
                 <input type="text"
-                       id="venue-detail-input-type"
+                       id="venue-creation-input-type"
                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       value={inputVenueType}
                        onChange={(e) => setInputVenueType(e.target.value)}
                 />
             </div>
-            <div className="mb-6">
+
+            {/* Image Upload */}
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                   htmlFor="venue-creation-input-image-upload">
+                Upload Image
+            </label>
+            <input
+                className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                id="venue-creation-input-image-upload"
+                type="file"
+                accept="image/png, image/jpeg"
+                onChange={(e) => {
+                    setInputPhotoFile(e.target.files[0]);
+                }}
+            />
+
+            <section id="venue-creation-button-container">
                 <button
+                    id="venue-creation-button-save"
                     className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                     onClick={() => handleVenueCreationSaveButtonClick()}
                 >
-                    Create
+                    Save
                 </button>
-            </div>
-            {/* Photo */}
-            <div className="mb-6">
-                <label
-                    htmlFor="venue-detail-input-photo-url"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >
-                    Image
-                </label>
-                <input
-                    type="file"
-                    name="package-image"
-                    id="venue-detail-input-photo-url"
-                    accept="image/png, image/jpeg"
-                    onChange={(e) => {
-                        setInputPhotoFile(e.target.files[0]);
-                    }}
-                />
-                <button
-                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                    onClick={uploadImage}
-                >
-                    Upload Image
-                </button>
-            </div>
+            </section>
         </>
     )
 }
