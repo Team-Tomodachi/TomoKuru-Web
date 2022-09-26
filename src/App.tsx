@@ -10,17 +10,17 @@ function App() {
     const {user} = UserAuth();
 
     return (
-        <div className='App'>
+        <section className='App'>
             <Header/>
-            <div>
+            <section>
                 {user === null ? (
                     <Home/>
                 ) : (
                     <Dashboard/>
                 )}
-            </div>
+            </section>
             <Footer/>
-        </div>
+        </section>
     );
 }
 

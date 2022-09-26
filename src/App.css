@@ -1,6 +1,13 @@
+body {
+    color: #333333;
+}
+
+body h1 {
+    font-size: 1.5rem;
+}
+
 .App {
-  text-align: center;
-  /*border: 2px solid fuchsia;*/
+    /*border: 2px solid dodgerblue;*/
 }
 
 /*.App-logo {*/
