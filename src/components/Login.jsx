@@ -11,11 +11,16 @@ export default function Login({setShowLoginModal}) {
 
     const handleLoginButtonClick = async () => {
         setShowLoginModal(false);
+        let result;
         try {
-            // todo remove testing code
-            // let result = await signIn("qq1@gmail.com", "qwer1234")
-            let result = await signIn(inputEmail, inputPassword)
-            console.log('Login', result);
+            if (process.env.NODE_ENV === "development") {
+                const username = process.env.REACT_APP_TESTING_USERNAME;
+                const password = process.env.REACT_APP_TESTING_PASSWORD;
+                result = await signIn(username, password);
+            } else {
+                result = await signIn(inputEmail, inputPassword)
+            }
+            console.log('Login.signIn().result: ', result);
         } catch (e) {
             // todo: popup window to show error message
             console.error(e);
