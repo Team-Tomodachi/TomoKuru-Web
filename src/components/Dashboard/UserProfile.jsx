@@ -69,15 +69,14 @@ export default function UserProfile() {
                 <hr/>
 
                 {/* Image */}
-                <section id="user-profile-image-container">
-                    <img
-                        id="user-profile-image"
-                        src="https://dummyimage.com/600x800/aaaaaa/ffffff"
-                        alt="Dummy Photo"
-                    />
-                </section>
-
-                <hr/>
+                {/*<section id="user-profile-image-container">*/}
+                {/*    <img*/}
+                {/*        id="user-profile-image"*/}
+                {/*        src="https://dummyimage.com/600x800/aaaaaa/ffffff"*/}
+                {/*        alt="Dummy Photo"*/}
+                {/*    />*/}
+                {/*</section>*/}
+                {/*<hr/>*/}
 
                 {/* Image Upload */}
                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
