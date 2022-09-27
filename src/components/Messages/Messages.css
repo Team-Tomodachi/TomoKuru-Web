@@ -1,0 +1,177 @@
+.chat-container {
+  border: 1px solid #b6b6b6;
+  padding: 10px;
+  border-radius: 13px;
+}
+
+.chat-window {
+  padding: 10px;
+  height: 40vh;
+  margin: 5vh 0 5vh;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+/* .chat-window::-webkit-scrollbar {
+  width: 0.25rem;
+} */
+
+/* .chat-window::-webkit-scrollbar-track {
+  background: #1e1e24;
+} */
+
+/* .chat-window::-webkit-scrollbar-thumb {
+  background: #6649b8;
+} */
+
+.chat-input {
+  height: 5vh;
+  /* position: fixed; */
+  /* bottom: 0; */
+  /* background-color: rgb(24, 23, 23); */
+  width: 100%;
+  max-width: 728px;
+  display: flex;
+  font-size: 1.5rem;
+}
+
+.chat-input button {
+  /* background-color: rgb(56, 56, 143); */
+}
+
+.chat-input-field {
+  line-height: 1.5;
+  width: 100%;
+  font-size: 1.5rem;
+  margin: 0 5px 0 5px;
+  /* background: white; */
+  /* color: white; */
+  /* outline: none;
+  border: none; */
+  border: 1px solid #fcb90f;
+  padding: 0 10px;
+  border-radius: 13px;
+}
+
+.chat-input-button {
+  width: 20%;
+  background-color: #fcb90f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  /* display: inline-block; */
+  cursor: pointer;
+  border-radius: 13px;
+  font-size: 1.25rem;
+  margin: 0 5px 0 5px;
+}
+
+.chat-input-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+ul,
+li {
+  text-align: left;
+  list-style: none;
+}
+
+p {
+  max-width: 500px;
+  margin-bottom: 12px;
+  line-height: 24px;
+  padding: 10px 20px;
+  border-radius: 13px;
+  position: relative;
+  color: black;
+  text-align: center;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+}
+
+.sent {
+  flex-direction: row-reverse;
+}
+
+.message-text-sent {
+  color: black;
+  background: #fcb90f;
+  align-self: flex-end;
+}
+.sender-sent {
+  display: none;
+  /* color: #fcb90f; */
+  /* background: #fcb90f; */
+  /* align-self: flex-end; */
+}
+/* .received p {
+  background: #0b93f6;
+  color: black;
+} */
+
+.message-text-received {
+  color: black;
+  background: #b6b6b6;
+}
+.sender-received {
+  color: black;
+  /* background: #fcb90f; */
+}
+
+/* img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 2px 5px;
+} */
+
+/* .message_window {
+  display: flex;
+  flex-direction: column;
+  border: 0.15rem solid black;
+  padding: 1rem;
+  align-items: right;
+}
+
+.message_text {
+  background-color: darkorange;
+  font-weight: bold;
+  color: white;
+  border-radius: 5rem;
+  padding-left: 1rem;
+}
+
+.message_user {
+  display: flex;
+  color: darkorange;
+  align-items: center;
+}
+
+.sendbutton {
+  height: 2rem;
+  border: 0.05rem solid blue;
+  border-radius: 0.25rem;
+  color: blue;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.newmessage {
+  height: 2rem;
+  padding: 1rem;
+  border: 1px solid blue;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+} */

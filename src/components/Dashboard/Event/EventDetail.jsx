@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {UserAuth} from "../../../context/AuthContext";
 import {deleteEventByEventId, getEventsByVenueId, updateEventByEventId} from "../../../api";
 import {uploadFile} from "../../../utilities/firebase-storage";
+import ChatRoom from "../../Messages/Messages";
 
 require('./EventDetail.css');
 
@@ -160,6 +161,11 @@ export default function EventDetail({selectedEvent, selectedEventVenue, setEvent
                     Delete
                 </button>
             </section>
+
+            <div className="dashboard-chat">
+                <h1>Event Chat for: {selectedEvent.name}</h1>
+                <ChatRoom event_id={selectedEvent.id} />
+            </div>
         </>
     )
 }

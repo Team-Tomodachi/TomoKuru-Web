@@ -30,6 +30,7 @@ export default function Vendor({setView}) {
         }
     }, [user]);
 
+
     return (
         <>
             <section id={"vendor-container"}>
