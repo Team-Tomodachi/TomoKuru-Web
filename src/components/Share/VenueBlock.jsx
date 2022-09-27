@@ -8,10 +8,10 @@ export function VenueBlock({venue, setSelectedVenue}) {
         <section className="venue-block-container">
             {/* container */}
             <div
-                 key={venue.id}
-                 onClick={() => {
-                     setSelectedVenue(venue);
-                 }}
+                key={venue.id}
+                onClick={() => {
+                    setSelectedVenue(venue);
+                }}
             >
 
                 {/* image */}
