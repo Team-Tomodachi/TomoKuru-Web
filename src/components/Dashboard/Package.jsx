@@ -18,10 +18,10 @@ export default function Package({
     return (
         <>
             {/* package container */}
-            <div id="package-container">
+            <section id="package-container">
 
                 {/* package venue list */}
-                <div id="package-venue-list" className="flex overflow-x-auto space-x-5">
+                <div id="package-venue-list">
                     <PackageVenueList
                         venues={venues}
                         setSelectedPackageVenue={setSelectedPackageVenue}
@@ -30,7 +30,7 @@ export default function Package({
                 </div>
 
                 {selectedPackageVenue.id ? (
-                    <div id="package-list" className="flex overflow-x-auto space-x-5">
+                    <div id="package-list">
                         <PackageList
                             packages={packages}
                             setSelectedPackage={setSelectedPackage}
@@ -41,15 +41,16 @@ export default function Package({
 
                 {selectedPackage.id ? (
                     <div id="package-detail">
-                        PackageDetail: {selectedPackage.package_name}
                         <PackageDetail
+                            setView={setView}
+                            setPackages={setPackages}
+                            packages={packages}
                             selectedPackage={selectedPackage}
                             selectedPackageVenue={selectedPackageVenue}
-                            setPackages={setPackages}
                         />
                     </div>
                 ) : null}
-            </div>
+            </section>
         </>
     )
 }

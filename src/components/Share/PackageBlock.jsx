@@ -5,13 +5,14 @@ require('./PackageBlock.css');
 
 export function PackageBlock({packageObj, setSelectedPackage}) {
     return (
-        <>
+        <section className="package-block-container">
             {/* container */}
-            <div className="package-block-container"
-                 key={packageObj.id}
-                 onClick={() => {
-                     setSelectedPackage(packageObj);
-                 }}
+            <div
+                className="package-block-container"
+                key={packageObj.id}
+                onClick={() => {
+                    setSelectedPackage(packageObj);
+                }}
             >
 
                 {/* image */}
@@ -26,6 +27,6 @@ export function PackageBlock({packageObj, setSelectedPackage}) {
                 </div>
 
             </div>
-        </>
+        </section>
     )
 }

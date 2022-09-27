@@ -1,19 +1,11 @@
 import React, {useEffect, useState} from "react";
+import {updatePackageByPackageId, getPackagesByVenueId, deletePackageByPackageId} from "../../../api";
 import {UserAuth} from "../../../context/AuthContext";
-import {
-    updatePackageByPackageId,
-    getPackagesByVenueId,
-    deletePackageByPackageId,
-} from "../../../api";
-import {getFileUrl, uploadFile} from "../../../utilities/firebase-storage";
+import {uploadFile} from "../../../utilities/firebase-storage";
 
 require("./PackageDetail.css");
 
-export default function PackageDetail({
-                                          selectedPackage,
-                                          selectedPackageVenue,
-                                          setPackages,
-                                      }) {
+export default function PackageDetail({setView, setPackages, packages, selectedPackage, selectedPackageVenue}) {
     const {user} = UserAuth();
 
     const [inputName, setInputName] = useState(selectedPackage.package_name);
@@ -50,9 +42,12 @@ export default function PackageDetail({
     }, [selectedPackage]);
 
     const handlePackageDetailSaveButtonClick = async () => {
-        console.log("PackageDetail.handleEventDetailSaveButtonClick(): ");
+        console.log("PackageDetail.handlePackageDetailSaveButtonClick(): ");
         try {
-            console.log("selectedPackage.id: ", selectedPackage.id);
+            // todo error handling
+            uploadImage();
+
+            // todo error handling
             await updatePackageByPackageId(selectedPackage.id, {
                 package_name: inputName,
                 package_per_person_cost: inputPackagePerPersonCost,
@@ -65,6 +60,7 @@ export default function PackageDetail({
                 photo_url: photoReference
             });
 
+            // todo error handling
             getPackagesByVenueId(selectedPackageVenue.id).then((resp) => {
                 setPackages(resp.data);
             });
@@ -91,7 +87,6 @@ export default function PackageDetail({
 
     return (
         <>
-            <h1>Package Detail</h1>
             {/* Name */}
             <div className="mb-6">
                 <label
@@ -157,31 +152,6 @@ export default function PackageDetail({
                 />
             </div>
 
-            {/* Photo */}
-            <div className="mb-6">
-                <label
-                    htmlFor="venue-detail-input-photo-url"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >
-                   Photo
-                </label>
-                <input
-                    type="file"
-                    name="package-image"
-                    id="venue-detail-input-photo-url"
-                    accept="image/png, image/jpeg"
-                    onChange={(e) => {
-                        setInputPhotoFile(e.target.files[0]);
-                    }}
-                />
-                <button
-                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                    onClick={uploadImage}
-                >
-                    Upload Image
-                </button>
-            </div>
-
             {/* Other Notes */}
             <div className="mb-6">
                 <label
@@ -198,6 +168,7 @@ export default function PackageDetail({
                     onChange={(e) => setInputOtherNotes(e.target.value)}
                 />
             </div>
+
             {/* Drinks */}
             <div className="mb-6">
                 <label
@@ -214,6 +185,7 @@ export default function PackageDetail({
                     onChange={(e) => setInputDrinks(e.target.value)}
                 />
             </div>
+
             {/* Food */}
             <div className="mb-6">
                 <label
@@ -230,6 +202,7 @@ export default function PackageDetail({
                     onChange={(e) => setInputFood(e.target.value)}
                 />
             </div>
+
             {/* Description */}
             <label
                 htmlFor="message"
@@ -245,25 +218,38 @@ export default function PackageDetail({
                 onChange={(e) => setInputDescription(e.target.value)}
             ></textarea>
 
+            {/* Image Upload */}
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                   htmlFor="package-detail-input-image-upload">
+                Upload Image
+            </label>
+            <input
+                className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                id="package-detail-input-image-upload"
+                type="file"
+                accept="image/png, image/jpeg"
+                onChange={(e) => {
+                    setInputPhotoFile(e.target.files[0]);
+                }}
+            />
+
             {/* Save Button */}
-            <div className="mb-6">
+            <section id="package-detail-button-container">
                 <button
+                    id="package-detail-button-save"
                     className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                     onClick={() => handlePackageDetailSaveButtonClick()}
                 >
                     Save
                 </button>
-            </div>
-
-            {/* Delete Button */}
-            <div className="mb-6">
                 <button
+                    id="package-detail-button-delete"
                     className="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded"
                     onClick={() => handlePackageDetailDeleteButtonClick()}
                 >
                     Delete
                 </button>
-            </div>
+            </section>
         </>
     );
 }

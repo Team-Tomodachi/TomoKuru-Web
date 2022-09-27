@@ -11,7 +11,7 @@ export default function PackageList({
 
     return (
         <>
-            {/* package creation button */}
+            {/* Package Creation Button */}
             <CreationBlock
                 setView={setView}
                 view={"PackageCreation"}

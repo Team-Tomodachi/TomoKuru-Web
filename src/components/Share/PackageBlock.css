@@ -1,12 +1,17 @@
 .package-block-container {
+    width: 120px;
+    margin-right: 20px;
 }
 
 .package-block-image {
     width: 120px;
     height: 80px;
+    margin: auto;
+    object-fit: cover;
 }
 
 .package-block-content {
+    text-align: center;
 }
 
 .package-block-content-name {

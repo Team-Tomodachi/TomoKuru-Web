@@ -1,0 +1,36 @@
+#package-detail-button-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#package-detail-button-save {
+    width: 45%;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #666666;
+    border: 1px solid #FCB90F;
+    background-color: #FFD15C;
+    margin-right: 30px;
+}
+
+#package-detail-button-save:hover {
+    width: 45%;
+    font-weight: bold;
+    color: #000000;
+    background-color: #FCB90F;
+    border: 1px solid #FCB90F;
+    margin-right: 30px;
+}
+
+#package-detail-button-delete {
+    width: 45%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#package-detail-button-delete:hover {
+    width: 45%;
+    font-weight: bold;
+}
