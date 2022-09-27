@@ -34,3 +34,18 @@
     width: 45%;
     font-weight: bold;
 }
+
+#package-detail-button-delete {
+    width: 45%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #FFFFFF;
+    border: 1px solid #D92222;
+    background-color: #D92222;
+}
+
+#package-detail-button-delete:hover {
+    border: 1px solid #7C0404;
+    background-color: #7C0404;
+}

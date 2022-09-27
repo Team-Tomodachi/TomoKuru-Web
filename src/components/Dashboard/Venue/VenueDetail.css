@@ -15,8 +15,6 @@
 }
 
 #venue-detail-button-save:hover {
-    width: 45%;
-    font-weight: bold;
     color: #000000;
     background-color: #FCB90F;
     border: 1px solid #FCB90F;
@@ -28,9 +26,12 @@
     margin-top: 10px;
     margin-bottom: 10px;
     font-weight: bold;
+    color: #FFFFFF;
+    border: 1px solid #D92222;
+    background-color: #D92222;
 }
 
 #venue-detail-button-delete:hover {
-    width: 45%;
-    font-weight: bold;
+    border: 1px solid #7C0404;
+    background-color: #7C0404;
 }
