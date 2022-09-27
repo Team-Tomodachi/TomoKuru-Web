@@ -97,7 +97,7 @@ export default function Signup({ setShowSignupModal }) {
               </div>
             </div>
             {/*footer*/}
-            <div className="">
+            <div id="signin-button-container">
               <button
                 className="login-button"
                 type="button"

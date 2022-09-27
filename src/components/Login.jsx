@@ -72,7 +72,7 @@ export default function Login({ setShowLoginModal }) {
               </div>
             </div>
             {/*footer*/}
-            <div className="">
+            <div id="login-button-container">
               <button
                 className="login-button"
                 type="button"

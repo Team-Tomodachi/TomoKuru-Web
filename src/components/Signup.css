@@ -19,6 +19,10 @@ font-family: 'Open Sans', sans-serif; */
   margin-right: 10px;
 }
 
+#signin-button-container {
+  text-align: center;
+}
+
 .login-button {
   width: 200px;
   height: 40px;
