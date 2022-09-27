@@ -14,7 +14,6 @@ export default function Login({ setShowLoginModal }) {
     setShowLoginModal(false);
     try {
       // todo remove testing code
-      // let result = await signIn("qq1@gmail.com", "qwer1234")
       let result = await signIn(inputEmail, inputPassword);
       console.log("Login", result);
     } catch (e) {

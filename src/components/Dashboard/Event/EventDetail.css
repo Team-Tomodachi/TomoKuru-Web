@@ -1,3 +1,18 @@
+#event-detail-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#event-detail-info {
+    margin: 20px;
+    width: 300px;
+}
+
+#dashboard-chat {
+    margin: 20px;
+    width: 400px;
+}
+
 #event-detail-button-container {
     margin-top: 20px;
     text-align: center;
