@@ -33,12 +33,10 @@ font-family: 'Open Sans', sans-serif; */
 #header-login {
   padding-right: 20px;
   margin-left: auto;
-  font-size: 1.2rem;
 }
 
 #header-signup {
   padding-right: 20px;
-  font-size: 1.2rem;
 }
 
 #header-logout {
