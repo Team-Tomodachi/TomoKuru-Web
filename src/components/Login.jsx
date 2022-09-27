@@ -36,7 +36,7 @@ export default function Login({ setShowLoginModal }) {
                 <span className="kuru-login">Kuru</span>
               </h3>
               <AiOutlineCloseCircle
-                className="closeBTN"
+                className="closeBTNLI"
                 onClick={() => setShowLoginModal(false)}
               />
             </div>
