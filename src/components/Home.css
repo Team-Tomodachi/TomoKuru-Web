@@ -17,4 +17,6 @@ font-family: "Salsa", cursive; */
   background-size: cover;
   overflow: hidden;
   scroll-behavior: smooth;
+  text-align: center;
 }
+
