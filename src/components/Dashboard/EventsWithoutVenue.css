@@ -1,15 +1,16 @@
 #events-without-venue-container {
-    display: flex;
+    /*border: solid 2px purple;*/
+    overflow-x: auto;
 }
 
 #events-without-venue-list {
     /*border: solid 1px blue;*/
-    width: 200px;
-    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
 }
 
 #events-without-venue-detail {
-    /*border: solid 1px blue;*/
-    width: 200px;
-    padding: 20px;
+    /*border: solid 1px red;*/
+    width: 400px;
 }

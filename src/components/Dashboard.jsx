@@ -168,7 +168,7 @@ export default function Dashboard() {
                         selectedEventVenue={selectedEventVenue}
                     />
                 )
-            case "EventWithoutVenue":
+            case "EventsWithoutVenue":
                 return (
                     <EventsWithoutVenue
                         setView={setView}

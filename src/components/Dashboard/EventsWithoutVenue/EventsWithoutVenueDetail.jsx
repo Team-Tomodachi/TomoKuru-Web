@@ -22,8 +22,6 @@ export default function EventsWithoutVenueDetail({selectedEventWithoutVenue}) {
 
     return (
         <>
-            <h1>Event Detail: {selectedEventWithoutVenue.name}</h1>
-            <hr/>
             {/* Name */}
             <div className="mb-6">
                 <label htmlFor="venue-detail-input-name"

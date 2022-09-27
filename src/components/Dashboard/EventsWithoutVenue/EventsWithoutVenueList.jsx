@@ -9,7 +9,6 @@ export default function EventsWithoutVenueList({
 
     return (
         <>
-            <h1>EventsWithoutVenueList</h1>
             {
                 eventsWithoutVenue.map((item, index) => {
                     return (
