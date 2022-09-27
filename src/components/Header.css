@@ -22,12 +22,16 @@ font-family: 'Open Sans', sans-serif; */
 #header-logo {
   font-family: "Kanit", sans-serif;
   color: black;
-  font-size: 24px;
+  font-size: 32px;
 }
 
 #kuru {
   font-style: italic;
   color: #fcb90f;
+}
+
+#vendor_portal {
+  font-size: 24px;
 }
 
 #header-login {
