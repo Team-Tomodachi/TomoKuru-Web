@@ -11,7 +11,8 @@ export default function Home() {
             className="text-9xl text-white my-6 drop-shadow-2xl"
             id="product_name"
           >
-            Tomo<span id="kuru">Kuru</span>
+            <span id="tomo-home">Tomo</span>
+            <span id="kuru-home">Kuru</span>
           </h1>
           <span
             className="text-white text-6xl my-6 font-bold drop-shadow-2xl"

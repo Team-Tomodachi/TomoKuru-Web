@@ -10,17 +10,21 @@ font-family: 'Open Sans', sans-serif; */
   font-family: "Kanit", sans-serif;
 }
 
-#kuru {
+#tomo-home {
+  color: white;
+}
+
+#kuru-home {
+  color: #fcb90f;
   font-style: italic;
 }
 
 #bg-image {
-  background: url("../../public/img/cafe-g245882508_1920.jpg") no-repeat center
-    center fixed;
+  background: url("../../public/img/outdoor-dining-g043f90ebe_1920.jpg")
+    no-repeat center center fixed;
   height: 100vh;
   background-size: cover;
   overflow: hidden;
   scroll-behavior: smooth;
   text-align: center;
 }
-
