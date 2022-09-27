@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Signup from "./Signup";
 import Login from "./Login";
+import { FiLogOut } from "react-icons/fi";
 
 import { UserAuth } from "../context/AuthContext";
 
@@ -15,7 +16,8 @@ export default function Header() {
     <>
       <section id={"header-container"}>
         <div id={"header-logo"} onClick={() => console.log("user: ", user)}>
-          TomoKuru <span className="text-yellow-600">Vendor Portal</span>
+          Tomo<span id="kuru">Kuru </span>
+          <span id="vendor_portal">Vendor Portal</span>
         </div>
 
         {user === null ? (
@@ -30,7 +32,8 @@ export default function Header() {
         ) : (
           <>
             <div id={"header-logout"} onClick={() => logout()}>
-              Logout
+              <FiLogOut className="logout-icon" data-hover="Logout" />
+              {/* <span id="logout">Logout</span> */}
             </div>
           </>
         )}
