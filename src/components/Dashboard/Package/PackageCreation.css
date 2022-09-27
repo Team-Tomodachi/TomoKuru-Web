@@ -1,0 +1,30 @@
+#package-creation-container {
+}
+
+#package-creation-title {
+    color: royalblue;
+    font-weight: bold;
+}
+
+#package-creation-button-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#package-creation-button-save {
+    width: 100%;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #666666;
+    border: 1px solid #FCB90F;
+    background-color: #FFD15C;
+}
+
+#package-creation-button-save:hover {
+    width: 100%;
+    font-weight: bold;
+    color: #000000;
+    background-color: #FCB90F;
+    border: 1px solid #FCB90F;
+}

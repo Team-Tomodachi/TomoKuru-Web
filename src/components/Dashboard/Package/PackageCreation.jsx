@@ -33,7 +33,10 @@ export default function PackageCreation({
     const handlePackageDetailSaveButtonClick = async () => {
         console.log("PackageDetail.handlePackageDetailSaveButtonClick(): ");
         try {
-            console.log("selectedPackageVenue.id: ", selectedPackageVenue.id);
+            // todo error handling
+            uploadImage();
+
+            // todo error handling
             await createPackageByVenueId({
                 venue_id: selectedPackageVenue.id,
                 package_name: inputName,
@@ -47,6 +50,7 @@ export default function PackageCreation({
                 description: inputDescription,
             });
 
+            // todo error handling
             getPackagesByVenueId(selectedPackageVenue.id).then((resp) => {
                 setPackages(resp.data);
                 setView("Package");
@@ -58,11 +62,12 @@ export default function PackageCreation({
     };
 
     return (
-        <>
+        <section id="package-creation-container">
             <h1>
-                Create Package for Venue:{" "}
-                <span id={"package-title"}>{selectedPackageVenue.location_name}</span>
+                Create Package for Venue: {" "}
+                <span id={"package-creation-title"}>{selectedPackageVenue.location_name}</span>
             </h1>
+
             {/* Name */}
             <div className="mb-6">
                 <label
@@ -79,6 +84,7 @@ export default function PackageCreation({
                     onChange={(e) => setInputName(e.target.value)}
                 />
             </div>
+
             {/* Cost(per person) */}
             <div className="mb-6">
                 <label
@@ -95,6 +101,7 @@ export default function PackageCreation({
                     onChange={(e) => setInputPackagePerPersonCost(e.target.value)}
                 />
             </div>
+
             {/* Duration(minutes) */}
             <div className="mb-6">
                 <label
@@ -111,6 +118,7 @@ export default function PackageCreation({
                     onChange={(e) => setInputDuration(e.target.value)}
                 />
             </div>
+
             {/* Maximum number of people */}
             <div className="mb-6">
                 <label
@@ -128,30 +136,6 @@ export default function PackageCreation({
                 />
             </div>
 
-            {/* Photo URL */}
-            <div className="mb-6">
-                <label
-                    htmlFor="venue-detail-input-photo-url"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >
-                    Event Image
-                </label>
-                <input
-                    type="file"
-                    name="package-image"
-                    id="venue-detail-input-photo-url"
-                    accept="image/png, image/jpeg"
-                    onChange={(e) => {
-                        setInputPhotoFile(e.target.files[0]);
-                    }}
-                />
-                <button
-                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                    onClick={uploadImage}
-                >
-                    Upload Image
-                </button>
-            </div>
             {/* Other Notes */}
             <div className="mb-6">
                 <label
@@ -168,6 +152,7 @@ export default function PackageCreation({
                     onChange={(e) => setInputOtherNotes(e.target.value)}
                 />
             </div>
+
             {/* Drinks */}
             <div className="mb-6">
                 <label
@@ -184,6 +169,7 @@ export default function PackageCreation({
                     onChange={(e) => setInputDrinks(e.target.value)}
                 />
             </div>
+
             {/* Food */}
             <div className="mb-6">
                 <label
@@ -200,6 +186,7 @@ export default function PackageCreation({
                     onChange={(e) => setInputFood(e.target.value)}
                 />
             </div>
+
             {/* Description */}
             <label
                 htmlFor="message"
@@ -208,22 +195,38 @@ export default function PackageCreation({
                 Description
             </label>
             <textarea
-                id="message"
+                id="package-creation-input-"
                 rows="4"
                 className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 value={inputDescription}
                 onChange={(e) => setInputDescription(e.target.value)}
             ></textarea>
 
+            {/* Image Upload */}
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                   htmlFor="package-creation-input-image-upload">
+                Upload Image
+            </label>
+            <input
+                className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                id="package-creation-input-image-upload"
+                type="file"
+                accept="image/png, image/jpeg"
+                onChange={(e) => {
+                    setInputPhotoFile(e.target.files[0]);
+                }}
+            />
+
             {/* Save Button */}
-            <div className="mb-6">
+            <section id="package-creation-button-container">
                 <button
+                    id="package-creation-button-save"
                     className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                     onClick={() => handlePackageDetailSaveButtonClick()}
                 >
                     Save
                 </button>
-            </div>
-        </>
+            </section>
+        </section>
     );
 }
