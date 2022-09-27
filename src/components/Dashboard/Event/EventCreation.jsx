@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {UserAuth} from "../../../context/AuthContext";
 import {createEventByVenueId, getEventsByVenueId} from "../../../api";
 import {uploadFile} from "../../../utilities/firebase-storage";
@@ -28,8 +28,12 @@ export default function EventCreation({setView, setEvents, selectedEventVenue}) 
     };
 
     const handleEventCreationSaveButtonClick = async () => {
-        console.log("handleVenueCreationSaveButtonClick: ")
+        console.log("EventCreation.handleEventCreationSaveButtonClick(): ")
         try {
+            // todo error handling
+            uploadImage();
+
+            // todo error handling
             await createEventByVenueId({
                 "user_id": user.id,
                 "venue_id": selectedEventVenue.id,
@@ -41,6 +45,7 @@ export default function EventCreation({setView, setEvents, selectedEventVenue}) 
                 photo_url: photoReference
             });
 
+            // todo error handling
             getEventsByVenueId(selectedEventVenue.id).then(resp => {
                 setEvents(resp.data);
                 setView("Event");
@@ -54,9 +59,12 @@ export default function EventCreation({setView, setEvents, selectedEventVenue}) 
 
 
     return (
-        <>
-            <h1>Create an Event for Venue: {selectedEventVenue.location_name}</h1>
-            <hr/>
+        <section id="event-creation-container">
+            <h1>
+                Create Event for Venue: {" "}
+                <span id={"event-creation-title"}>{selectedEventVenue.location_name}</span>
+            </h1>
+
             {/* Name */}
             <div className="mb-6">
                 <label htmlFor="venue-detail-input-name"
@@ -109,41 +117,32 @@ export default function EventCreation({setView, setEvents, selectedEventVenue}) 
                 />
             </div>
 
-            {/* Photo */}
-            <div className="mb-6">
-                <label
-                    htmlFor="venue-detail-input-photo-url"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                >
-                    Photo
-                </label>
-                <input
-                    type="file"
-                    name="package-image"
-                    id="venue-detail-input-photo-url"
-                    accept="image/png, image/jpeg"
-                    onChange={(e) => {
-                        setInputPhotoFile(e.target.files[0]);
-                    }}
-                />
-                <button
-                    className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                    onClick={uploadImage}
-                >
-                    Upload Image
-                </button>
-            </div>
+            {/* Image Upload */}
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                   htmlFor="event-creation-input-image-upload">
+                Upload Image
+            </label>
+            <input
+                className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                id="event-creation-input-image-upload"
+                type="file"
+                accept="image/png, image/jpeg"
+                onChange={(e) => {
+                    setInputPhotoFile(e.target.files[0]);
+                }}
+            />
 
             {/* Save Button */}
-            <div className="mb-6">
+            <section id="event-creation-button-container">
                 <button
+                    id="event-creation-button-save"
                     className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                     onClick={() => handleEventCreationSaveButtonClick()}
                 >
                     Save
                 </button>
-            </div>
+            </section>
 
-        </>
+        </section>
     )
 }

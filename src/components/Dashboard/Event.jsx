@@ -21,7 +21,7 @@ export default function Event({
             <div id="event-container">
 
                 {/* event venue list */}
-                <div id="event-venue-list" className="flex overflow-x-auto space-x-5">
+                <div id="event-venue-list">
                     <EventVenueList
                         venues={venues}
                         setSelectedEventVenue={setSelectedEventVenue}
@@ -31,7 +31,7 @@ export default function Event({
 
                 {/* event list */}
                 {selectedEventVenue.id ? (
-                    <div id="event-list" className="flex overflow-x-auto space-x-5">
+                    <div id="event-list">
                         <EventList
                             events={events}
                             setSelectedEvent={setSelectedEvent}

@@ -148,6 +148,26 @@ export default function Dashboard() {
                     setVenues={setVenues}
                     selectedPackageVenue={selectedPackageVenue}
                 />)
+            case "Event":
+                return (
+                    <Event
+                        setView={setView}
+                        venues={venues}
+                        setSelectedEventVenue={setSelectedEventVenue}
+                        selectedEventVenue={selectedEventVenue}
+                        setEvents={setEvents}
+                        events={events}
+                        setSelectedEvent={setSelectedEvent}
+                        selectedEvent={selectedEvent}
+                    />)
+            case "EventCreation":
+                return (
+                    <EventCreation
+                        setView={setView}
+                        setEvents={setEvents}
+                        selectedEventVenue={selectedEventVenue}
+                    />
+                )
             default:
                 return null;
         }
@@ -178,27 +198,6 @@ export default function Dashboard() {
             </section>
 
 
-            {/*        } else if (view === "PackageCreation") {*/}
-            {/*            return <section>*/}
-            {/*                <PackageCreation*/}
-            {/*                    setView={setView}*/}
-            {/*                    setPackages={setPackages}*/}
-            {/*                    selectedPackageVenue={selectedPackageVenue}*/}
-            {/*                />*/}
-            {/*            </section>;*/}
-            {/*        } else if (view === "Event") {*/}
-            {/*            return <section>*/}
-            {/*                <Event*/}
-            {/*                    setView={setView}*/}
-            {/*                    venues={venues}*/}
-            {/*                    setSelectedEventVenue={setSelectedEventVenue}*/}
-            {/*                    selectedEventVenue={selectedEventVenue}*/}
-            {/*                    setEvents={setEvents}*/}
-            {/*                    events={events}*/}
-            {/*                    setSelectedEvent={setSelectedEvent}*/}
-            {/*                    selectedEvent={selectedEvent}*/}
-            {/*                />*/}
-            {/*            </section>;*/}
             {/*        } else if (view === "EventCreation") {*/}
             {/*            return <section>*/}
             {/*                <EventCreation*/}

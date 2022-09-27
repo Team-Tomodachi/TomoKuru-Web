@@ -1,0 +1,51 @@
+#event-detail-button-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#event-detail-button-save {
+    width: 45%;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #666666;
+    border: 1px solid #FCB90F;
+    background-color: #FFD15C;
+    margin-right: 30px;
+}
+
+#event-detail-button-save:hover {
+    width: 45%;
+    font-weight: bold;
+    color: #000000;
+    background-color: #FCB90F;
+    border: 1px solid #FCB90F;
+    margin-right: 30px;
+}
+
+#event-detail-button-delete {
+    width: 45%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+#event-detail-button-delete:hover {
+    width: 45%;
+    font-weight: bold;
+}
+
+#event-detail-button-delete {
+    width: 45%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #FFFFFF;
+    border: 1px solid #D92222;
+    background-color: #D92222;
+}
+
+#event-detail-button-delete:hover {
+    border: 1px solid #7C0404;
+    background-color: #7C0404;
+}

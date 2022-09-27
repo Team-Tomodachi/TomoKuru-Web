@@ -1,12 +1,17 @@
 .event-venue-block-container {
+    width: 120px;
+    margin-right: 20px;
 }
 
 .event-venue-block-image {
     width: 120px;
     height: 80px;
+    margin: auto;
+    object-fit: cover;
 }
 
 .event-venue-block-content {
+    text-align: center;
 }
 
 .event-venue-block-content-name {
