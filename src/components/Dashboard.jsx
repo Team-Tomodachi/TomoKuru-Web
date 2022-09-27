@@ -168,6 +168,31 @@ export default function Dashboard() {
                         selectedEventVenue={selectedEventVenue}
                     />
                 )
+            case "EventWithoutVenue":
+                return (
+                    <EventsWithoutVenue
+                        setView={setView}
+                        eventsWithoutVenue={eventsWithoutVenue}
+                        setSelectedEventWithoutVenue={setSelectedEventWithoutVenue}
+                        selectedEventWithoutVenue={selectedEventWithoutVenue}
+                    />
+                )
+            case "UpcomingEvents":
+                return (
+                    <UpcomingEvents
+                        upcomingEvents={upcomingEvents}
+                        selectedUpcomingEvent={selectedUpcomingEvent}
+                        setSelectedUpcomingEvent={setSelectedUpcomingEvent}
+                    />
+                )
+            case "HostedEvents":
+                return (
+                    <HostedEvents
+                        hostedEvents={hostedEvents}
+                        selectedHostedEvent={selectedHostedEvent}
+                        setSelectedHostedEvent={setSelectedHostedEvent}
+                    />
+                )
             default:
                 return null;
         }
@@ -196,46 +221,6 @@ export default function Dashboard() {
                 </section>
 
             </section>
-
-
-            {/*        } else if (view === "EventCreation") {*/}
-            {/*            return <section>*/}
-            {/*                <EventCreation*/}
-            {/*                    setView={setView}*/}
-            {/*                    setEvents={setEvents}*/}
-            {/*                    selectedEventVenue={selectedEventVenue}*/}
-            {/*                />*/}
-            {/*            </section>;*/}
-            {/*        } else if (view === "EventsWithoutVenue") {*/}
-            {/*            return <section>*/}
-            {/*                <EventsWithoutVenue*/}
-            {/*                    setView={setView}*/}
-            {/*                    eventsWithoutVenue={eventsWithoutVenue}*/}
-            {/*                    setSelectedEventWithoutVenue={setSelectedEventWithoutVenue}*/}
-            {/*                    selectedEventWithoutVenue={selectedEventWithoutVenue}*/}
-            {/*                />*/}
-            {/*            </section>;*/}
-            {/*        } else if (view === "UpcomingEvents") {*/}
-            {/*            return <section>*/}
-            {/*                <UpcomingEvents*/}
-            {/*                    upcomingEvents={upcomingEvents}*/}
-            {/*                    selectedUpcomingEvent={selectedUpcomingEvent}*/}
-            {/*                    setSelectedUpcomingEvent={setSelectedUpcomingEvent}*/}
-            {/*                />*/}
-            {/*            </section>;*/}
-            {/*        } else if (view === "HostedEvents") {*/}
-            {/*            return <section>*/}
-            {/*                <HostedEvents*/}
-            {/*                    hostedEvents={hostedEvents}*/}
-            {/*                    selectedHostedEvent={selectedHostedEvent}*/}
-            {/*                    setSelectedHostedEvent={setSelectedHostedEvent}*/}
-            {/*                />*/}
-            {/*            </section>;*/}
-            {/*        } else {*/}
-            {/*            return null;*/}
-            {/*        }*/}
-            {/*    })()}*/}
-            {/*</section>*/}
         </>
     )
 }
