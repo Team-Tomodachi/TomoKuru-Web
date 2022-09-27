@@ -4,13 +4,14 @@ import {UserAuth} from '../../context/AuthContext'
 
 require('./Sidebar.css');
 
-export default function Sidebar({setView, setVenues, setEventsWithoutVenue, setUpcomingEvents, setHostedEvents}) {
+export default function Sidebar({setView, setVenues, setSelectedVenue, setEventsWithoutVenue, setUpcomingEvents, setHostedEvents}) {
 
     const {user} = UserAuth();
 
     // Venue
     const handleVenueButtonClick = () => {
         console.log("Sidebar.handleVenueButtonClick()");
+        setSelectedVenue({});
         setView("Venue");
         getVenuesByUserId(user.id).then(resp => {
             setVenues(resp.data);
