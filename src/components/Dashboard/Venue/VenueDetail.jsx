@@ -66,6 +66,8 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
                 setVenues(resp.data);
             });
 
+            setSelectedVenue({});
+
         } catch (e) {
             // todo: popup window to show error message
             console.error(e);

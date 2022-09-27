@@ -14,20 +14,20 @@ export default function Venue({
     return (
         <>
             {/* venue container */}
-            <div id="venue-container">
+            <section id="venue-container">
 
                 {/* venue list */}
-                <div id="venue-list" className="flex overflow-x-auto space-x-5">
+                <section id="venue-list">
                     <VenueList
                         venues={venues}
                         setSelectedVenue={setSelectedVenue}
                         setView={setView}
                     />
-                </div>
+                </section>
 
                 {/* venue detail */}
                 {selectedVenue.id ? (
-                    <div id="venue-detail">
+                    <section id="venue-detail">
                         <VenueDetail
                             setView={setView}
                             setVenues={setVenues}
@@ -35,9 +35,9 @@ export default function Venue({
                             setSelectedVenue={setSelectedVenue}
                             selectedVenue={selectedVenue}
                         />
-                    </div>
+                    </section>
                 ) : null}
-            </div>
+            </section>
         </>
     )
 }

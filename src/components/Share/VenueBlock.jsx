@@ -5,9 +5,9 @@ require('./VenueBlock.css');
 
 export function VenueBlock({venue, setSelectedVenue}) {
     return (
-        <>
+        <section className="venue-block-container">
             {/* container */}
-            <div className="venue-block-container"
+            <div
                  key={venue.id}
                  onClick={() => {
                      setSelectedVenue(venue);
@@ -33,6 +33,6 @@ export function VenueBlock({venue, setSelectedVenue}) {
                 </div>
 
             </div>
-        </>
+        </section>
     )
 }

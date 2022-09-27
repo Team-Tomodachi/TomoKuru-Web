@@ -32,11 +32,12 @@ export default function VenueCreation({setVenues, setView}) {
     };
 
     const handleVenueCreationSaveButtonClick = async () => {
-        console.log("handleVenueCreationSaveButtonClick: ")
+        console.log("VenueCreation.handleVenueCreationSaveButtonClick(): ")
         try {
             // todo error handling
             uploadImage();
 
+            // todo error handling
             await createVenue({
                 user_id: user.id,
                 location_name: inputName,
@@ -51,10 +52,12 @@ export default function VenueCreation({setVenues, setView}) {
                 photo_url: photoReference,
             });
 
+            // todo error handling
             getVenuesByUserId(user.id).then(resp => {
                 setVenues(resp.data);
                 setView("Venue");
             });
+
 
         } catch (e) {
             // todo: popup window to show error message
@@ -63,7 +66,12 @@ export default function VenueCreation({setVenues, setView}) {
     }
 
     return (
-        <>
+        <section id="venue-creation-container">
+
+            <h1 id="venue-creation-title">
+                Create a venue
+            </h1>
+
             {/* Name */}
             <div className="mb-6">
                 <label htmlFor="venue-creation-input-name"
@@ -209,6 +217,6 @@ export default function VenueCreation({setVenues, setView}) {
                     Save
                 </button>
             </section>
-        </>
+        </section>
     )
 }
