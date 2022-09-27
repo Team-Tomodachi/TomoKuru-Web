@@ -12,6 +12,7 @@ export function CreationBlock({setView, view}) {
                  }}
             >
 
+                {/* button */}
                 <button
                     className="creation-block-button-create"
                 >
