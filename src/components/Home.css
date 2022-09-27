@@ -24,7 +24,7 @@ font-family: 'Open Sans', sans-serif; */
 #bg-image {
   background: url("../../public/img/outdoor-dining-g043f90ebe_1920.jpg")
     no-repeat center center fixed;
-  height: 100vh;
+  height: 89vh;
   background-size: cover;
   overflow: hidden;
   scroll-behavior: smooth;
