@@ -13,7 +13,12 @@ export default function Login({setShowLoginModal}) {
 
     const handleLoginButtonClick = async () => {
         try {
-            await signIn(inputEmail, inputPassword);
+            if (inputEmail === "" && process.env.REACT_APP_TESTING_USERNAME &&
+                inputPassword === "" && process.env.REACT_APP_TESTING_PASSWORD) {
+                await signIn(process.env.REACT_APP_TESTING_USERNAME, process.env.REACT_APP_TESTING_PASSWORD);
+            } else {
+                await signIn(inputEmail, inputPassword);
+            }
             setShowLoginModal(false);
         } catch (e) {
             toast(e.message);
