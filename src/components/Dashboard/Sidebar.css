@@ -1,14 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap");
+/* font-family: 'Kanit', sans-serif;
+font-family: 'Open Sans', sans-serif; */
+
 #sidebar-vendor {
-    padding: 10px;
+  padding: 10px;
 }
 
 #sidebar-features {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
 
 #sidebar-features button {
-    margin-top: 10px;
-    margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.sidebar-buttons {
+  background-color: #fcb90f;
+  color: black;
+  font-family: "Open Sans", sans-serif;
+  border-radius: 5px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  margin: 10px 0px;
+  padding: 8px 16px;
+  height: 40px;
+  align-content: center;
+}
+
+.sidebar-buttons:hover {
+  background-color: #cc960c;
+  border: none;
+  color: black;
+  font-family: "Open Sans", sans-serif;
 }
