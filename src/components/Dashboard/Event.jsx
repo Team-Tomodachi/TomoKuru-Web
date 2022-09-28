@@ -20,6 +20,10 @@ export default function Event({
             {/* event container */}
             <div id="event-container">
 
+                <section id="event-venue-list-title">
+                    Venue
+                </section>
+
                 {/* event venue list */}
                 <div id="event-venue-list">
                     <EventVenueList
@@ -31,13 +35,19 @@ export default function Event({
 
                 {/* event list */}
                 {selectedEventVenue.id ? (
-                    <div id="event-list">
-                        <EventList
-                            events={events}
-                            setSelectedEvent={setSelectedEvent}
-                            setView={setView}
-                        />
-                    </div>
+                    <>
+                        <section id="event-list-title">
+                            Event
+                        </section>
+
+                        <div id="event-list">
+                            <EventList
+                                events={events}
+                                setSelectedEvent={setSelectedEvent}
+                                setView={setView}
+                            />
+                        </div>
+                    </>
                 ) : null}
 
                 {/* event detail */}

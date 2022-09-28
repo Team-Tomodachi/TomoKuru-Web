@@ -3,11 +3,32 @@
     overflow-x: auto;
 }
 
+#event-venue-list-title {
+    /*border: 1px solid red;*/
+    font-size: 1rem;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    color: #202020;
+    font-weight: bold;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+#event-list-title {
+    /*border: 1px solid red;*/
+    font-size: 1rem;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    color: #202020;
+    font-weight: bold;
+    border-bottom: 1px solid #CCCCCC;
+}
+
 #event-venue-list {
     /*border: solid 1px blue;*/
     display: flex;
     flex-direction: row;
     overflow-x: auto;
+    padding-top: 10px;
 }
 
 #event-list {
