@@ -51,7 +51,7 @@ export default function Sidebar({setView, setVenues, setSelectedVenue, setEvents
         setView("UpcomingEvents");
         getEvents(user.id).then(resp => {
             // upcoming events only
-            const result = resp.data.filter(el => Date.parse(el.end_time) > Date.now())
+            const result = resp.data.filter(el => Date.parse(el.start_time) > Date.now())
             setUpcomingEvents(result);
         });
     }

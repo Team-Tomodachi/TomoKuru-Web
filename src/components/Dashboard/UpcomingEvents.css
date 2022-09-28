@@ -1,15 +1,16 @@
 #upcoming-events-container {
-    display: flex;
+    /*border: solid 2px purple;*/
+    overflow-x: auto;
 }
 
 #upcoming-events-list {
     /*border: solid 1px blue;*/
-    width: 200px;
-    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
 }
 
 #upcoming-events-detail {
-    /*border: solid 1px blue;*/
-    width: 200px;
-    padding: 20px;
+    /*border: solid 1px red;*/
+    width: 400px;
 }
