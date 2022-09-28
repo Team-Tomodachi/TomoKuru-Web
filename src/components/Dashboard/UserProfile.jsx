@@ -3,6 +3,7 @@ import {UserAuth} from '../../context/AuthContext'
 import {getUserByEmail, updateUserByEmail} from '../../api';
 import {uploadFile} from "../../utilities/firebase-storage";
 import {User, Bookmark, Map, MapPin} from 'react-feather';
+import toast from "react-hot-toast";
 
 require('./UserProfile.css');
 
@@ -17,15 +18,6 @@ export default function UserProfile() {
 
     // Photo
     const [inputPhotoFile, setInputPhotoFile] = useState("");
-    const [photoReference, setPhotoReference] = useState("");
-
-    const uploadImage = () => {
-        if (!inputPhotoFile) return;
-        uploadFile(inputPhotoFile, "users").then(result => {
-            const reference = result.ref.fullPath;
-            setPhotoReference(reference);
-        });
-    };
 
     useEffect(() => {
         setInputName(inputName);
@@ -36,8 +28,12 @@ export default function UserProfile() {
 
     const handleSaveButtonClick = async () => {
         try {
-            // todo error handling
-            uploadImage();
+            let photoReference;
+            if (inputPhotoFile) {
+                await uploadFile(inputPhotoFile, "venues").then(result => {
+                    photoReference = result.ref.fullPath;
+                });
+            }
 
             const newUser = {
                 first_name: inputName,
@@ -47,12 +43,14 @@ export default function UserProfile() {
                 photo_url: photoReference
             };
             await updateUserByEmail(user.email, newUser);
-            getUserByEmail(user.email).then(resp => {
+            await getUserByEmail(user.email).then(resp => {
                 if (resp.status !== 200) {
                     throw new Error('Failed to get user from database!');
                 }
                 updateUser(resp.data);
             })
+
+            toast("User profile updated.")
 
         } catch (e) {
             // todo: popup window to show error message
