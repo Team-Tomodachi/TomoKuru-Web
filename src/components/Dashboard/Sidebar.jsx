@@ -62,8 +62,9 @@ export default function Sidebar({setView, setVenues, setSelectedVenue, setEvents
         setView("HostedEvents");
         getEvents(user.id).then(resp => {
             // hosted events only
-            const result = resp.data.filter(el => Date.parse(el.end_time) <= Date.now())
-            setHostedEvents(result);
+            const result = resp.data.filter(el => Date.parse(el.start_time) <= Date.now())
+            // setHostedEvents(result);
+            setHostedEvents(resp.data);
         });
     }
 
