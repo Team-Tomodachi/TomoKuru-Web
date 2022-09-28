@@ -14,6 +14,11 @@ export default function EventsWithoutVenue({
     return (
         <>
             <div id="events-without-venue-container">
+
+                <section id="events-without-venue-list-title">
+                    Events without venue
+                </section>
+
                 <div id="events-without-venue-list">
                     <EventsWithoutVenueList
                         eventsWithoutVenue={eventsWithoutVenue}
