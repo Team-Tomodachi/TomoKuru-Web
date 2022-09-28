@@ -142,10 +142,9 @@ export default function Dashboard() {
                     selectedPackage={selectedPackage}
                 />)
             case "PackageCreation":
-                console.log("######### PackageCreation ########");
                 return (<PackageCreation
                     setView={setView}
-                    setVenues={setVenues}
+                    setPackages={setPackages}
                     selectedPackageVenue={selectedPackageVenue}
                 />)
             case "Event":
