@@ -12,6 +12,11 @@ export default function UpcomingEvents({
     return (
         <>
             <div id="upcoming-events-container">
+
+                <section id="upcoming-events-list-title">
+                    Upcoming events
+                </section>
+
                 <div id="upcoming-events-list">
                     <UpcomingEventsList
                         upcomingEvents={upcomingEvents}
