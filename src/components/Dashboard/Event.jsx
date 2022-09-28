@@ -44,6 +44,7 @@ export default function Event({
                 {selectedEvent.id ? (
                     <div id="event-detail">
                         <EventDetail
+                            setSelectedEvent={setSelectedEvent}
                             selectedEvent={selectedEvent}
                             selectedEventVenue={selectedEventVenue}
                             setEvents={setEvents}

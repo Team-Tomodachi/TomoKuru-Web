@@ -6,7 +6,7 @@ import ChatRoom from "../../Messages/Messages";
 
 require('./EventDetail.css');
 
-export default function EventDetail({selectedEvent, selectedEventVenue, setEvents, events}) {
+export default function EventDetail({setSelectedEvent, selectedEvent, selectedEventVenue, setEvents, events}) {
 
     const {user} = UserAuth();
 
@@ -53,6 +53,8 @@ export default function EventDetail({selectedEvent, selectedEventVenue, setEvent
                 setEvents(resp.data);
             });
 
+            setSelectedEvent({});
+
         } catch (e) {
             // todo: popup window to show error message
             console.error(e);
@@ -66,6 +68,8 @@ export default function EventDetail({selectedEvent, selectedEventVenue, setEvent
             getEventsByVenueId(selectedEventVenue.id).then(resp => {
                 setEvents(resp.data);
             });
+
+            setSelectedEvent({});
 
         } catch (e) {
             // todo: popup window to show error message
