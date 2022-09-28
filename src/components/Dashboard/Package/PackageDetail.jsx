@@ -19,15 +19,6 @@ export default function PackageDetail({setView, setPackages, packages, setSelect
 
     // Photo
     const [inputPhotoFile, setInputPhotoFile] = useState("");
-    const [photoReference, setPhotoReference] = useState("");
-
-    const uploadImage = () => {
-        if (!inputPhotoFile) return;
-        uploadFile(inputPhotoFile, "packages").then(result => {
-            const reference = result.ref.fullPath;
-            setPhotoReference(reference);
-        });
-    };
 
     useEffect(() => {
         setInputName(selectedPackage.package_name);
@@ -38,14 +29,17 @@ export default function PackageDetail({setView, setPackages, packages, setSelect
         setInputDrinks(selectedPackage.drinks);
         setInputFood(selectedPackage.food);
         setInputDescription(selectedPackage.description);
-        setPhotoReference(selectedPackage.photo_url);
     }, [selectedPackage]);
 
     const handlePackageDetailSaveButtonClick = async () => {
         console.log("PackageDetail.handlePackageDetailSaveButtonClick(): ");
         try {
-            // todo error handling
-            uploadImage();
+            let photoReference;
+            if (inputPhotoFile) {
+                await uploadFile(inputPhotoFile, "packages").then(result => {
+                    photoReference = result.ref.fullPath;
+                });
+            }
 
             // todo error handling
             await updatePackageByPackageId(selectedPackage.id, {
@@ -61,7 +55,7 @@ export default function PackageDetail({setView, setPackages, packages, setSelect
             });
 
             // todo error handling
-            getPackagesByVenueId(selectedPackageVenue.id).then((resp) => {
+            await getPackagesByVenueId(selectedPackageVenue.id).then((resp) => {
                 setPackages(resp.data);
             });
 

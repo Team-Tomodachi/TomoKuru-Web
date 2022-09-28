@@ -20,21 +20,16 @@ export default function PackageCreation({
 
     // Photo
     const [inputPhotoFile, setInputPhotoFile] = useState("");
-    const [photoReference, setPhotoReference] = useState("");
-
-    const uploadImage = () => {
-        if (!inputPhotoFile) return;
-        uploadFile(inputPhotoFile, "packages").then(result => {
-            const reference = result.ref.fullPath;
-            setPhotoReference(reference);
-        });
-    };
 
     const handlePackageCreationSaveButtonClick = async () => {
         console.log("PackageCreation.handlePackageCreationSaveButtonClick(): ");
         try {
-            // todo error handling
-            uploadImage();
+            let photoReference;
+            if (inputPhotoFile) {
+                await uploadFile(inputPhotoFile, "packages").then(result => {
+                    photoReference = result.ref.fullPath;
+                });
+            }
 
             // todo error handling
             await createPackageByVenueId({
