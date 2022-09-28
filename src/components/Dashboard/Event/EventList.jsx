@@ -18,9 +18,10 @@ export default function EventList({
             />
 
             {/* Event List */}
-            {events.map((item) => {
+            {events.map((item, key) => {
                 return (
                     <EventBlock
+                        key={key}
                         event={item}
                         setSelectedEvent={setSelectedEvent}
                     />

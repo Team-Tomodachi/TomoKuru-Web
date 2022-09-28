@@ -24,7 +24,7 @@ export function EventBlock({event, setSelectedEvent}) {
                     {/* name */}
                     <div className="event-block-content-name">{event.name}</div>
                     {/* start time */}
-                    <div className="event-block-content-start-time">{event.start_time}</div>
+                    {/*<div className="event-block-content-start-time">{event.start_time}</div>*/}
                 </div>
 
             </div>
