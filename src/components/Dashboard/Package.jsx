@@ -45,6 +45,7 @@ export default function Package({
                             setView={setView}
                             setPackages={setPackages}
                             packages={packages}
+                            setSelectedPackage={setSelectedPackage}
                             selectedPackage={selectedPackage}
                             selectedPackageVenue={selectedPackageVenue}
                         />

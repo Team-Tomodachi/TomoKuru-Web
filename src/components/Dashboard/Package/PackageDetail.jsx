@@ -5,7 +5,7 @@ import {uploadFile} from "../../../utilities/firebase-storage";
 
 require("./PackageDetail.css");
 
-export default function PackageDetail({setView, setPackages, packages, selectedPackage, selectedPackageVenue}) {
+export default function PackageDetail({setView, setPackages, packages, setSelectedPackage, selectedPackage, selectedPackageVenue}) {
     const {user} = UserAuth();
 
     const [inputName, setInputName] = useState(selectedPackage.package_name);
@@ -64,6 +64,9 @@ export default function PackageDetail({setView, setPackages, packages, selectedP
             getPackagesByVenueId(selectedPackageVenue.id).then((resp) => {
                 setPackages(resp.data);
             });
+
+            setSelectedPackage({});
+
         } catch (e) {
             // todo: popup window to show error message
             console.error(e);
@@ -79,6 +82,9 @@ export default function PackageDetail({setView, setPackages, packages, selectedP
             getPackagesByVenueId(selectedPackageVenue.id).then((resp) => {
                 setPackages(resp.data);
             });
+
+            setSelectedPackage({});
+
         } catch (e) {
             // todo: popup window to show error message
             console.error(e);
