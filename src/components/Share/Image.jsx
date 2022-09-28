@@ -8,14 +8,14 @@ export function Image({reference, alt}) {
 
     useEffect(() => {
         // todo: remove setTimeout
-        // setTimeout(function () {
-        //     getFileUrl(reference).then(result => {
-        //         setImageUrl(result);
-        //     })
-        // }, 50);
         setTimeout(function () {
-            setImageUrl("https://picsum.photos/seed/picsum/120/80");
-        }, 300);
+            getFileUrl(reference).then(result => {
+                setImageUrl(result);
+            })
+        }, 50);
+        // setTimeout(function () {
+        //     setImageUrl("https://picsum.photos/seed/picsum/120/80");
+        // }, 300);
 
     }, [reference])
 
