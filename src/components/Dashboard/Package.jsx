@@ -21,7 +21,7 @@ export default function Package({
             <section id="package-container">
 
                 <section id="package-venue-list-title">
-                    Venue
+                    Venue for packages
                 </section>
 
                 {/* package venue list */}

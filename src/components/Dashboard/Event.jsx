@@ -21,7 +21,7 @@ export default function Event({
             <div id="event-container">
 
                 <section id="event-venue-list-title">
-                    Venue
+                    Venue for events
                 </section>
 
                 {/* event venue list */}
