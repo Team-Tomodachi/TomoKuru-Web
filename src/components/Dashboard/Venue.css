@@ -1,10 +1,21 @@
 #venue-container {
-    /*border: solid 2px purple;*/
+    /*border: solid 2px yellowgreen;*/
     overflow-x: auto;
+}
+
+#venue-list-title {
+    /*border: 1px solid red;*/
+    font-size: 1rem;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    color: #202020;
+    font-weight: bold;
+    border-bottom: 1px solid #CCCCCC;
 }
 
 #venue-list {
     /*border: solid 1px blue;*/
+    margin-top: 10px;
     display: flex;
     flex-direction: row;
     overflow-x: auto;

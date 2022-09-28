@@ -16,6 +16,10 @@ export default function Venue({
             {/* venue container */}
             <section id="venue-container">
 
+                <section id="venue-list-title">
+                   Venue
+                </section>
+
                 {/* venue list */}
                 <section id="venue-list">
                     <VenueList

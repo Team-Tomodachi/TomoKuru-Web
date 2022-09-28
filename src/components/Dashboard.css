@@ -9,9 +9,9 @@
 }
 
 #dashboard-content {
-    padding: 20px;
-    max-width: calc(100% - 260px);
-    overflow-x: auto;
-    border-left: 1px solid #CCCCCC;
+    /*border-left: 1px solid #CCCCCC;*/
     /*border: 2px solid blue;*/
+    padding: 20px;
+    width: calc(100% - 260px);
+    overflow-x: auto;
 }
