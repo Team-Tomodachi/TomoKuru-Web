@@ -21,21 +21,16 @@ export default function VenueCreation({setVenues, setView}) {
 
     // Photo
     const [inputPhotoFile, setInputPhotoFile] = useState("");
-    const [photoReference, setPhotoReference] = useState("");
-
-    const uploadImage = () => {
-        if (!inputPhotoFile) return;
-        uploadFile(inputPhotoFile, "venues").then(result => {
-            const reference = result.ref.fullPath;
-            setPhotoReference(reference);
-        });
-    };
 
     const handleVenueCreationSaveButtonClick = async () => {
         console.log("VenueCreation.handleVenueCreationSaveButtonClick(): ")
         try {
-            // todo error handling
-            uploadImage();
+            let photoReference;
+            if (inputPhotoFile) {
+                await uploadFile(inputPhotoFile, "venues").then(result => {
+                    photoReference = result.ref.fullPath;
+                });
+            }
 
             // todo error handling
             await createVenue({

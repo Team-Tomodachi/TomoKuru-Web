@@ -21,17 +21,6 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
 
     // Photo
     const [inputPhotoFile, setInputPhotoFile] = useState("");
-    const [photoReference, setPhotoReference] = useState("");
-
-    const uploadImage = () => {
-        if (!inputPhotoFile) return;
-        uploadFile(inputPhotoFile, "packages").then(result => {
-            const reference = result.ref.fullPath;
-            setPhotoReference(reference);
-        });
-
-        setInputPhotoFile("");
-    };
 
     useEffect(() => {
         setInputName(selectedVenue.location_name);
@@ -48,7 +37,14 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
 
     const handleVenueDetailSaveButtonClick = async () => {
         try {
-            let result = await updateVenueById(selectedVenue.id, {
+            let photoReference;
+            if (inputPhotoFile) {
+                await uploadFile(inputPhotoFile, "venues").then(result => {
+                    photoReference = result.ref.fullPath;
+                });
+            }
+
+            await updateVenueById(selectedVenue.id, {
                 location_name: inputName,
                 city_ward: inputCityWard,
                 prefecture: inputPrefecture,
@@ -62,7 +58,7 @@ export default function VenueDetail({setView, setVenues, venues, setSelectedVenu
             });
 
             setView("Venue");
-            getVenuesByUserId(user.id).then(resp => {
+            await getVenuesByUserId(user.id).then(resp => {
                 setVenues(resp.data);
             });
 
