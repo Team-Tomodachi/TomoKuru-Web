@@ -12,6 +12,11 @@ export default function HostedEvents({
     return (
         <>
             <div id="hosted-events-container">
+
+                <section id="hosted-events-list-title">
+                    Hosted events
+                </section>
+
                 <div id="hosted-events-list">
                     <HostedEventsList
                         hostedEvents={hostedEvents}
