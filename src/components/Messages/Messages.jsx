@@ -59,23 +59,24 @@ export default function ChatRoom({ group_id, event_id }) {
 
           <span ref={dummy}></span>
         </div>
+        <div className="chat-input-container">
+          <form className="chat-input" onSubmit={sendMessage}>
+            <input
+              className="chat-input-field"
+              value={formValue}
+              onChange={(e) => setFormValue(e.target.value)}
+              placeholder="say something nice"
+            />
 
-        <form className="chat-input" onSubmit={sendMessage}>
-          <input
-            className="chat-input-field"
-            value={formValue}
-            onChange={(e) => setFormValue(e.target.value)}
-            placeholder="say something nice"
-          />
-
-          <button
-            className="chat-input-button"
-            type="submit"
-            disabled={!formValue}
-          >
-            SEND➤
-          </button>
-        </form>
+            <button
+              className="chat-input-button"
+              type="submit"
+              disabled={!formValue}
+            >
+              SEND➤
+            </button>
+          </form>
+        </div>
       </div>
     </>
   );

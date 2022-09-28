@@ -1,5 +1,6 @@
 .chat-container {
   border: 1px solid #b6b6b6;
+  position: relative;
   padding: 10px;
   border-radius: 13px;
   height: 525px;
@@ -14,6 +15,13 @@
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
+}
+
+.chat-input-container {
+  position: absolute;
+  bottom: 0px;
+  margin-bottom: 15px;
+  height: 5vh;
 }
 
 .chat-input {
