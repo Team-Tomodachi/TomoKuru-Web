@@ -24,20 +24,15 @@ export default function EventDetail({setSelectedEvent, selectedEvent, selectedEv
 
     // Photo
     const [inputPhotoFile, setInputPhotoFile] = useState("");
-    const [photoReference, setPhotoReference] = useState("");
-
-    const uploadImage = () => {
-        if (!inputPhotoFile) return;
-        uploadFile(inputPhotoFile, "packages").then(result => {
-            const reference = result.ref.fullPath;
-            setPhotoReference(reference);
-        });
-    };
 
     const handleEventDetailSaveButtonClick = async () => {
         try {
-            // todo
-            uploadImage();
+            let photoReference;
+            if (inputPhotoFile) {
+                await uploadFile(inputPhotoFile, "events").then(result => {
+                    photoReference = result.ref.fullPath;
+                });
+            }
 
             // todo
             await updateEventByEventId(selectedEvent.id, {

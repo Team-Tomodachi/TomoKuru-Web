@@ -16,22 +16,16 @@ export default function EventCreation({setView, setEvents, selectedEventVenue}) 
 
     // Photo
     const [inputPhotoFile, setInputPhotoFile] = useState("");
-    const [photoReference, setPhotoReference] = useState("");
-
-    const uploadImage = () => {
-        if (!inputPhotoFile) return;
-        uploadFile(inputPhotoFile, "events").then(result => {
-            const reference = result.ref.fullPath;
-            setPhotoReference(reference);
-            console.log("uploadImage(): ", reference);
-        });
-    };
 
     const handleEventCreationSaveButtonClick = async () => {
         console.log("EventCreation.handleEventCreationSaveButtonClick(): ")
         try {
-            // todo error handling
-            uploadImage();
+            let photoReference;
+            if (inputPhotoFile) {
+                await uploadFile(inputPhotoFile, "events").then(result => {
+                    photoReference = result.ref.fullPath;
+                });
+            }
 
             // todo error handling
             await createEventByVenueId({
