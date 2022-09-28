@@ -1,4 +1,5 @@
 import {Image} from "../../Share/Image";
+import {EventBlock} from "../../Share/EventBlock";
 
 require('./EventsWithoutVenueList.css');
 
@@ -10,29 +11,12 @@ export default function EventsWithoutVenueList({
     return (
         <>
             {
-                eventsWithoutVenue.map((item, index) => {
+                eventsWithoutVenue.map((item) => {
                     return (
-                        <div key={index}>
-                            <div
-                                className={'event-list-block'}
-                                onClick={() => {
-                                    console.log(" setSelectedEventWithoutVenue(): -> ", item);
-                                    setSelectedEventWithoutVenue(item);
-                                }}
-                            >
-                                <div
-                                    className={'event-list-block-image'}
-                                >
-                                    <Image reference={item.photo_url} alt={item.name}/>
-                                </div>
-                                <div
-                                    className={'event-list-block-content'}
-                                >
-                                    <div className={'event-list-block-content-name'}>{item.name}</div>
-                                </div>
-                            </div>
-                            <hr/>
-                        </div>
+                        <EventBlock
+                            event={item}
+                            setSelectedEvent={setSelectedEventWithoutVenue}
+                        />
                     )
                 })
             }
