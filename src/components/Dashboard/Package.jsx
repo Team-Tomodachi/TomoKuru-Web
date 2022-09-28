@@ -20,6 +20,10 @@ export default function Package({
             {/* package container */}
             <section id="package-container">
 
+                <section id="package-venue-list-title">
+                    Venue
+                </section>
+
                 {/* package venue list */}
                 <div id="package-venue-list">
                     <PackageVenueList
@@ -30,26 +34,34 @@ export default function Package({
                 </div>
 
                 {selectedPackageVenue.id ? (
-                    <div id="package-list">
-                        <PackageList
-                            packages={packages}
-                            setSelectedPackage={setSelectedPackage}
-                            setView={setView}
-                        />
-                    </div>
+                    <>
+                        <section id="package-list-title">
+                            Package
+                        </section>
+
+                        <div id="package-list">
+                            <PackageList
+                                packages={packages}
+                                setSelectedPackage={setSelectedPackage}
+                                setView={setView}
+                            />
+                        </div>
+                    </>
                 ) : null}
 
                 {selectedPackage.id ? (
-                    <div id="package-detail">
-                        <PackageDetail
-                            setView={setView}
-                            setPackages={setPackages}
-                            packages={packages}
-                            setSelectedPackage={setSelectedPackage}
-                            selectedPackage={selectedPackage}
-                            selectedPackageVenue={selectedPackageVenue}
-                        />
-                    </div>
+                    <>
+                        <div id="package-detail">
+                            <PackageDetail
+                                setView={setView}
+                                setPackages={setPackages}
+                                packages={packages}
+                                setSelectedPackage={setSelectedPackage}
+                                selectedPackage={selectedPackage}
+                                selectedPackageVenue={selectedPackageVenue}
+                            />
+                        </div>
+                    </>
                 ) : null}
             </section>
         </>
